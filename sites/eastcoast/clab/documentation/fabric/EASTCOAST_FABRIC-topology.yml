@@ -1,0 +1,85 @@
+nodes:
+- SW101-SITE1-B:
+    node_type: veos
+    ip_addr: 172.20.20.11/24
+    version: 4.33.1.1F
+- SW102-SITE1-R:
+    node_type: veos
+    ip_addr: 172.20.20.12/24
+    version: 4.33.1.1F
+- SW103-SITE1-P:
+    node_type: veos
+    ip_addr: 172.20.20.13/24
+    version: 4.33.1.1F
+- SW201-SITE2-B:
+    node_type: veos
+    ip_addr: 1.1.1.1/24
+    version: 4.33.1.1F
+- SW202-SITE2-R:
+    node_type: veos
+    ip_addr: 172.20.20.22/24
+    version: 4.33.1.1F
+- SW203-SITE2-P:
+    node_type: veos
+    ip_addr: 172.20.20.23/24
+    version: 4.33.1.1F
+- SW301-SITE3-P:
+    node_type: veos
+    ip_addr: 172.20.20.31/24
+    version: 4.33.1.1F
+- SW401-SITE4-B:
+    node_type: veos
+    ip_addr: 172.20.20.41/24
+    version: 4.33.1.1F
+- SW402-SITE4-R:
+    node_type: veos
+    ip_addr: 172.20.20.42/24
+    version: 4.33.1.1F
+- SW501-SITE5-B:
+    node_type: veos
+    ip_addr: 172.20.20.51/24
+    version: 4.33.1.1F
+- SW502-SITE5-R:
+    node_type: veos
+    ip_addr: 172.20.20.52/24
+    version: 4.33.1.1F
+veos:
+  username: cvpadmin2
+  password: blabla
+links:
+- connection:
+  - SW101-SITE1-B:Ethernet43
+  - SW401-SITE4-B:Ethernet45
+- connection:
+  - SW101-SITE1-B:Ethernet45
+  - SW301-SITE3-P:Ethernet35
+- connection:
+  - SW101-SITE1-B:Ethernet47
+  - SW201-SITE2-B:Ethernet47
+- connection:
+  - SW101-SITE1-B:Ethernet56/1
+  - SW103-SITE1-P:Ethernet53/1
+- connection:
+  - SW102-SITE1-R:Ethernet43
+  - SW402-SITE4-R:Ethernet45
+- connection:
+  - SW102-SITE1-R:Ethernet45
+  - SW301-SITE3-P:Ethernet36
+- connection:
+  - SW102-SITE1-R:Ethernet47
+  - SW202-SITE2-R:Ethernet47
+- connection:
+  - SW102-SITE1-R:Ethernet56/1
+  - SW103-SITE1-P:Ethernet54/1
+- connection:
+  - SW201-SITE2-B:Ethernet56/1
+  - SW203-SITE2-P:Ethernet53/1
+- connection:
+  - SW202-SITE2-R:Ethernet56/1
+  - SW203-SITE2-P:Ethernet54/1
+- connection:
+  - SW401-SITE4-B:Ethernet47
+  - SW501-SITE5-B:Ethernet39
+- connection:
+  - SW402-SITE4-R:Ethernet47
+  - SW502-SITE5-R:Ethernet39

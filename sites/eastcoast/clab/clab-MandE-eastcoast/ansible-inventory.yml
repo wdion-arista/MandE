@@ -1,0 +1,39 @@
+all:
+  vars:
+    # The generated inventory is assumed to be used from the clab host.
+    # Hence no http proxy should be used. Therefore we make sure the http
+    # module does not attempt using any global http proxy.
+    ansible_httpapi_use_proxy: false
+  children:
+    arista_ceos:
+      vars:
+        # ansible_connection: set ansible_connection variable if required
+        ansible_user: admin
+        ansible_password: admin
+      hosts:
+        clab-MandE-eastcoast-SW101-SITE1-B:
+          ansible_host: 172.20.20.11
+        clab-MandE-eastcoast-SW102-SITE1-R:
+          ansible_host: 172.20.20.12
+        clab-MandE-eastcoast-SW103-SITE1-P:
+          ansible_host: 172.20.20.13
+        clab-MandE-eastcoast-SW201-SITE2-B:
+          ansible_host: 172.20.20.21
+        clab-MandE-eastcoast-SW202-SITE2-R:
+          ansible_host: 172.20.20.22
+        clab-MandE-eastcoast-SW203-SITE2-P:
+          ansible_host: 172.20.20.23
+        clab-MandE-eastcoast-SW301-SITE3-P:
+          ansible_host: 172.20.20.31
+        clab-MandE-eastcoast-SW401-SITE4-B:
+          ansible_host: 172.20.20.41
+        clab-MandE-eastcoast-SW402-SITE4-R:
+          ansible_host: 172.20.20.42
+        clab-MandE-eastcoast-SW501-SITE5-B:
+          ansible_host: 172.20.20.51
+        clab-MandE-eastcoast-SW502-SITE5-R:
+          ansible_host: 172.20.20.52
+    linux:
+      hosts:
+        clab-MandE-eastcoast-site1-server1:
+          ansible_host: 172.20.20.2

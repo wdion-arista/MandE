@@ -1,0 +1,291 @@
+{
+  "freeTextAnnotations": [
+    {
+      "id": "freeText_1775777546021",
+      "text": "Site1",
+      "position": {
+        "x": 445.8355892296334,
+        "y": 103.25679371410237
+      },
+      "fontSize": 14,
+      "fontColor": "#bbbebf",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1775777591429",
+      "text": "Site3",
+      "position": {
+        "x": 551.3794978150194,
+        "y": 322.19386438180925
+      },
+      "fontSize": 14,
+      "fontColor": "#bbbebf",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1775777619007",
+      "text": "Site2",
+      "position": {
+        "x": 278.1160463027038,
+        "y": 321.0467995801746
+      },
+      "fontSize": 14,
+      "fontColor": "#bbbebf",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1775777639411",
+      "text": "Site4",
+      "position": {
+        "x": 957.8517107188545,
+        "y": 324.41507382401676
+      },
+      "fontSize": 14,
+      "fontColor": "#bbbebf",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1775777661355",
+      "text": "Site5",
+      "position": {
+        "x": 963.4229643646387,
+        "y": 498.79824507756894
+      },
+      "fontSize": 14,
+      "fontColor": "#bbbebf",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    }
+  ],
+  "freeShapeAnnotations": [
+    {
+      "id": "freeShape_1775777328816",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 279.53146053469777,
+        "y": 333.7970205980579
+      },
+      "width": 263,
+      "height": 222,
+      "fillColor": "rgba(127, 127, 127, 0.16)",
+      "fillOpacity": 0.2,
+      "borderColor": "#bbbebf",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1775777429146",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 440,
+        "y": 17
+      },
+      "width": 418,
+      "height": 262,
+      "fillColor": "rgba(127, 127, 127, 0.16)",
+      "fillOpacity": 0.2,
+      "borderColor": "#bbbebf",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1775777453637",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 550.186857912721,
+        "y": 335.7312258485286
+      },
+      "width": 181,
+      "height": 218,
+      "fillColor": "rgba(127, 127, 127, 0.16)",
+      "fillOpacity": 0.2,
+      "borderColor": "#bbbebf",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1775777485728",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 737.8881707993853,
+        "y": 334.4287463542159
+      },
+      "width": 271,
+      "height": 127,
+      "fillColor": "rgba(127, 127, 127, 0.16)",
+      "fillOpacity": 0.2,
+      "borderColor": "#bbbebf",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    },
+    {
+      "id": "freeShape_1775777522819",
+      "shapeType": "rectangle",
+      "position": {
+        "x": 735.630501276647,
+        "y": 510.0227875503318
+      },
+      "width": 274,
+      "height": 141,
+      "fillColor": "rgba(127, 127, 127, 0.16)",
+      "fillOpacity": 0.2,
+      "borderColor": "#bbbebf",
+      "borderWidth": 1,
+      "borderStyle": "solid",
+      "rotation": 0,
+      "zIndex": -1
+    }
+  ],
+  "trafficRateAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "SW101-SITE1-B",
+      "position": {
+        "x": 740,
+        "y": 160
+      },
+      "icon": "spine",
+      "iconColor": "#1c6ae9",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "SW102-SITE1-R",
+      "position": {
+        "x": 500,
+        "y": 160
+      },
+      "icon": "spine",
+      "iconColor": "#e91c1c",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "SW103-SITE1-P",
+      "position": {
+        "x": 620,
+        "y": 160
+      },
+      "icon": "leaf",
+      "iconColor": "#8c1ce9",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "SW201-SITE2-B",
+      "position": {
+        "x": 460,
+        "y": 360
+      },
+      "icon": "leaf",
+      "iconColor": "#1c6ae9",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "SW202-SITE2-R",
+      "position": {
+        "x": 360,
+        "y": 360
+      },
+      "icon": "leaf",
+      "iconColor": "#e91c1c",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "SW203-SITE2-P",
+      "position": {
+        "x": 420,
+        "y": 480
+      },
+      "icon": "leaf",
+      "iconColor": "#8c1ce9",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "SW301-SITE3-P",
+      "position": {
+        "x": 620,
+        "y": 380
+      },
+      "icon": "leaf",
+      "iconColor": "#8c1ce9",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "SW401-SITE4-B",
+      "position": {
+        "x": 900,
+        "y": 360
+      },
+      "icon": "leaf",
+      "iconColor": "#1c6ae9",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "SW402-SITE4-R",
+      "position": {
+        "x": 800,
+        "y": 360
+      },
+      "icon": "leaf",
+      "iconColor": "#e91c1c",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "SW501-SITE5-B",
+      "position": {
+        "x": 900,
+        "y": 560
+      },
+      "icon": "leaf",
+      "iconColor": "#1c6ae9",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "SW502-SITE5-R",
+      "position": {
+        "x": 800,
+        "y": 560
+      },
+      "icon": "leaf",
+      "iconColor": "#e91c1c",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "site1-server1",
+      "position": {
+        "x": 620,
+        "y": 40
+      }
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}

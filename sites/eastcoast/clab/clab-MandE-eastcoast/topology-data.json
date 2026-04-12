@@ -1,0 +1,635 @@
+{
+  "name": "MandE-eastcoast",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-1146aec4f641",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJF7OT/UyUNugQBV/6sn/7FPB5glZfb2KzjBmlkxyWdx"],
+  "nodes": {
+    "SW101-SITE1-B": {
+      "index": "0",
+      "shortname": "SW101-SITE1-B",
+      "longname": "clab-MandE-eastcoast-SW101-SITE1-B",
+      "fqdn": "SW101-SITE1-B.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW101-SITE1-B",
+      "kind": "arista_ceos",
+      "image": "arista/ceos:4.36.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.11",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::9",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:e1:ac:0f",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW101-SITE1-B",
+        "clab-node-longname": "clab-MandE-eastcoast-SW101-SITE1-B",
+        "clab-node-name": "SW101-SITE1-B",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SW102-SITE1-R": {
+      "index": "1",
+      "shortname": "SW102-SITE1-R",
+      "longname": "clab-MandE-eastcoast-SW102-SITE1-R",
+      "fqdn": "SW102-SITE1-R.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW102-SITE1-R",
+      "kind": "arista_ceos",
+      "image": "arista/ceos:4.36.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.12",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::6",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:ea:47:86",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW102-SITE1-R",
+        "clab-node-longname": "clab-MandE-eastcoast-SW102-SITE1-R",
+        "clab-node-name": "SW102-SITE1-R",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SW103-SITE1-P": {
+      "index": "2",
+      "shortname": "SW103-SITE1-P",
+      "longname": "clab-MandE-eastcoast-SW103-SITE1-P",
+      "fqdn": "SW103-SITE1-P.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW103-SITE1-P",
+      "kind": "arista_ceos",
+      "image": "arista/ceos:4.36.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.13",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::a",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:1b:6c:26",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW103-SITE1-P",
+        "clab-node-longname": "clab-MandE-eastcoast-SW103-SITE1-P",
+        "clab-node-name": "SW103-SITE1-P",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SW201-SITE2-B": {
+      "index": "3",
+      "shortname": "SW201-SITE2-B",
+      "longname": "clab-MandE-eastcoast-SW201-SITE2-B",
+      "fqdn": "SW201-SITE2-B.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW201-SITE2-B",
+      "kind": "arista_ceos",
+      "image": "arista/ceos:4.36.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.21",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:17:b4:14",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW201-SITE2-B",
+        "clab-node-longname": "clab-MandE-eastcoast-SW201-SITE2-B",
+        "clab-node-name": "SW201-SITE2-B",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SW202-SITE2-R": {
+      "index": "4",
+      "shortname": "SW202-SITE2-R",
+      "longname": "clab-MandE-eastcoast-SW202-SITE2-R",
+      "fqdn": "SW202-SITE2-R.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW202-SITE2-R",
+      "kind": "arista_ceos",
+      "image": "arista/ceos:4.36.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.22",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:5e:7d:2b",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW202-SITE2-R",
+        "clab-node-longname": "clab-MandE-eastcoast-SW202-SITE2-R",
+        "clab-node-name": "SW202-SITE2-R",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SW203-SITE2-P": {
+      "index": "5",
+      "shortname": "SW203-SITE2-P",
+      "longname": "clab-MandE-eastcoast-SW203-SITE2-P",
+      "fqdn": "SW203-SITE2-P.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW203-SITE2-P",
+      "kind": "arista_ceos",
+      "image": "arista/ceos:4.36.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.23",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::c",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:79:00:92",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW203-SITE2-P",
+        "clab-node-longname": "clab-MandE-eastcoast-SW203-SITE2-P",
+        "clab-node-name": "SW203-SITE2-P",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SW301-SITE3-P": {
+      "index": "6",
+      "shortname": "SW301-SITE3-P",
+      "longname": "clab-MandE-eastcoast-SW301-SITE3-P",
+      "fqdn": "SW301-SITE3-P.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW301-SITE3-P",
+      "kind": "arista_ceos",
+      "image": "arista/ceos:4.36.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.31",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::b",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:0e:1e:a7",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW301-SITE3-P",
+        "clab-node-longname": "clab-MandE-eastcoast-SW301-SITE3-P",
+        "clab-node-name": "SW301-SITE3-P",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SW401-SITE4-B": {
+      "index": "7",
+      "shortname": "SW401-SITE4-B",
+      "longname": "clab-MandE-eastcoast-SW401-SITE4-B",
+      "fqdn": "SW401-SITE4-B.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW401-SITE4-B",
+      "kind": "arista_ceos",
+      "image": "arista/ceos:4.36.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.41",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::8",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:82:44:19",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW401-SITE4-B",
+        "clab-node-longname": "clab-MandE-eastcoast-SW401-SITE4-B",
+        "clab-node-name": "SW401-SITE4-B",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SW402-SITE4-R": {
+      "index": "8",
+      "shortname": "SW402-SITE4-R",
+      "longname": "clab-MandE-eastcoast-SW402-SITE4-R",
+      "fqdn": "SW402-SITE4-R.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW402-SITE4-R",
+      "kind": "arista_ceos",
+      "image": "arista/ceos:4.36.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.42",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:90:b0:8a",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW402-SITE4-R",
+        "clab-node-longname": "clab-MandE-eastcoast-SW402-SITE4-R",
+        "clab-node-name": "SW402-SITE4-R",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SW501-SITE5-B": {
+      "index": "9",
+      "shortname": "SW501-SITE5-B",
+      "longname": "clab-MandE-eastcoast-SW501-SITE5-B",
+      "fqdn": "SW501-SITE5-B.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW501-SITE5-B",
+      "kind": "arista_ceos",
+      "image": "arista/ceos:4.36.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.51",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::7",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:b4:5c:55",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW501-SITE5-B",
+        "clab-node-longname": "clab-MandE-eastcoast-SW501-SITE5-B",
+        "clab-node-name": "SW501-SITE5-B",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SW502-SITE5-R": {
+      "index": "10",
+      "shortname": "SW502-SITE5-R",
+      "longname": "clab-MandE-eastcoast-SW502-SITE5-R",
+      "fqdn": "SW502-SITE5-R.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW502-SITE5-R",
+      "kind": "arista_ceos",
+      "image": "arista/ceos:4.36.0F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.52",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:fb:33:86",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW502-SITE5-R",
+        "clab-node-longname": "clab-MandE-eastcoast-SW502-SITE5-R",
+        "clab-node-name": "SW502-SITE5-R",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "site1-server1": {
+      "index": "11",
+      "shortname": "site1-server1",
+      "longname": "clab-MandE-eastcoast-site1-server1",
+      "fqdn": "site1-server1.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/site1-server1",
+      "kind": "linux",
+      "image": "ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::d",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/site1-server1",
+        "clab-node-longname": "clab-MandE-eastcoast-site1-server1",
+        "clab-node-name": "site1-server1",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW101-SITE1-B",
+          "interface": "eth43",
+          "mac": "aa:c1:ab:5f:84:85",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW401-SITE4-B",
+          "interface": "eth45",
+          "mac": "aa:c1:ab:a1:40:65",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW101-SITE1-B",
+          "interface": "eth45",
+          "mac": "aa:c1:ab:fa:6c:07",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW301-SITE3-P",
+          "interface": "eth35",
+          "mac": "aa:c1:ab:ca:48:8c",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW101-SITE1-B",
+          "interface": "eth47",
+          "mac": "aa:c1:ab:36:25:c6",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW201-SITE2-B",
+          "interface": "eth47",
+          "mac": "aa:c1:ab:50:05:e8",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW101-SITE1-B",
+          "interface": "eth56_1",
+          "mac": "aa:c1:ab:91:68:89",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW103-SITE1-P",
+          "interface": "eth53_1",
+          "mac": "aa:c1:ab:c7:d3:99",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "site1-server1",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:9d:e5:2f",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW101-SITE1-B",
+          "interface": "eth50",
+          "mac": "aa:c1:ab:35:57:c6",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW102-SITE1-R",
+          "interface": "eth43",
+          "mac": "aa:c1:ab:c3:dc:40",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW402-SITE4-R",
+          "interface": "eth45",
+          "mac": "aa:c1:ab:62:c1:a5",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW102-SITE1-R",
+          "interface": "eth45",
+          "mac": "aa:c1:ab:00:93:c7",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW301-SITE3-P",
+          "interface": "eth36",
+          "mac": "aa:c1:ab:6f:bb:55",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW102-SITE1-R",
+          "interface": "eth47",
+          "mac": "aa:c1:ab:4f:23:03",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW202-SITE2-R",
+          "interface": "eth47",
+          "mac": "aa:c1:ab:de:ed:86",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW102-SITE1-R",
+          "interface": "eth56_1",
+          "mac": "aa:c1:ab:9a:c7:36",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW103-SITE1-P",
+          "interface": "eth54_1",
+          "mac": "aa:c1:ab:85:78:67",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "site1-server1",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:da:4b:9d",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW102-SITE1-R",
+          "interface": "eth50",
+          "mac": "aa:c1:ab:c2:7b:01",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "site1-server1",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:6b:6d:f3",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW103-SITE1-P",
+          "interface": "eth50",
+          "mac": "aa:c1:ab:b6:89:44",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW201-SITE2-B",
+          "interface": "eth56_1",
+          "mac": "aa:c1:ab:72:69:ec",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW203-SITE2-P",
+          "interface": "eth53_1",
+          "mac": "aa:c1:ab:4a:0d:f6",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW202-SITE2-R",
+          "interface": "eth56_1",
+          "mac": "aa:c1:ab:fd:09:53",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW203-SITE2-P",
+          "interface": "eth54_1",
+          "mac": "aa:c1:ab:27:71:1f",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW401-SITE4-B",
+          "interface": "eth47",
+          "mac": "aa:c1:ab:2e:bf:8b",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW501-SITE5-B",
+          "interface": "eth39",
+          "mac": "aa:c1:ab:38:9b:67",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SW402-SITE4-R",
+          "interface": "eth47",
+          "mac": "aa:c1:ab:4f:70:fa",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW502-SITE5-R",
+          "interface": "eth39",
+          "mac": "aa:c1:ab:db:b6:93",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}

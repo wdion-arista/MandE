@@ -1,0 +1,562 @@
+aaa_root:
+  disabled: true
+clock:
+  timezone: Canada/Eastern
+config_end: true
+dhcp_servers:
+- vrf: Production
+  dns_servers_ipv4:
+  - 4.2.2.1
+  - 8.8.8.8
+  ipv4_vendor_options:
+  - vendor_id: NTP
+    sub_options:
+    - code: 42
+      array_ipv4_address:
+      - 216.232.132.95
+      - 23.133.168.244
+      - 173.183.146.26
+      - 208.73.56.29
+  subnets:
+  - subnet: 10.1.12.0/24
+    name: Network Management
+    default_gateway: 10.1.12.1
+    ranges:
+    - start: 10.1.12.10
+      end: 10.1.12.250
+  - subnet: 10.1.13.0/24
+    name: Operations
+    default_gateway: 10.1.13.1
+    ranges:
+    - start: 10.1.13.10
+      end: 10.1.13.250
+  - subnet: 10.1.20.0/24
+    name: Intercom
+    default_gateway: 10.1.20.1
+    ranges:
+    - start: 10.1.20.10
+      end: 10.1.20.250
+  - subnet: 10.1.35.0/24
+    name: SRT Blue
+    default_gateway: 10.1.35.1
+    ranges:
+    - start: 10.1.35.10
+      end: 10.1.35.250
+  - subnet: 10.1.36.0/24
+    name: SRT Red
+    default_gateway: 10.1.36.1
+    ranges:
+    - start: 10.1.36.10
+      end: 10.1.36.250
+  - subnet: 10.1.40.0/24
+    name: Data Transfer - EVS
+    default_gateway: 10.1.40.1
+    ranges:
+    - start: 10.1.40.10
+      end: 10.1.40.250
+  - subnet: 10.1.84.0/24
+    name: WAN_1G
+    default_gateway: 10.1.84.1
+    ranges:
+    - start: 10.1.84.10
+      end: 10.1.84.250
+enable_password:
+  disabled: true
+ethernet_interfaces:
+- name: Ethernet53/1
+  description: P2P_SW101-SITE1-B_Ethernet56/1
+  shutdown: false
+  mtu: 1500
+  flow_tracker:
+    sampled: FLOW-TRACKER
+  ip_address: 10.11.50.9/31
+  isis_enable: EVPN_UNDERLAY
+  isis_metric: 50
+  isis_network_point_to_point: true
+  isis_circuit_type: level-2
+  peer: SW101-SITE1-B
+  peer_interface: Ethernet56/1
+  peer_type: spine
+  switchport:
+    enabled: false
+- name: Ethernet54/1
+  description: P2P_SW102-SITE1-R_Ethernet56/1
+  shutdown: false
+  mtu: 1500
+  flow_tracker:
+    sampled: FLOW-TRACKER
+  ip_address: 10.11.50.11/31
+  isis_enable: EVPN_UNDERLAY
+  isis_metric: 50
+  isis_network_point_to_point: true
+  isis_circuit_type: level-2
+  peer: SW102-SITE1-R
+  peer_interface: Ethernet56/1
+  peer_type: spine
+  switchport:
+    enabled: false
+- name: Ethernet50
+  description: SERVER_site1-server1_Ethernet3
+  shutdown: false
+  flow_tracker:
+    sampled: FLOW-TRACKER
+  spanning_tree_bpduguard: 'True'
+  spanning_tree_portfast: edge
+  peer: site1-server1
+  peer_interface: Ethernet3
+  peer_type: server
+  port_profile: SRTTrafficBlue_site1
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 135
+flow_tracking:
+  sampled:
+    encapsulation:
+      ipv4_ipv6: true
+      mpls: true
+    sample: 10000
+    trackers:
+    - record_export:
+        on_inactive_timeout: 70000
+        on_interval: 300000
+      name: FLOW-TRACKER
+      exporters:
+      - name: CV-TELEMETRY
+        collectors:
+        - host: 127.0.0.1
+        local_interface: Loopback0
+        template_interval: 3600000
+    shutdown: false
+hostname: SW103-SITE1-P
+ip_igmp_snooping:
+  globally_enabled: true
+ip_routing: true
+ip_virtual_router_mac_address: 00:1c:73:00:dc:13
+load_interval:
+  default: 30
+local_users:
+- name: admin
+  privilege: 15
+  role: network-admin
+  sha512_password: $6$arista$hvhzPKMNzxDEPi2.4ml69k2ZGn88hWas4/loWEFDCkC2QEh/onTkN954QCDvZPAHLZDn41AoDozW5SKPFe0.6.
+  ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJF7OT/UyUNugQBV/6sn/7FPB5glZfb2KzjBmlkxyWdx westley.dion@Westleys-MacBook-Pro-2.local
+- name: cvpadmin
+  privilege: 15
+  role: network-admin
+  sha512_password: $6$arista$hvhzPKMNzxDEPi2.4ml69k2ZGn88hWas4/loWEFDCkC2QEh/onTkN954QCDvZPAHLZDn41AoDozW5SKPFe0.6.
+  ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJF7OT/UyUNugQBV/6sn/7FPB5glZfb2KzjBmlkxyWdx westley.dion@Westleys-MacBook-Pro-2.local
+- name: pcapper
+  sha512_password: $6$arista$hvhzPKMNzxDEPi2.4ml69k2ZGn88hWas4/loWEFDCkC2QEh/onTkN954QCDvZPAHLZDn41AoDozW5SKPFe0.6.
+  ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJF7OT/UyUNugQBV/6sn/7FPB5glZfb2KzjBmlkxyWdx westley.dion@Westleys-MacBook-Pro-2.local
+  shell: /bin/bash
+- name: service
+  sha512_password: $6$arista$hvhzPKMNzxDEPi2.4ml69k2ZGn88hWas4/loWEFDCkC2QEh/onTkN954QCDvZPAHLZDn41AoDozW5SKPFe0.6.
+  shell: /bin/bash
+loopback_interfaces:
+- name: Loopback0
+  description: ROUTER_ID
+  shutdown: false
+  ip_address: 10.11.30.3/32
+  isis_enable: EVPN_UNDERLAY
+  isis_passive: true
+- name: Loopback1
+  description: VXLAN_TUNNEL_SOURCE
+  shutdown: false
+  ip_address: 10.11.40.3/32
+  isis_enable: EVPN_UNDERLAY
+  isis_passive: true
+- name: Loopback10
+  description: INBAND_MGMT
+  vrf: Production
+  ip_address: 10.0.10.13/32
+management_api_http:
+  enable_https: true
+  enable_vrfs:
+  - name: default
+management_interfaces:
+- name: Management0
+  description: OOB_MANAGEMENT
+  shutdown: false
+  vrf: default
+  ip_address: 172.20.20.13/24
+  type: oob
+  gateway: 172.20.20.1
+metadata:
+  is_deployed: true
+  platform: cEOSLab
+  fabric_name: EASTCOAST_FABRIC
+  cv_tags:
+    device_tags:
+    - name: topology_hint_network_type
+      value: campusV2
+    - name: topology_hint_type
+      value: Leaf
+    - name: Role
+      value: Leaf
+    - name: Campus
+      value: MandE
+    - name: Campus-Pod
+      value: SITE1
+    - name: Access-Pod
+      value: Purple
+    - name: environment
+      value: CLAB
+    - name: device_model
+      value: cEOSLab
+    interface_tags:
+    - interface: Ethernet53/1
+      tags:
+      - name: Link-Type
+        value: AVD-Managed
+      - name: Link-Type
+        value: Fabric
+      - name: Link-Type
+        value: Uplink
+    - interface: Ethernet54/1
+      tags:
+      - name: Link-Type
+        value: AVD-Managed
+      - name: Link-Type
+        value: Fabric
+      - name: Link-Type
+        value: Uplink
+    - interface: Ethernet50
+      tags:
+      - name: Link-Type
+        value: AVD-Managed
+    - interface: Management0
+      tags:
+      - name: Link-Type
+        value: AVD-Managed
+      - name: Link-Type
+        value: Management
+  digital_twin:
+    environment: act
+    node_type: veos
+    ip_addr: 172.20.20.13/24
+    version: 4.33.1.1F
+    username: cvpadmin2
+    password: blabla
+router_bfd:
+  multihop:
+    interval: 300
+    min_rx: 300
+    multiplier: 3
+router_bgp:
+  as: '65103'
+  router_id: 10.11.30.3
+  maximum_paths:
+    paths: 4
+    ecmp: 4
+  bgp:
+    default:
+      ipv4_unicast: false
+  peer_groups:
+  - name: EVPN-OVERLAY-PEERS
+    type: evpn
+    update_source: Loopback0
+    bfd: true
+    ebgp_multihop: 3
+    send_community: all
+    maximum_routes: 0
+  neighbors:
+  - ip_address: 10.101.30.1
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65100'
+    peer: SW101-SITE1-B
+    description: SW101-SITE1-B_Loopback0
+  - ip_address: 10.102.30.1
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65200'
+    peer: SW102-SITE1-R
+    description: SW102-SITE1-R_Loopback0
+  vlans:
+  - id: 150
+    tenant: InternetLANDistributionClients
+    rd: 10.11.30.3:10150
+    route_targets:
+      both:
+      - 10150:10150
+    redistribute_routes:
+    - learned
+  - id: 110
+    tenant: InternetLANDistributionClients
+    rd: 10.11.30.3:10110
+    route_targets:
+      both:
+      - 10110:10110
+    redistribute_routes:
+    - learned
+  - id: 999
+    tenant: MGMT
+    rd: 10.11.30.3:10999
+    route_targets:
+      both:
+      - 10999:10999
+    redistribute_routes:
+    - learned
+  - id: 112
+    tenant: Production
+    rd: 10.11.30.3:10112
+    route_targets:
+      both:
+      - 10112:10112
+    redistribute_routes:
+    - learned
+  - id: 113
+    tenant: Production
+    rd: 10.11.30.3:10113
+    route_targets:
+      both:
+      - 10113:10113
+    redistribute_routes:
+    - learned
+  - id: 120
+    tenant: Production
+    rd: 10.11.30.3:10120
+    route_targets:
+      both:
+      - 10120:10120
+    redistribute_routes:
+    - learned
+  - id: 135
+    tenant: Production
+    rd: 10.11.30.3:10135
+    route_targets:
+      both:
+      - 10135:10135
+    redistribute_routes:
+    - learned
+  - id: 136
+    tenant: Production
+    rd: 10.11.30.3:10136
+    route_targets:
+      both:
+      - 10136:10136
+    redistribute_routes:
+    - learned
+  - id: 140
+    tenant: Production
+    rd: 10.11.30.3:10140
+    route_targets:
+      both:
+      - 10140:10140
+    redistribute_routes:
+    - learned
+  - id: 184
+    tenant: Production
+    rd: 10.11.30.3:10184
+    route_targets:
+      both:
+      - 10184:10184
+    redistribute_routes:
+    - learned
+  address_family_evpn:
+    peer_groups:
+    - name: EVPN-OVERLAY-PEERS
+      activate: true
+  address_family_ipv4:
+    peer_groups:
+    - name: EVPN-OVERLAY-PEERS
+      activate: false
+  vrfs:
+  - name: MGMT
+    rd: 10.11.30.3:11999
+    route_targets:
+      import:
+      - address_family: evpn
+        route_targets:
+        - 11999:11999
+      export:
+      - address_family: evpn
+        route_targets:
+        - 11999:11999
+    router_id: 10.11.30.3
+    redistribute:
+      connected:
+        enabled: true
+  - name: Production
+    rd: 10.11.30.3:11111
+    route_targets:
+      import:
+      - address_family: evpn
+        route_targets:
+        - 11111:11111
+      export:
+      - address_family: evpn
+        route_targets:
+        - 11111:11111
+    router_id: 10.11.30.3
+    redistribute:
+      connected:
+        enabled: true
+router_isis:
+  instance: EVPN_UNDERLAY
+  net: 49.0001.0100.1103.0003.00
+  router_id: 10.11.30.3
+  is_type: level-2
+  log_adjacency_changes: true
+  address_family_ipv4:
+    enabled: true
+    maximum_paths: 4
+service_routing_protocols_model: multi-agent
+spanning_tree:
+  mode: mstp
+  mst_instances:
+  - id: '0'
+    priority: 32768
+static_routes:
+- vrf: default
+  prefix: 0.0.0.0/0
+  next_hop: 172.20.20.1
+transceiver_qsfp_default_mode_4x10: true
+vlan_interfaces:
+- name: Vlan999
+  description: MGMT
+  shutdown: false
+  vrf: MGMT
+  ip_address_virtual: 10.1.99.1/24
+  tenant: MGMT
+  tags:
+  - purple_site1
+- name: Vlan112
+  description: NetworkMgmtSite1
+  shutdown: false
+  vrf: Production
+  ip_address: 10.1.12.1/24
+  dhcp_server_ipv4: true
+  tenant: Production
+  tags:
+  - site1
+- name: Vlan113
+  description: EdgeDeviceControlSite1
+  shutdown: false
+  vrf: Production
+  ip_address: 10.1.13.1/24
+  dhcp_server_ipv4: true
+  tenant: Production
+  tags:
+  - site1
+- name: Vlan120
+  description: IntercomSite1
+  shutdown: false
+  vrf: Production
+  ip_address: 10.1.20.1/24
+  dhcp_server_ipv4: true
+  tenant: Production
+  tags:
+  - purple_site1
+- name: Vlan135
+  description: SRTTrafficBlue
+  shutdown: false
+  vrf: Production
+  ip_address: 10.1.35.1/24
+  dhcp_server_ipv4: true
+  tenant: Production
+  tags:
+  - purple_site1
+- name: Vlan136
+  description: SRTTrafficRed
+  shutdown: false
+  vrf: Production
+  ip_address: 10.1.36.1/24
+  dhcp_server_ipv4: true
+  tenant: Production
+  tags:
+  - purple_site1
+- name: Vlan140
+  description: DataTransferSite1
+  shutdown: false
+  vrf: Production
+  ip_address: 10.1.40.1/24
+  dhcp_server_ipv4: true
+  tenant: Production
+  tags:
+  - purple_site1
+- name: Vlan184
+  description: WAN_1000mbps_prod_site1
+  shutdown: false
+  vrf: Production
+  ip_address: 10.1.84.1/24
+  dhcp_server_ipv4: true
+  tenant: Production
+  tags:
+  - purple_site1
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+vlans:
+- id: 110
+  name: SITE5akiMgmt
+  tenant: InternetLANDistributionClients
+- id: 150
+  name: ILD1_10mbps_client_site1
+  tenant: InternetLANDistributionClients
+- id: 999
+  name: MGMT
+  tenant: MGMT
+- id: 112
+  name: NetworkMgmtSite1
+  tenant: Production
+- id: 113
+  name: EdgeDeviceControlSite1
+  tenant: Production
+- id: 120
+  name: IntercomSite1
+  tenant: Production
+- id: 135
+  name: SRTTrafficBlue
+  tenant: Production
+- id: 136
+  name: SRTTrafficRed
+  tenant: Production
+- id: 140
+  name: DataTransferSite1
+  tenant: Production
+- id: 184
+  name: WAN_1000mbps_prod_site1
+  tenant: Production
+vrfs:
+- name: default
+  ip_routing: false
+- name: MGMT
+  ip_routing: true
+  tenant: MGMT
+- name: Production
+  ip_routing: true
+  tenant: Production
+vxlan_interface:
+  vxlan1:
+    description: SW103-SITE1-P_VTEP
+    vxlan:
+      source_interface: Loopback1
+      udp_port: 4789
+      vlans:
+      - id: 110
+        vni: 10110
+      - id: 150
+        vni: 10150
+      - id: 999
+        vni: 10999
+      - id: 112
+        vni: 10112
+      - id: 113
+        vni: 10113
+      - id: 120
+        vni: 10120
+      - id: 135
+        vni: 10135
+      - id: 136
+        vni: 10136
+      - id: 140
+        vni: 10140
+      - id: 184
+        vni: 10184
+      vrfs:
+      - name: MGMT
+        vni: 11999
+      - name: Production
+        vni: 11111

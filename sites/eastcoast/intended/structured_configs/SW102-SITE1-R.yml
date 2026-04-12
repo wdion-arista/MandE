@@ -1,0 +1,457 @@
+aaa_root:
+  disabled: true
+config_end: true
+enable_password:
+  disabled: true
+ethernet_interfaces:
+- name: Ethernet43
+  description: P2P_SW402-SITE4-R_Ethernet45
+  shutdown: false
+  mtu: 1500
+  ip_address: 10.102.50.6/31
+  pim:
+    ipv4:
+      sparse_mode: true
+  isis_enable: EVPN_UNDERLAY
+  isis_metric: 50
+  isis_network_point_to_point: true
+  isis_circuit_type: level-2
+  peer: SW402-SITE4-R
+  peer_interface: Ethernet45
+  peer_type: l3leaf
+  switchport:
+    enabled: false
+- name: Ethernet45
+  description: P2P_SW301-SITE3-P_Ethernet36
+  shutdown: false
+  mtu: 1500
+  ip_address: 10.11.50.18/31
+  isis_enable: EVPN_UNDERLAY
+  isis_metric: 50
+  isis_network_point_to_point: true
+  isis_circuit_type: level-2
+  peer: SW301-SITE3-P
+  peer_interface: Ethernet36
+  peer_type: l3leaf
+  switchport:
+    enabled: false
+- name: Ethernet47
+  description: P2P_SW202-SITE2-R_Ethernet47
+  shutdown: false
+  mtu: 1500
+  ip_address: 10.102.50.4/31
+  pim:
+    ipv4:
+      sparse_mode: true
+  isis_enable: EVPN_UNDERLAY
+  isis_metric: 50
+  isis_network_point_to_point: true
+  isis_circuit_type: level-2
+  peer: SW202-SITE2-R
+  peer_interface: Ethernet47
+  peer_type: l3leaf
+  switchport:
+    enabled: false
+- name: Ethernet56/1
+  description: P2P_SW103-SITE1-P_Ethernet54/1
+  shutdown: false
+  mtu: 1500
+  ip_address: 10.11.50.10/31
+  isis_enable: EVPN_UNDERLAY
+  isis_metric: 50
+  isis_network_point_to_point: true
+  isis_circuit_type: level-2
+  peer: SW103-SITE1-P
+  peer_interface: Ethernet54/1
+  peer_type: l3leaf
+  switchport:
+    enabled: false
+- name: Ethernet50
+  description: SERVER_site1-server1_Ethernet2
+  shutdown: false
+  spanning_tree_bpduguard: 'True'
+  spanning_tree_portfast: edge
+  peer: site1-server1
+  peer_interface: Ethernet2
+  peer_type: server
+  port_profile: VideoTrafficRed_site1
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 131
+hostname: SW102-SITE1-R
+ip_igmp_snooping:
+  globally_enabled: true
+  vlans:
+  - id: 131
+    enabled: true
+  - id: 112
+    enabled: true
+    querier:
+      enabled: true
+      address: 10.102.30.1
+  - id: 113
+    enabled: true
+    querier:
+      enabled: true
+      address: 10.102.30.1
+ip_routing: true
+ip_virtual_router_mac_address: 00:1c:73:00:dc:21
+load_interval:
+  default: 30
+local_users:
+- name: admin
+  privilege: 15
+  role: network-admin
+  sha512_password: $6$arista$hvhzPKMNzxDEPi2.4ml69k2ZGn88hWas4/loWEFDCkC2QEh/onTkN954QCDvZPAHLZDn41AoDozW5SKPFe0.6.
+  ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJF7OT/UyUNugQBV/6sn/7FPB5glZfb2KzjBmlkxyWdx westley.dion@Westleys-MacBook-Pro-2.local
+- name: cvpadmin
+  privilege: 15
+  role: network-admin
+  sha512_password: $6$arista$hvhzPKMNzxDEPi2.4ml69k2ZGn88hWas4/loWEFDCkC2QEh/onTkN954QCDvZPAHLZDn41AoDozW5SKPFe0.6.
+  ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJF7OT/UyUNugQBV/6sn/7FPB5glZfb2KzjBmlkxyWdx westley.dion@Westleys-MacBook-Pro-2.local
+- name: pcapper
+  sha512_password: $6$arista$hvhzPKMNzxDEPi2.4ml69k2ZGn88hWas4/loWEFDCkC2QEh/onTkN954QCDvZPAHLZDn41AoDozW5SKPFe0.6.
+  ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJF7OT/UyUNugQBV/6sn/7FPB5glZfb2KzjBmlkxyWdx westley.dion@Westleys-MacBook-Pro-2.local
+  shell: /bin/bash
+- name: service
+  sha512_password: $6$arista$hvhzPKMNzxDEPi2.4ml69k2ZGn88hWas4/loWEFDCkC2QEh/onTkN954QCDvZPAHLZDn41AoDozW5SKPFe0.6.
+  shell: /bin/bash
+loopback_interfaces:
+- name: Loopback0
+  description: ROUTER_ID
+  shutdown: false
+  ip_address: 10.102.30.1/32
+  isis_enable: EVPN_UNDERLAY
+  isis_passive: true
+- name: Loopback1
+  description: VXLAN_TUNNEL_SOURCE
+  shutdown: false
+  ip_address: 10.102.40.1/32
+  isis_enable: EVPN_UNDERLAY
+  isis_passive: true
+- name: Loopback10
+  description: INBAND_MGMT
+  vrf: Production
+  ip_address: 10.0.10.12/32
+management_api_http:
+  enable_https: true
+  enable_vrfs:
+  - name: default
+management_interfaces:
+- name: Management1
+  description: OOB_MANAGEMENT
+  shutdown: false
+  vrf: default
+  ip_address: 172.20.20.12/24
+  type: oob
+metadata:
+  is_deployed: true
+  platform: 7280SR3
+  fabric_name: EASTCOAST_FABRIC
+  cv_tags:
+    device_tags:
+    - name: topology_hint_network_type
+      value: campusV2
+    - name: topology_hint_type
+      value: Spine
+    - name: Role
+      value: Spine
+    - name: Campus
+      value: MandE
+    - name: Campus-Pod
+      value: SITE1
+    - name: environment
+      value: PROD
+    - name: device_model
+      value: 7280SR3
+    interface_tags:
+    - interface: Ethernet43
+      tags:
+      - name: Link-Type
+        value: AVD-Managed
+      - name: Link-Type
+        value: Fabric
+      - name: Link-Type
+        value: Downlink
+    - interface: Ethernet45
+      tags:
+      - name: Link-Type
+        value: AVD-Managed
+      - name: Link-Type
+        value: Fabric
+      - name: Link-Type
+        value: Downlink
+    - interface: Ethernet47
+      tags:
+      - name: Link-Type
+        value: AVD-Managed
+      - name: Link-Type
+        value: Fabric
+      - name: Link-Type
+        value: Downlink
+    - interface: Ethernet56/1
+      tags:
+      - name: Link-Type
+        value: AVD-Managed
+      - name: Link-Type
+        value: Fabric
+      - name: Link-Type
+        value: Downlink
+    - interface: Ethernet50
+      tags:
+      - name: Link-Type
+        value: AVD-Managed
+    - interface: Management1
+      tags:
+      - name: Link-Type
+        value: AVD-Managed
+      - name: Link-Type
+        value: Management
+router_bfd:
+  multihop:
+    interval: 300
+    min_rx: 300
+    multiplier: 3
+router_bgp:
+  as: '65200'
+  router_id: 10.102.30.1
+  maximum_paths:
+    paths: 4
+    ecmp: 4
+  updates:
+    wait_install: true
+  bgp_defaults:
+  - no bgp default ipv4-unicast
+  - graceful-restart restart-time 300
+  - graceful-restart
+  bgp:
+    default:
+      ipv4_unicast: false
+  peer_groups:
+  - name: EVPN-OVERLAY-PEERS
+    type: evpn
+    next_hop_unchanged: true
+    update_source: Loopback0
+    bfd: true
+    ebgp_multihop: 3
+    send_community: all
+    maximum_routes: 0
+  neighbors:
+  - ip_address: 10.11.30.3
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65103'
+    peer: SW103-SITE1-P
+    description: SW103-SITE1-P_Loopback0
+  - ip_address: 10.102.30.3
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65202'
+    peer: SW202-SITE2-R
+    description: SW202-SITE2-R_Loopback0
+  - ip_address: 10.11.30.5
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65301'
+    peer: SW301-SITE3-P
+    description: SW301-SITE3-P
+  - ip_address: 10.102.30.4
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65402'
+    peer: SW402-SITE4-R
+    description: SW402-SITE4-R_Loopback0
+  - ip_address: 10.11.30.4
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65203'
+    description: SW203-SITE2-P
+  - ip_address: 10.102.30.5
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65502'
+    description: SW502-SITE5-R
+  vlans:
+  - id: 150
+    tenant: InternetLANDistributionClients
+    rd: 10.102.30.1:10150
+    route_targets:
+      both:
+      - 10150:10150
+    redistribute_routes:
+    - learned
+  - id: 110
+    tenant: InternetLANDistributionClients
+    rd: 10.102.30.1:10110
+    route_targets:
+      both:
+      - 10110:10110
+    redistribute_routes:
+    - learned
+  - id: 112
+    tenant: Production
+    rd: 10.102.30.1:10112
+    route_targets:
+      both:
+      - 10112:10112
+    redistribute_routes:
+    - learned
+  - id: 113
+    tenant: Production
+    rd: 10.102.30.1:10113
+    route_targets:
+      both:
+      - 10113:10113
+    redistribute_routes:
+    - learned
+  - id: 6
+    tenant: WAN
+    rd: 10.102.30.1:10006
+    route_targets:
+      both:
+      - 10006:10006
+    redistribute_routes:
+    - learned
+  address_family_evpn:
+    peer_groups:
+    - name: EVPN-OVERLAY-PEERS
+      activate: true
+  address_family_ipv4:
+    peer_groups:
+    - name: EVPN-OVERLAY-PEERS
+      activate: false
+  vrfs:
+  - name: Production
+    rd: 10.102.30.1:11111
+    route_targets:
+      import:
+      - address_family: evpn
+        route_targets:
+        - 11111:11111
+      export:
+      - address_family: evpn
+        route_targets:
+        - 11111:11111
+    router_id: 10.102.30.1
+    redistribute:
+      connected:
+        enabled: true
+router_isis:
+  instance: EVPN_UNDERLAY
+  net: 49.0001.0101.0203.0001.00
+  router_id: 10.102.30.1
+  is_type: level-2
+  log_adjacency_changes: true
+  address_family_ipv4:
+    enabled: true
+    maximum_paths: 4
+router_multicast:
+  ipv4:
+    routing: true
+    software_forwarding: kernel
+router_pim_sparse_mode:
+  ipv4:
+    rp_addresses:
+    - address: 10.102.30.1
+      groups:
+      - 236.2.0.0/18
+service_routing_protocols_model: multi-agent
+spanning_tree:
+  mode: mstp
+  mst_instances:
+  - id: '0'
+    priority: 16384
+static_routes:
+- vrf: Production
+  prefix: 10.1.99.0/28
+  interface: Vlan99
+  name: VARP
+- vrf: Production
+  destination_address_prefix: 0.0.0.0/0
+  gateway: 10.1.99.1
+  name: Default_prod_iTransit_MX
+transceiver_qsfp_default_mode_4x10: true
+vlan_interfaces:
+- name: Vlan99
+  description: iTransit
+  shutdown: false
+  vrf: Production
+  ip_address: 10.1.99.6/28
+  ip_virtual_router_addresses:
+  - 10.1.99.4/28
+  tenant: Production
+  tags:
+  - red_site1
+- name: Vlan112
+  description: NetworkMgmtSite1
+  shutdown: false
+  vrf: Production
+  ip_address: 10.1.12.1/24
+  dhcp_server_ipv4: true
+  tenant: Production
+  tags:
+  - site1
+- name: Vlan113
+  description: EdgeDeviceControlSite1
+  shutdown: false
+  vrf: Production
+  ip_address: 10.1.13.1/24
+  dhcp_server_ipv4: true
+  tenant: Production
+  tags:
+  - site1
+- name: Vlan131
+  description: VideoTrafficBlue
+  ip_address: 10.1.31.1/24
+  pim:
+    ipv4:
+      sparse_mode: true
+  isis_enable: EVPN_UNDERLAY
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+vlans:
+- id: 110
+  name: SITE5akiMgmt
+  tenant: InternetLANDistributionClients
+- id: 150
+  name: ILD1_10mbps_client_site1
+  tenant: InternetLANDistributionClients
+- id: 99
+  name: iTransit
+  tenant: Production
+- id: 112
+  name: NetworkMgmtSite1
+  tenant: Production
+- id: 113
+  name: EdgeDeviceControlSite1
+  tenant: Production
+- id: 6
+  name: SITE5WANISP1
+  tenant: WAN
+- id: 131
+  name: VideoTrafficBlue
+vrfs:
+- name: default
+  ip_routing: false
+- name: Production
+  ip_routing: true
+  tenant: Production
+vxlan_interface:
+  vxlan1:
+    description: SW102-SITE1-R_VTEP
+    vxlan:
+      source_interface: Loopback1
+      udp_port: 4789
+      vlans:
+      - id: 110
+        vni: 10110
+      - id: 150
+        vni: 10150
+      - id: 112
+        vni: 10112
+      - id: 113
+        vni: 10113
+      - id: 6
+        vni: 10006
+      vrfs:
+      - name: Production
+        vni: 11111
+underlay_multicast: true

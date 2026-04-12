@@ -1,0 +1,61 @@
+---
+SW101-SITE1-B:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.11
+SW102-SITE1-R:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.12
+SW103-SITE1-P:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.13
+SW201-SITE2-B:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.21
+SW202-SITE2-R:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.22
+SW203-SITE2-P:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.23
+SW301-SITE3-P:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.31
+SW401-SITE4-B:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.41
+SW402-SITE4-R:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.42
+SW501-SITE5-B:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.51
+SW502-SITE5-R:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.52
+site1-server1:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.2

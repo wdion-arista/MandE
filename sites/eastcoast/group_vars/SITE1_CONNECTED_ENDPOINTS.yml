@@ -1,0 +1,62 @@
+---
+# test servers VMs.
+servers:
+  - name: site1-server1
+    adapters:
+      - endpoint_ports: [ Ethernet1]
+        switch_ports: [ Ethernet50]
+        switches: [ SW101-SITE1-B ]
+        profile: VideoTrafficBlue_site1
+
+      - endpoint_ports: [ Ethernet2 ]
+        switch_ports: [ Ethernet50 ]
+        switches: [ SW102-SITE1-R ]
+        profile: VideoTrafficRed_site1
+
+      - endpoint_ports: [ Ethernet3 ]
+        switch_ports: [ Ethernet50 ]
+        switches: [ SW103-SITE1-P ]
+        profile: SRTTrafficBlue_site1
+
+generic_devices:
+##############################################
+# Switchport config for SW101-SITE1-B
+
+# # WAN FROM SITE5 - ISP2
+#   - name: WAN SITE5
+#     adapters:
+#       - switch_ports:
+#           - Ethernet41
+#           - Ethernet42
+#         switches:
+#           - SW101-SITE1-B
+#           - SW101-SITE1-B
+#         descriptions:
+#           - FW100-Port1
+#           - BU
+#         profile: WAN_SITE5_ISP2
+
+##############################################
+# Switchport config for SW102-SITE1-R
+
+
+
+# # WAN FROM SITE5 - ISP1
+#   - name: WAN2 SITE5 ISP1
+#     adapters:
+#       - switch_ports:
+#           - Ethernet41
+#           - Ethernet42
+#         switches:
+#           - SW102-SITE1-R
+#           - SW102-SITE1-R
+#         descriptions:
+#           - FW10-Port1
+#           - FW100-Port1
+#         profile: WAN_SITE5_ISP1
+
+
+##############################################
+# Switchport config for SW103-SITE1-P
+
+        
