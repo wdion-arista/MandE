@@ -1,0 +1,9 @@
+switch	interface	description	vlans-vlans	portProfile	enabled	vlans-nativeVlan
+SW101-SITE1-B	1	WAN Bell	5	WAN_SITE5_BELL	No	
+SW101-SITE1-B	3	WiFi	111	Wifi	No	
+SW101-SITE1-B	48	MGMT	112	NetworkMgmt_site1	No	
+SW102-SITE1-R	1	WAN Rogers	6	WAN_SITE5_ROGERS	No	
+SW102-SITE1-R	3	WiFi	111	Wifi	No	
+SW102-SITE1-R	48	MGMT	112	NetworkMgmt_site1	No	
+SW201-SITE2-B	3	WiFi	111	Wifi	No	
+SW201-SITE2-B	48	MGMT	212	NetworkMgmt_site2	No	

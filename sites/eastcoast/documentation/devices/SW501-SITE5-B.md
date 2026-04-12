@@ -1,0 +1,1136 @@
+# SW501-SITE5-B
+
+## Table of Contents
+
+- [Management](#management)
+  - [Banner](#banner)
+  - [Management Interfaces](#management-interfaces)
+  - [DNS Domain](#dns-domain)
+  - [Clock Settings](#clock-settings)
+  - [Management SSH](#management-ssh)
+  - [Management Console](#management-console)
+  - [Management API HTTP](#management-api-http)
+- [Authentication](#authentication)
+  - [Local Users](#local-users)
+  - [Enable Password](#enable-password)
+  - [RADIUS Server](#radius-server)
+  - [AAA Server Groups](#aaa-server-groups)
+  - [AAA Authentication](#aaa-authentication)
+  - [AAA Authorization](#aaa-authorization)
+  - [AAA Accounting](#aaa-accounting)
+- [Aliases Device Configuration](#aliases-device-configuration)
+- [DHCP Server](#dhcp-server)
+  - [DHCP Servers Summary](#dhcp-servers-summary)
+  - [DHCP Server Configuration](#dhcp-server-configuration)
+  - [DHCP Server Interfaces](#dhcp-server-interfaces)
+- [Monitoring](#monitoring)
+  - [Hardware](#hardware)
+- [Spanning Tree](#spanning-tree)
+  - [Spanning Tree Summary](#spanning-tree-summary)
+  - [Spanning Tree Device Configuration](#spanning-tree-device-configuration)
+- [Internal VLAN Allocation Policy](#internal-vlan-allocation-policy)
+  - [Internal VLAN Allocation Policy Summary](#internal-vlan-allocation-policy-summary)
+  - [Internal VLAN Allocation Policy Device Configuration](#internal-vlan-allocation-policy-device-configuration)
+- [VLANs](#vlans)
+  - [VLANs Summary](#vlans-summary)
+  - [VLANs Device Configuration](#vlans-device-configuration)
+- [Interfaces](#interfaces)
+  - [Interface Defaults](#interface-defaults)
+  - [Ethernet Interfaces](#ethernet-interfaces)
+  - [Loopback Interfaces](#loopback-interfaces)
+  - [VLAN Interfaces](#vlan-interfaces)
+  - [VXLAN Interface](#vxlan-interface)
+- [Routing](#routing)
+  - [Service Routing Protocols Model](#service-routing-protocols-model)
+  - [Virtual Router MAC Address](#virtual-router-mac-address)
+  - [IP Routing](#ip-routing)
+  - [IPv6 Routing](#ipv6-routing)
+  - [Static Routes](#static-routes)
+  - [Router ISIS](#router-isis)
+  - [Router BGP](#router-bgp)
+- [BFD](#bfd)
+  - [Router BFD](#router-bfd)
+- [MPLS](#mpls)
+  - [MPLS and LDP](#mpls-and-ldp)
+  - [MPLS Device Configuration](#mpls-device-configuration)
+- [Multicast](#multicast)
+  - [IP IGMP Snooping](#ip-igmp-snooping)
+  - [Router Multicast](#router-multicast)
+  - [PIM Sparse Mode](#pim-sparse-mode)
+- [802.1X Port Security](#8021x-port-security)
+  - [802.1X Summary](#8021x-summary)
+- [VRF Instances](#vrf-instances)
+  - [VRF Instances Summary](#vrf-instances-summary)
+  - [VRF Instances Device Configuration](#vrf-instances-device-configuration)
+- [IP DHCP Snooping](#ip-dhcp-snooping)
+  - [IP DHCP Snooping Device Configuration](#ip-dhcp-snooping-device-configuration)
+- [Errdisable](#errdisable)
+  - [Errdisable Summary](#errdisable-summary)
+
+## Management
+
+### Banner
+
+#### Login Banner
+
+```text
+***********************************************
+Go away!
+EOF
+```
+
+### Management Interfaces
+
+#### Management Interfaces Summary
+
+##### IPv4
+
+| Management Interface | Description | Type | VRF | IP Address | Gateway |
+| -------------------- | ----------- | ---- | --- | ---------- | ------- |
+| Management1 | OOB_MANAGEMENT | oob | default | 172.20.20.51/24 | - |
+
+##### IPv6
+
+| Management Interface | Description | Type | VRF | IPv6 Address | IPv6 Gateway |
+| -------------------- | ----------- | ---- | --- | ------------ | ------------ |
+| Management1 | OOB_MANAGEMENT | oob | default | - | - |
+
+#### Management Interfaces Device Configuration
+
+```eos
+!
+interface Management1
+   description OOB_MANAGEMENT
+   no shutdown
+   ip address 172.20.20.51/24
+```
+
+### DNS Domain
+
+DNS domain: lab.example.com
+
+#### DNS Domain Device Configuration
+
+```eos
+dns domain lab.example.com
+!
+```
+
+### Clock Settings
+
+#### Clock Timezone Settings
+
+Clock Timezone is set to **Canada/Eastern**.
+
+#### Clock Device Configuration
+
+```eos
+!
+clock timezone Canada/Eastern
+```
+
+### Management SSH
+
+#### VRFs
+
+| VRF | Enabled | IPv4 ACL | IPv6 ACL |
+| --- | ------- | -------- | -------- |
+| default | True | - | - |
+
+#### Other SSH Settings
+
+| Idle Timeout | Connection Limit | Max from a single Host | Ciphers | Key-exchange methods | MAC algorithms | Hostkey server algorithms |
+| ------------ | ---------------- | ---------------------- | ------- | -------------------- | -------------- | ------------------------- |
+| 60 | 5 | - | default | default | default | default |
+
+#### Management SSH Device Configuration
+
+```eos
+!
+management ssh
+   idle-timeout 60
+   connection limit 5
+```
+
+### Management Console
+
+#### Management Console Timeout
+
+Management Console Timeout is set to **300** minutes.
+
+#### Management Console Device Configuration
+
+```eos
+!
+management console
+   idle-timeout 300
+```
+
+### Management API HTTP
+
+#### Management API HTTP Summary
+
+| HTTP | HTTPS | UNIX-Socket | Default Services |
+| ---- | ----- | ----------- | ---------------- |
+| False | True | - | - |
+
+#### Management API VRF Access
+
+| VRF Name | IPv4 ACL | IPv6 ACL |
+| -------- | -------- | -------- |
+| default | - | - |
+
+#### Management API HTTP Device Configuration
+
+```eos
+!
+management api http-commands
+   protocol https
+   no protocol http
+   no shutdown
+   !
+   vrf default
+      no shutdown
+```
+
+## Authentication
+
+### Local Users
+
+#### Local Users Summary
+
+| User | Privilege | Role | Disabled | Shell |
+| ---- | --------- | ---- | -------- | ----- |
+| admin | 15 | network-admin | False | - |
+| cvpadmin | 15 | network-admin | False | - |
+| pcapper | - | - | False | /bin/bash |
+| service | - | - | False | /bin/bash |
+
+#### Local Users Device Configuration
+
+```eos
+!
+username admin privilege 15 role network-admin secret sha512 <removed>
+username admin ssh-key ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJF7OT/UyUNugQBV/6sn/7FPB5glZfb2KzjBmlkxyWdx westley.dion@Westleys-MacBook-Pro-2.local
+username cvpadmin privilege 15 role network-admin secret sha512 <removed>
+username cvpadmin ssh-key ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJF7OT/UyUNugQBV/6sn/7FPB5glZfb2KzjBmlkxyWdx westley.dion@Westleys-MacBook-Pro-2.local
+username pcapper shell /bin/bash secret sha512 <removed>
+username pcapper ssh-key ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJF7OT/UyUNugQBV/6sn/7FPB5glZfb2KzjBmlkxyWdx westley.dion@Westleys-MacBook-Pro-2.local
+username service shell /bin/bash secret sha512 <removed>
+```
+
+### Enable Password
+
+Enable password has been disabled
+
+### RADIUS Server
+
+#### RADIUS Server Hosts
+
+| VRF | RADIUS Servers | TLS | SSL Profile | Timeout | Retransmit |
+| --- | -------------- | --- | ----------- | ------- | ---------- |
+| default | radsec.beta.agni.arista.io | True | agni-server | - | - |
+
+#### RADIUS Server Device Configuration
+
+```eos
+!
+radius-server host radsec.beta.agni.arista.io tls ssl-profile agni-server
+```
+
+### AAA Server Groups
+
+#### AAA Server Groups Summary
+
+| Server Group Name | Type  | VRF | IP address |
+| ------------------| ----- | --- | ---------- |
+| agni-server-group | radius | default | radsec.beta.agni.arista.io tls |
+
+#### AAA Server Groups Device Configuration
+
+```eos
+!
+aaa group server radius agni-server-group
+   server radsec.beta.agni.arista.io tls
+```
+
+### AAA Authentication
+
+#### AAA Authentication Summary
+
+| Type | Sub-type | User Stores |
+| ---- | -------- | ---------- |
+
+#### AAA Authentication Device Configuration
+
+```eos
+aaa authentication dot1x default group agni-server-group
+!
+```
+
+### AAA Authorization
+
+#### AAA Authorization Summary
+
+| Type | User Stores |
+| ---- | ----------- |
+| Exec | local |
+
+Authorization for configuration commands is disabled.
+
+#### AAA Authorization Device Configuration
+
+```eos
+aaa authorization exec default local
+!
+```
+
+### AAA Accounting
+
+#### AAA Accounting Summary
+
+| Type | Commands | Record type | Groups | Logging |
+| ---- | -------- | ----------- | ------ | ------- |
+| Dot1x - Default | - | start-stop | agni-server-group | - |
+
+#### AAA Accounting Device Configuration
+
+```eos
+aaa accounting dot1x default start-stop group agni-server-group
+```
+
+## Aliases Device Configuration
+
+```eos
+alias cc clear counters
+alias cp clear platform trident counters
+alias senz show interface counter error | nz
+alias shmc show int | awk '/^[A-Z]/ { intf = ck216 } /, address is/ { print intf, }'
+alias snz show interface counter | nz
+alias sqnz show interface counter queue | nz
+alias srnz show interface counter rate | nz
+alias ps_show_bess bash ps -ef | grep -i Bess
+alias check_terminattr show agent TerminAttr log | tail 
+
+!
+```
+
+## DHCP Server
+
+### DHCP Servers Summary
+
+| DHCP Server Enabled | VRF | IPv4 DNS Domain | IPv4 DNS Servers | IPv4 Bootfile | IPv4 Lease Time | IPv6 DNS Domain | IPv6 DNS Servers | IPv6 Bootfile | IPv6 Lease Time |
+| ------------------- | --- | --------------- | ---------------- | ------------- | --------------- | --------------- | ---------------- | ------------- | --------------- |
+| True | Production | - | 4.2.2.1, 8.8.8.8 | - | - | - | - | - | - |
+
+#### VRF Production DHCP Server
+
+##### Subnets
+
+| Subnet | Name | DNS Servers | Default Gateway | Lease Time | Ranges |
+| ------ | ---- | ----------- | --------------- | ---------- | ------ |
+| 10.5.13.0/24 | Operations | - | 10.5.13.1 | - | 10.5.13.10-10.5.13.250 |
+| 10.5.20.0/24 | Intercom | - | 10.5.20.1 | - | 10.5.20.10-10.5.20.250 |
+
+##### IPv4 Vendor Options
+
+| Vendor ID | Sub-option Code | Sub-option Type | Sub-option Data |
+| --------- | ----------------| --------------- | --------------- |
+| NTP | 42 | array ipv4-address | 216.232.132.95 23.133.168.244 173.183.146.26 208.73.56.29 |
+
+### DHCP Server Configuration
+
+```eos
+!
+dhcp server vrf Production
+   dns server ipv4 4.2.2.1 8.8.8.8
+   !
+   subnet 10.5.13.0/24
+      !
+      range 10.5.13.10 10.5.13.250
+      name Operations
+      default-gateway 10.5.13.1
+   !
+   subnet 10.5.20.0/24
+      !
+      range 10.5.20.10 10.5.20.250
+      name Intercom
+      default-gateway 10.5.20.1
+   !
+   vendor-option ipv4 NTP
+      sub-option 42 type array ipv4-address data 216.232.132.95 23.133.168.244 173.183.146.26 208.73.56.29
+```
+
+### DHCP Server Interfaces
+
+| Interface name | DHCP IPv4 | DHCP IPv6 |
+| -------------- | --------- | --------- |
+| Vlan512 | True | - |
+| Vlan513 | True | - |
+| Vlan520 | True | - |
+| Vlan535 | True | - |
+
+## Monitoring
+
+### Hardware
+
+#### Hardware Device Configuration
+
+```eos
+!
+hardware speed-group 1 serdes 10g
+```
+
+## Spanning Tree
+
+### Spanning Tree Summary
+
+STP mode: **mstp**
+
+#### MSTP Instance and Priority
+
+| Instance(s) | Priority |
+| -------- | -------- |
+| 0 | 32768 |
+
+### Spanning Tree Device Configuration
+
+```eos
+!
+spanning-tree mode mstp
+spanning-tree mst 0 priority 32768
+```
+
+## Internal VLAN Allocation Policy
+
+### Internal VLAN Allocation Policy Summary
+
+| Policy Allocation | Range Beginning | Range Ending |
+| ------------------| --------------- | ------------ |
+| ascending | 1006 | 1199 |
+
+### Internal VLAN Allocation Policy Device Configuration
+
+```eos
+!
+vlan internal order ascending range 1006 1199
+```
+
+## VLANs
+
+### VLANs Summary
+
+| VLAN ID | Name | Trunk Groups |
+| ------- | ---- | ------------ |
+| 5 | SITE5WANISP2 | - |
+| 110 | SITE5akiMgmt | - |
+| 512 | NetworkMgmtSite5 | - |
+| 513 | EdgeDeviceControlSite5 | - |
+| 520 | IntercomSite5 | - |
+| 530 | VideoTrafficBlue | - |
+| 535 | SRTTrafficBlue | - |
+
+### VLANs Device Configuration
+
+```eos
+!
+vlan 5
+   name SITE5WANISP2
+!
+vlan 110
+   name SITE5akiMgmt
+!
+vlan 512
+   name NetworkMgmtSite5
+!
+vlan 513
+   name EdgeDeviceControlSite5
+!
+vlan 520
+   name IntercomSite5
+!
+vlan 530
+   name VideoTrafficBlue
+!
+vlan 535
+   name SRTTrafficBlue
+```
+
+## Interfaces
+
+### Interface Defaults
+
+#### Interface Defaults Summary
+
+- Default Ethernet Interface Shutdown: True
+
+#### Interface Defaults Device Configuration
+
+```eos
+!
+interface defaults
+   ethernet
+      shutdown
+```
+
+### Ethernet Interfaces
+
+#### Ethernet Interfaces Summary
+
+##### L2
+
+| Interface | Description | Mode | VLANs | Native VLAN | Trunk Group | Channel-Group |
+| --------- | ----------- | ---- | ----- | ----------- | ----------- | ------------- |
+
+*Inherited from Port-Channel Interface
+
+##### IPv4
+
+| Interface | Description | Channel Group | IP Address | VRF |  MTU | Shutdown | ACL In | ACL Out |
+| --------- | ----------- | ------------- | ---------- | ----| ---- | -------- | ------ | ------- |
+| Ethernet39 | P2P_SW401-SITE4-B_Ethernet47 | - | 10.101.50.9/31 | default | 1500 | False | - | - |
+
+##### ISIS
+
+| Interface | Channel Group | ISIS Instance | ISIS BFD | ISIS Metric | Mode | ISIS Circuit Type | Hello Padding | ISIS Authentication Mode |
+| --------- | ------------- | ------------- | -------- | ----------- | ---- | ----------------- | ------------- | ------------------------ |
+| Ethernet39 | - | EVPN_UNDERLAY | - | 50 | point-to-point | level-2 | - | - |
+
+#### Ethernet Interfaces Device Configuration
+
+```eos
+!
+interface Ethernet39
+   description P2P_SW401-SITE4-B_Ethernet47
+   no shutdown
+   mtu 1500
+   no switchport
+   ip address 10.101.50.9/31
+   pim ipv4 sparse-mode
+   isis enable EVPN_UNDERLAY
+   isis circuit-type level-2
+   isis metric 50
+   isis network point-to-point
+```
+
+### Loopback Interfaces
+
+#### Loopback Interfaces Summary
+
+##### IPv4
+
+| Interface | Description | VRF | IP Address |
+| --------- | ----------- | --- | ---------- |
+| Loopback0 | ROUTER_ID | default | 10.101.30.5/32 |
+| Loopback1 | VXLAN_TUNNEL_SOURCE | default | 10.101.40.5/32 |
+| Loopback10 | INBAND_MGMT | Production | 10.0.10.51/32 |
+
+##### IPv6
+
+| Interface | Description | VRF | IPv6 Address |
+| --------- | ----------- | --- | ------------ |
+| Loopback0 | ROUTER_ID | default | - |
+| Loopback1 | VXLAN_TUNNEL_SOURCE | default | - |
+| Loopback10 | INBAND_MGMT | Production | - |
+
+##### ISIS
+
+| Interface | ISIS instance | ISIS metric | Interface mode |
+| --------- | ------------- | ----------- | -------------- |
+| Loopback0 | EVPN_UNDERLAY | - | passive |
+| Loopback1 | EVPN_UNDERLAY | - | passive |
+
+#### Loopback Interfaces Device Configuration
+
+```eos
+!
+interface Loopback0
+   description ROUTER_ID
+   no shutdown
+   ip address 10.101.30.5/32
+   isis enable EVPN_UNDERLAY
+   isis passive
+!
+interface Loopback1
+   description VXLAN_TUNNEL_SOURCE
+   no shutdown
+   ip address 10.101.40.5/32
+   isis enable EVPN_UNDERLAY
+   isis passive
+!
+interface Loopback10
+   description INBAND_MGMT
+   vrf Production
+   ip address 10.0.10.51/32
+```
+
+### VLAN Interfaces
+
+#### VLAN Interfaces Summary
+
+| Interface | Description | VRF |  MTU | Shutdown |
+| --------- | ----------- | --- | ---- | -------- |
+| Vlan512 | NetworkMgmtSite5 | Production | - | False |
+| Vlan513 | EdgeDeviceControlSite5 | Production | - | False |
+| Vlan520 | IntercomSite5 | Production | - | False |
+| Vlan530 | VideoTrafficBlue | default | - | - |
+| Vlan535 | SRTTrafficBlue | Production | - | False |
+
+##### IPv4
+
+| Interface | VRF | IP Address | IP Address Virtual | IP Router Virtual Address | ACL In | ACL Out |
+| --------- | --- | ---------- | ------------------ | ------------------------- | ------ | ------- |
+| Vlan512 |  Production  |  10.5.12.1/24  |  -  |  -  |  -  |  -  |
+| Vlan513 |  Production  |  10.5.13.1/24  |  -  |  -  |  -  |  -  |
+| Vlan520 |  Production  |  10.5.20.1/24  |  -  |  -  |  -  |  -  |
+| Vlan530 |  default  |  10.5.30.1/24  |  -  |  -  |  -  |  -  |
+| Vlan535 |  Production  |  10.5.35.1/24  |  -  |  -  |  -  |  -  |
+
+##### ISIS
+
+| Interface | ISIS Instance | ISIS BFD | ISIS Metric | Mode | ISIS Authentication Mode |
+| --------- | ------------- | -------- | ----------- | ---- | ------------------------ |
+| Vlan530 | EVPN_UNDERLAY | - | - | - | - |
+
+#### VLAN Interfaces Device Configuration
+
+```eos
+!
+interface Vlan512
+   description NetworkMgmtSite5
+   no shutdown
+   vrf Production
+   ip address 10.5.12.1/24
+   dhcp server ipv4
+!
+interface Vlan513
+   description EdgeDeviceControlSite5
+   no shutdown
+   vrf Production
+   ip address 10.5.13.1/24
+   dhcp server ipv4
+!
+interface Vlan520
+   description IntercomSite5
+   no shutdown
+   vrf Production
+   ip address 10.5.20.1/24
+   dhcp server ipv4
+!
+interface Vlan530
+   description VideoTrafficBlue
+   ip address 10.5.30.1/24
+   pim ipv4 sparse-mode
+   isis enable EVPN_UNDERLAY
+!
+interface Vlan535
+   description SRTTrafficBlue
+   no shutdown
+   vrf Production
+   ip address 10.5.35.1/24
+   dhcp server ipv4
+```
+
+### VXLAN Interface
+
+#### VXLAN Interface Summary
+
+| Setting | Value |
+| ------- | ----- |
+| Source Interface | Loopback1 |
+| UDP port | 4789 |
+
+##### VLAN to VNI, Flood List and Multicast Group Mappings
+
+| VLAN | VNI | Flood List | Multicast Group |
+| ---- | --- | ---------- | --------------- |
+| 5 | 10005 | - | - |
+| 110 | 10110 | - | - |
+| 512 | 10512 | - | - |
+| 513 | 10513 | - | - |
+| 520 | 10520 | - | - |
+| 535 | 10535 | - | - |
+
+##### VRF to VNI and Multicast Group Mappings
+
+| VRF | VNI | Overlay Multicast Group to Encap Mappings |
+| --- | --- | ----------------------------------------- |
+| Production | 11111 | - |
+
+#### VXLAN Interface Device Configuration
+
+```eos
+!
+interface Vxlan1
+   description SW501-SITE5-B_VTEP
+   vxlan source-interface Loopback1
+   vxlan udp-port 4789
+   vxlan vlan 5 vni 10005
+   vxlan vlan 110 vni 10110
+   vxlan vlan 512 vni 10512
+   vxlan vlan 513 vni 10513
+   vxlan vlan 520 vni 10520
+   vxlan vlan 535 vni 10535
+   vxlan vrf Production vni 11111
+```
+
+## Routing
+
+### Service Routing Protocols Model
+
+Multi agent routing protocol model enabled
+
+```eos
+!
+service routing protocols model multi-agent
+```
+
+### Virtual Router MAC Address
+
+#### Virtual Router MAC Address Summary
+
+Virtual Router MAC Address: 00:1c:73:00:dc:51
+
+#### Virtual Router MAC Address Device Configuration
+
+```eos
+!
+ip virtual-router mac-address 00:1c:73:00:dc:51
+```
+
+### IP Routing
+
+#### IP Routing Summary
+
+| VRF | Routing Enabled |
+| --- | --------------- |
+| default | True |
+| Production | True |
+
+#### IP Routing Device Configuration
+
+```eos
+!
+ip routing
+ip routing vrf Production
+```
+
+### IPv6 Routing
+
+#### IPv6 Routing Summary
+
+| VRF | Routing Enabled |
+| --- | --------------- |
+| default | False |
+| default | false |
+| Production | false |
+
+### Static Routes
+
+#### Static Routes Summary
+
+| VRF | Destination Prefix | Next Hop IP | Exit interface | Administrative Distance | Tag | Route Name | Metric |
+| --- | ------------------ | ----------- | -------------- | ----------------------- | --- | ---------- | ------ |
+| Production | 0.0.0.0/0 | 10.1.99.1 | - | 1 | - | Default_prod_iTransit_MX | - |
+
+#### Static Routes Device Configuration
+
+```eos
+!
+ip route vrf Production 0.0.0.0/0 10.1.99.1 name Default_prod_iTransit_MX
+```
+
+### Router ISIS
+
+#### Router ISIS Summary
+
+| Settings | Value |
+| -------- | ----- |
+| Instance | EVPN_UNDERLAY |
+| Net-ID | 49.0001.0101.0103.0005.00 |
+| Type | level-2 |
+| Router-ID | 10.101.30.5 |
+| Log Adjacency Changes | True |
+
+#### ISIS Interfaces Summary
+
+| Interface | ISIS Instance | ISIS Metric | Interface Mode |
+| --------- | ------------- | ----------- | -------------- |
+| Ethernet39 | EVPN_UNDERLAY | 50 | point-to-point |
+| Vlan530 | EVPN_UNDERLAY | - | - |
+| Loopback0 | EVPN_UNDERLAY | - | passive |
+| Loopback1 | EVPN_UNDERLAY | - | passive |
+
+#### ISIS IPv4 Address Family Summary
+
+| Settings | Value |
+| -------- | ----- |
+| IPv4 Address-family Enabled | True |
+| Maximum-paths | 4 |
+
+#### Router ISIS Device Configuration
+
+```eos
+!
+router isis EVPN_UNDERLAY
+   net 49.0001.0101.0103.0005.00
+   router-id ipv4 10.101.30.5
+   is-type level-2
+   log-adjacency-changes
+   !
+   address-family ipv4 unicast
+      maximum-paths 4
+   !
+```
+
+### Router BGP
+
+ASN Notation: asplain
+
+#### Router BGP Summary
+
+| BGP AS | Router ID |
+| ------ | --------- |
+| 65501 | 10.101.30.5 |
+
+| BGP Tuning |
+| ---------- |
+| update wait-install |
+| no bgp default ipv4-unicast |
+| distance bgp 20 200 200 |
+| maximum-paths 4 ecmp 4 |
+
+#### Router BGP Peer Groups
+
+##### EVPN-OVERLAY-CORE
+
+| Settings | Value |
+| -------- | ----- |
+| Address Family | evpn |
+| Source | Loopback0 |
+| BFD | True |
+| Ebgp multihop | 15 |
+| Send community | all |
+| Maximum routes | 0 (no limit) |
+
+##### EVPN-OVERLAY-PEERS
+
+| Settings | Value |
+| -------- | ----- |
+| Address Family | evpn |
+| Next-hop self | True |
+| Source | Loopback0 |
+| BFD | True |
+| Ebgp multihop | 3 |
+| Send community | all |
+| Maximum routes | 0 (no limit) |
+
+#### BGP Neighbors
+
+| Neighbor | Remote AS | VRF | Shutdown | Send-community | Maximum-routes | Allowas-in | BFD | RIB Pre-Policy Retain | Route-Reflector Client | Passive | TTL Max Hops |
+| -------- | --------- | --- | -------- | -------------- | -------------- | ---------- | --- | --------------------- | ---------------------- | ------- | ------------ |
+| 10.101.30.1 | 65100 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - | - |
+
+#### Router BGP EVPN Address Family
+
+##### EVPN Peer Groups
+
+| Peer Group | Activate | Route-map In | Route-map Out | Peer-tag In | Peer-tag Out | Encapsulation | Next-hop-self Source Interface |
+| ---------- | -------- | ------------ | ------------- | ----------- | ------------ | ------------- | ------------------------------ |
+| EVPN-OVERLAY-CORE | True | - | - | - | - | default | - |
+| EVPN-OVERLAY-PEERS | True | - | - | - | - | default | - |
+
+##### EVPN DCI Gateway Summary
+
+| Settings | Value |
+| -------- | ----- |
+| Remote Domain Peer Groups | EVPN-OVERLAY-CORE |
+| L3 Gateway Configured | True |
+| L3 Gateway Inter-domain | True |
+
+#### Router BGP VLANs
+
+| VLAN | Route-Distinguisher | Both Route-Target | Import Route Target | Export Route-Target | Redistribute |
+| ---- | ------------------- | ----------------- | ------------------- | ------------------- | ------------ |
+| 5 | 10.101.30.5:10005 | 10005:10005<br>remote 10005:10005 | - | - | learned |
+| 110 | 10.101.30.5:10110 | 10110:10110<br>remote 10110:10110 | - | - | learned |
+| 512 | 10.101.30.5:10512 | 10512:10512<br>remote 10512:10512 | - | - | learned |
+| 513 | 10.101.30.5:10513 | 10513:10513<br>remote 10513:10513 | - | - | learned |
+| 520 | 10.101.30.5:10520 | 10520:10520<br>remote 10520:10520 | - | - | learned |
+| 535 | 10.101.30.5:10535 | 10535:10535<br>remote 10535:10535 | - | - | learned |
+
+#### Router BGP VRFs
+
+| VRF | Route-Distinguisher | Redistribute | Graceful Restart |
+| --- | ------------------- | ------------ | ---------------- |
+| Production | 10.101.30.5:11111 | connected | - |
+
+#### Router BGP Device Configuration
+
+```eos
+!
+router bgp 65501
+   router-id 10.101.30.5
+   update wait-install
+   no bgp default ipv4-unicast
+   distance bgp 20 200 200
+   maximum-paths 4 ecmp 4
+   neighbor EVPN-OVERLAY-CORE peer group
+   neighbor EVPN-OVERLAY-CORE update-source Loopback0
+   neighbor EVPN-OVERLAY-CORE bfd
+   neighbor EVPN-OVERLAY-CORE ebgp-multihop 15
+   neighbor EVPN-OVERLAY-CORE send-community
+   neighbor EVPN-OVERLAY-CORE maximum-routes 0
+   neighbor EVPN-OVERLAY-PEERS peer group
+   neighbor EVPN-OVERLAY-PEERS next-hop-self
+   neighbor EVPN-OVERLAY-PEERS update-source Loopback0
+   neighbor EVPN-OVERLAY-PEERS bfd
+   neighbor EVPN-OVERLAY-PEERS ebgp-multihop 3
+   neighbor EVPN-OVERLAY-PEERS send-community
+   neighbor EVPN-OVERLAY-PEERS maximum-routes 0
+   neighbor 10.101.30.1 peer group EVPN-OVERLAY-PEERS
+   neighbor 10.101.30.1 remote-as 65100
+   neighbor 10.101.30.1 description BLUE-SPINE
+   !
+   vlan 5
+      rd 10.101.30.5:10005
+      rd evpn domain remote 10.101.30.5:10005
+      route-target both 10005:10005
+      route-target import export evpn domain remote 10005:10005
+      redistribute learned
+   !
+   vlan 110
+      rd 10.101.30.5:10110
+      rd evpn domain remote 10.101.30.5:10110
+      route-target both 10110:10110
+      route-target import export evpn domain remote 10110:10110
+      redistribute learned
+   !
+   vlan 512
+      rd 10.101.30.5:10512
+      rd evpn domain remote 10.101.30.5:10512
+      route-target both 10512:10512
+      route-target import export evpn domain remote 10512:10512
+      redistribute learned
+   !
+   vlan 513
+      rd 10.101.30.5:10513
+      rd evpn domain remote 10.101.30.5:10513
+      route-target both 10513:10513
+      route-target import export evpn domain remote 10513:10513
+      redistribute learned
+   !
+   vlan 520
+      rd 10.101.30.5:10520
+      rd evpn domain remote 10.101.30.5:10520
+      route-target both 10520:10520
+      route-target import export evpn domain remote 10520:10520
+      redistribute learned
+   !
+   vlan 535
+      rd 10.101.30.5:10535
+      rd evpn domain remote 10.101.30.5:10535
+      route-target both 10535:10535
+      route-target import export evpn domain remote 10535:10535
+      redistribute learned
+   !
+   address-family evpn
+      neighbor EVPN-OVERLAY-CORE activate
+      neighbor EVPN-OVERLAY-CORE domain remote
+      neighbor EVPN-OVERLAY-PEERS activate
+      neighbor default next-hop-self received-evpn-routes route-type ip-prefix inter-domain
+   !
+   address-family ipv4
+      no neighbor EVPN-OVERLAY-CORE activate
+      no neighbor EVPN-OVERLAY-PEERS activate
+   !
+   vrf Production
+      rd 10.101.30.5:11111
+      route-target import evpn 11111:11111
+      route-target export evpn 11111:11111
+      router-id 10.101.30.5
+      redistribute connected
+```
+
+## BFD
+
+### Router BFD
+
+#### Router BFD Multihop Summary
+
+| Interval | Minimum RX | Multiplier |
+| -------- | ---------- | ---------- |
+| 300 | 300 | 3 |
+
+#### Router BFD Device Configuration
+
+```eos
+!
+router bfd
+   multihop interval 300 min-rx 300 multiplier 3
+```
+
+## MPLS
+
+### MPLS and LDP
+
+#### MPLS and LDP Summary
+
+| Setting | Value |
+| -------- | ---- |
+| MPLS IP Enabled | True |
+| LDP Enabled | False |
+| LDP Router ID | - |
+| LDP Interface Disabled Default | - |
+| LDP Transport-Address Interface | - |
+
+### MPLS Device Configuration
+
+```eos
+!
+mpls ip
+```
+
+## Multicast
+
+### IP IGMP Snooping
+
+#### IP IGMP Snooping Summary
+
+| IGMP Snooping | Fast Leave | Interface Restart Query | Proxy | Restart Query Interval | Robustness Variable |
+| ------------- | ---------- | ----------------------- | ----- | ---------------------- | ------------------- |
+| Enabled | - | - | - | - | - |
+
+##### IP IGMP Snooping Vlan Summary
+
+| Vlan | IGMP Snooping | Fast Leave | Max Groups | Proxy |
+| ---- | ------------- | ---------- | ---------- | ----- |
+| 512 | - | - | - | - |
+| 513 | - | - | - | - |
+| 530 | True | - | - | - |
+
+| Vlan | Querier Enabled | IP Address | Query Interval | Max Response Time | Last Member Query Interval | Last Member Query Count | Startup Query Interval | Startup Query Count | Version |
+| ---- | --------------- | ---------- | -------------- | ----------------- | -------------------------- | ----------------------- | ---------------------- | ------------------- | ------- |
+| 512 | True | 10.101.30.5 | - | - | - | - | - | - | - |
+| 513 | True | 10.101.30.5 | - | - | - | - | - | - | - |
+
+#### IP IGMP Snooping Device Configuration
+
+```eos
+!
+ip igmp snooping vlan 512 querier
+ip igmp snooping vlan 512 querier address 10.101.30.5
+ip igmp snooping vlan 513 querier
+ip igmp snooping vlan 513 querier address 10.101.30.5
+ip igmp snooping vlan 530
+```
+
+### Router Multicast
+
+#### IP Router Multicast Summary
+
+- Routing for IPv4 multicast is enabled.
+- Software forwarding by the Linux kernel
+
+#### Router Multicast Device Configuration
+
+```eos
+!
+router multicast
+   ipv4
+      routing
+      software-forwarding kernel
+```
+
+### PIM Sparse Mode
+
+#### Router PIM Sparse Mode
+
+##### IP Sparse Mode Information
+
+BFD enabled: False
+
+##### IP Rendezvous Information
+
+| Rendezvous Point Address | Group Address | Access Lists | Priority | Hashmask | Override |
+| ------------------------ | ------------- | ------------ | -------- | -------- | -------- |
+| 10.101.30.1 | 236.1.0.0/18 | - | - | - | - |
+
+##### Router Multicast Device Configuration
+
+```eos
+!
+router pim sparse-mode
+   ipv4
+      rp address 10.101.30.1 236.1.0.0/18
+```
+
+#### PIM Sparse Mode Enabled Interfaces
+
+| Interface Name | VRF Name | IP Version | Border Router | DR Priority | Local Interface | Neighbor Filter |
+| -------------- | -------- | ---------- | ------------- | ----------- | --------------- | --------------- |
+| Ethernet39 | - | IPv4 | - | - | - | - |
+| Vlan530 | - | IPv4 | - | - | - | - |
+
+## 802.1X Port Security
+
+### 802.1X Summary
+
+#### 802.1X Global
+
+| System Auth Control | Protocol LLDP Bypass | Dynamic Authorization | Dropped Packets Statistics |
+| ------------------- | -------------------- | ----------------------| -------------------------- |
+| True | True | True | - |
+
+#### Dot1x Configuration
+
+```eos
+!
+dot1x system-auth-control
+dot1x protocol lldp bypass
+dot1x dynamic-authorization
+```
+
+## VRF Instances
+
+### VRF Instances Summary
+
+| VRF Name | IP Routing |
+| -------- | ---------- |
+| Production | enabled |
+
+### VRF Instances Device Configuration
+
+```eos
+!
+vrf instance Production
+```
+
+## IP DHCP Snooping
+
+IP DHCP Snooping is enabled
+
+### IP DHCP Snooping Device Configuration
+
+```eos
+!
+ip dhcp snooping
+```
+
+## Errdisable
+
+### Errdisable Summary
+
+Errdisable recovery timer interval: 30 seconds
+
+|  Cause | Detection Enabled | Recovery Enabled |
+| ------ | ----------------- | ---------------- |
+| bpduguard | - | True |
+| link-flap | - | True |
+
+```eos
+!
+errdisable recovery cause bpduguard
+errdisable recovery cause link-flap
+errdisable recovery interval 30
+```

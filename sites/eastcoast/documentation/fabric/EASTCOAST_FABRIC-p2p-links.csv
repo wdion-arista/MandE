@@ -1,0 +1,13 @@
+Type,Node,Node Interface,Leaf IP Address,Peer Type,Peer Node,Peer Interface,Peer IP Address
+spine,SW101-SITE1-B,Ethernet43,10.101.50.6/31,l3leaf,SW401-SITE4-B,Ethernet45,10.101.50.7/31
+spine,SW101-SITE1-B,Ethernet45,10.11.50.16/31,l3leaf,SW301-SITE3-P,Ethernet35,10.11.50.17/31
+spine,SW101-SITE1-B,Ethernet47,10.101.50.4/31,l3leaf,SW201-SITE2-B,Ethernet47,10.101.50.5/31
+spine,SW101-SITE1-B,Ethernet56/1,10.11.50.8/31,l3leaf,SW103-SITE1-P,Ethernet53/1,10.11.50.9/31
+spine,SW102-SITE1-R,Ethernet43,10.102.50.6/31,l3leaf,SW402-SITE4-R,Ethernet45,10.102.50.7/31
+spine,SW102-SITE1-R,Ethernet45,10.11.50.18/31,l3leaf,SW301-SITE3-P,Ethernet36,10.11.50.19/31
+spine,SW102-SITE1-R,Ethernet47,10.102.50.4/31,l3leaf,SW202-SITE2-R,Ethernet47,10.102.50.5/31
+spine,SW102-SITE1-R,Ethernet56/1,10.11.50.10/31,l3leaf,SW103-SITE1-P,Ethernet54/1,10.11.50.11/31
+l3leaf,SW201-SITE2-B,Ethernet56/1,10.11.50.12/31,l3leaf,SW203-SITE2-P,Ethernet53/1,10.11.50.13/31
+l3leaf,SW202-SITE2-R,Ethernet56/1,10.11.50.14/31,l3leaf,SW203-SITE2-P,Ethernet54/1,10.11.50.15/31
+l3leaf,SW401-SITE4-B,Ethernet47,10.101.50.8/31,l3leaf,SW501-SITE5-B,Ethernet39,10.101.50.9/31
+l3leaf,SW402-SITE4-R,Ethernet47,10.102.50.8/31,l3leaf,SW502-SITE5-R,Ethernet39,10.102.50.9/31

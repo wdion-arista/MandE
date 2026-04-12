@@ -1,0 +1,41 @@
+---
+
+# Definition of connected endpoints in the fabric.
+
+generic_devices:
+
+##############################################
+# Switchport config for SW501-SITE5-B
+
+# # WAN FROM SITE5 - ISP2
+#   - name: WAN SITE5 ISP2
+#     adapters:
+#       - switch_ports:
+#           - Ethernet1
+#           - Ethernet2
+#         switches:
+#           - SW501-SITE5-B
+#           - SW501-SITE5-B
+#         descriptions:
+#           - ISP2 Internet WAN IN - 15
+#           - BU
+#         profile: WAN_SITE5_ISP2
+
+##############################################
+# Switchport config for SW502-SITE5-R
+
+
+# # WAN FROM SITE5 - ISP1
+#   - name: WAN SITE5 ISP1
+#     adapters:
+#       - switch_ports:
+#           - Ethernet1
+#           - Ethernet2
+#         switches:
+#           - SW502-SITE5-R
+#           - SW502-SITE5-R
+#         descriptions:
+#           - ISP1 Internet WAN IN
+#           - BU
+#         profile: WAN_SITE5_ISP1
+

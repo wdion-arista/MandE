@@ -1,0 +1,64 @@
+graph RL
+subgraph TITLE["MandE"]
+    direction TB
+    S1
+    2
+    3
+    4
+    5
+end
+subgraph S1
+    direction RL
+    SW101-SITE1-B
+    SW102-SITE1-R
+    SW103-SITE1-P
+end
+subgraph 2
+    direction RL
+    SW201-SITE2-B
+    SW202-SITE2-R
+    SW203-SITE2-P
+end
+subgraph 3
+    direction RL
+    SW301-SITE3-P
+end
+subgraph 4
+    direction RL
+    SW401-SITE4-B
+    SW402-SITE4-R
+end
+subgraph 5
+    direction RL
+    SW501-SITE5-B
+    SW502-SITE5-R
+end
+    SW101-SITE1-B -- "E43 ⇄ E45" --> SW401-SITE4-B
+    SW101-SITE1-B -- "E45 ⇄ E35" --> SW301-SITE3-P
+    SW101-SITE1-B -- "E47 ⇄ E47" --> SW201-SITE2-B
+    SW101-SITE1-B -- "E56/1 ⇄ E53/1" --> SW103-SITE1-P
+    SW102-SITE1-R -- "E43 ⇄ E45" --> SW402-SITE4-R
+    SW102-SITE1-R -- "E45 ⇄ E36" --> SW301-SITE3-P
+    SW102-SITE1-R -- "E47 ⇄ E47" --> SW202-SITE2-R
+    SW102-SITE1-R -- "E56/1 ⇄ E54/1" --> SW103-SITE1-P
+    SW201-SITE2-B -- "E56/1 ⇄ E53/1" --> SW203-SITE2-P
+    SW202-SITE2-R -- "E56/1 ⇄ E54/1" --> SW203-SITE2-P
+    SW401-SITE4-B -- "E47 ⇄ E39" --> SW501-SITE5-B
+    SW402-SITE4-R -- "E47 ⇄ E39" --> SW502-SITE5-R
+style SW101-SITE1-B fill:#cce5ff,stroke:#333,stroke-width:1px
+style SW102-SITE1-R fill:#ffcccc,stroke:#333,stroke-width:1px
+style SW103-SITE1-P fill:#e6ccff,stroke:#333,stroke-width:1px
+style SW201-SITE2-B fill:#cce5ff,stroke:#333,stroke-width:1px
+style SW202-SITE2-R fill:#ffcccc,stroke:#333,stroke-width:1px
+style SW203-SITE2-P fill:#e6ccff,stroke:#333,stroke-width:1px
+style SW301-SITE3-P fill:#e6ccff,stroke:#333,stroke-width:1px
+style SW401-SITE4-B fill:#cce5ff,stroke:#333,stroke-width:1px
+style SW402-SITE4-R fill:#ffcccc,stroke:#333,stroke-width:1px
+style SW501-SITE5-B fill:#cce5ff,stroke:#333,stroke-width:1px
+style SW502-SITE5-R fill:#ffcccc,stroke:#333,stroke-width:1px
+style TITLE fill:#fafafa,stroke:#ccc,stroke-width:6px,white-space:nowrap;
+style S1 fill:#f2f2fa,stroke:#ccc,stroke-width:3px,rx:10,ry:10;
+style 2 fill:#f2f2fa,stroke:#ccc,stroke-width:3px,rx:10,ry:10;
+style 3 fill:#f2f2fa,stroke:#ccc,stroke-width:3px,rx:10,ry:10;
+style 4 fill:#f2f2fa,stroke:#ccc,stroke-width:3px,rx:10,ry:10;
+style 5 fill:#f2f2fa,stroke:#ccc,stroke-width:3px,rx:10,ry:10;
