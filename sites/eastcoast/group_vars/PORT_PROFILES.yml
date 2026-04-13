@@ -180,11 +180,11 @@ port_profiles:
     vlans: "130"
     spanning_tree_bpduguard: true
     spanning_tree_portfast: edge
-#   - profile: VideoTrafficBlue_site2
-#     mode: access
-#     vlans: "230"
-#     spanning_tree_bpduguard: true
-#     spanning_tree_portfast: edge
+  - profile: VideoTrafficBlue_site2
+    mode: access
+    vlans: "230"
+    spanning_tree_bpduguard: true
+    spanning_tree_portfast: edge
 #   - profile: VideoTrafficBlue_site3
 #     mode: access
 #     vlans: "330"
@@ -202,11 +202,11 @@ port_profiles:
     vlans: "131"
     spanning_tree_bpduguard: true
     spanning_tree_portfast: edge
-#   - profile: VideoTrafficRed_site2
-#     mode: access
-#     vlans: "231"
-#     spanning_tree_bpduguard: true
-#     spanning_tree_portfast: edge
+  - profile: VideoTrafficRed_site2
+    mode: access
+    vlans: "231"
+    spanning_tree_bpduguard: true
+    spanning_tree_portfast: edge
 #   - profile: VideoTrafficRed_site3
 #     mode: access
 #     vlans: "331"
@@ -224,11 +224,11 @@ port_profiles:
     vlans: "135"
     spanning_tree_bpduguard: true
     spanning_tree_portfast: edge
-#   - profile: SRTTrafficBlue_site2
-#     mode: access
-#     vlans: "235"
-#     spanning_tree_bpduguard: true
-#     spanning_tree_portfast: edge
+  - profile: SRTTrafficBlue_site2
+    mode: access
+    vlans: "235"
+    spanning_tree_bpduguard: true
+    spanning_tree_portfast: edge
 #   - profile: SRTTrafficBlue_site3
 #     mode: access
 #     vlans: "335"
