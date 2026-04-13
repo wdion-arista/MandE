@@ -35,6 +35,19 @@ ethernet_interfaces:
   peer_type: l3leaf
   switchport:
     enabled: false
+- name: Ethernet50
+  description: SERVER_site2-server1_Ethernet1
+  shutdown: false
+  spanning_tree_bpduguard: 'True'
+  spanning_tree_portfast: edge
+  peer: site2-server1
+  peer_interface: Ethernet1
+  peer_type: server
+  port_profile: VideoTrafficBlue_site2
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 230
 hostname: SW201-SITE2-B
 ip_igmp_snooping:
   globally_enabled: true
@@ -139,6 +152,10 @@ metadata:
         value: Fabric
       - name: Link-Type
         value: Downlink
+    - interface: Ethernet50
+      tags:
+      - name: Link-Type
+        value: AVD-Managed
     - interface: Management0
       tags:
       - name: Link-Type

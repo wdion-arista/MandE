@@ -390,6 +390,7 @@ interface defaults
 
 | Interface | Description | Mode | VLANs | Native VLAN | Trunk Group | Channel-Group |
 | --------- | ----------- | ---- | ----- | ----------- | ----------- | ------------- |
+| Ethernet50 | SERVER_site2-server1_Ethernet2 | access | 231 | - | - | - |
 
 *Inherited from Port-Channel Interface
 
@@ -422,6 +423,15 @@ interface Ethernet47
    isis circuit-type level-2
    isis metric 50
    isis network point-to-point
+!
+interface Ethernet50
+   description SERVER_site2-server1_Ethernet2
+   no shutdown
+   switchport access vlan 231
+   switchport mode access
+   switchport
+   spanning-tree portfast
+   spanning-tree bpduguard enable
 !
 interface Ethernet56/1
    description P2P_SW203-SITE2-P_Ethernet54/1

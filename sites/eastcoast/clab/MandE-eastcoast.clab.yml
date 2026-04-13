@@ -80,6 +80,8 @@ topology:
       startup-config: /Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/intended/configs/SW502-SITE5-R.cfg
     site1-server1:
       kind: linux
+    site2-server1:
+      kind: linux
 
   links:
     - endpoints:
@@ -119,8 +121,17 @@ topology:
       - SW201-SITE2-B:eth56_1
       - SW203-SITE2-P:eth53_1
     - endpoints:
+      - site2-server1:eth1
+      - SW201-SITE2-B:eth50
+    - endpoints:
       - SW202-SITE2-R:eth56_1
       - SW203-SITE2-P:eth54_1
+    - endpoints:
+      - site2-server1:eth2
+      - SW202-SITE2-R:eth50
+    - endpoints:
+      - site2-server1:eth3
+      - SW203-SITE2-P:eth50
     - endpoints:
       - SW401-SITE4-B:eth47
       - SW501-SITE5-B:eth39

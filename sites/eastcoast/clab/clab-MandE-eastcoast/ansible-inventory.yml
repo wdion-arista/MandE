@@ -37,3 +37,5 @@ all:
       hosts:
         clab-MandE-eastcoast-site1-server1:
           ansible_host: 172.20.20.2
+        clab-MandE-eastcoast-site2-server1:
+          ansible_host: 172.20.20.3

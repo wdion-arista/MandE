@@ -1,4 +1,4 @@
-! Startup-config last modified at Fri Apr 10 12:59:57 2026 by root
+! Startup-config last modified at Mon Apr 13 10:10:48 2026 by root
 ! device: SW102-SITE1-R (cEOSLab, EOS-4.36.0F-47092531.4360F (engineering build))
 !
 no aaa root
@@ -185,7 +185,7 @@ interface Loopback10
 interface Management0
    description OOB_MANAGEMENT
    ip address 172.20.20.12/24
-   ipv6 address 3fff:172:20:20::6/64
+   ipv6 address 3fff:172:20:20::5/64
 !
 interface Vlan99
    description iTransit

@@ -13,9 +13,12 @@ l3leaf,SW103-SITE1-P,Ethernet50,server,site1-server1,Ethernet3,True
 l3leaf,SW103-SITE1-P,Ethernet53/1,spine,SW101-SITE1-B,Ethernet56/1,True
 l3leaf,SW103-SITE1-P,Ethernet54/1,spine,SW102-SITE1-R,Ethernet56/1,True
 l3leaf,SW201-SITE2-B,Ethernet47,spine,SW101-SITE1-B,Ethernet47,True
+l3leaf,SW201-SITE2-B,Ethernet50,server,site2-server1,Ethernet1,True
 l3leaf,SW201-SITE2-B,Ethernet56/1,l3leaf,SW203-SITE2-P,Ethernet53/1,True
 l3leaf,SW202-SITE2-R,Ethernet47,spine,SW102-SITE1-R,Ethernet47,True
+l3leaf,SW202-SITE2-R,Ethernet50,server,site2-server1,Ethernet2,True
 l3leaf,SW202-SITE2-R,Ethernet56/1,l3leaf,SW203-SITE2-P,Ethernet54/1,True
+l3leaf,SW203-SITE2-P,Ethernet50,server,site2-server1,Ethernet3,True
 l3leaf,SW203-SITE2-P,Ethernet53/1,l3leaf,SW201-SITE2-B,Ethernet56/1,True
 l3leaf,SW203-SITE2-P,Ethernet54/1,l3leaf,SW202-SITE2-R,Ethernet56/1,True
 l3leaf,SW301-SITE3-P,Ethernet35,spine,SW101-SITE1-B,Ethernet45,True
