@@ -417,7 +417,7 @@ dhcp server vrf Production
 
 | Tracker Name | Record Export On Inactive Timeout | Record Export On Interval | MPLS | Number of Exporters | Applied On | Table Size |
 | ------------ | --------------------------------- | ------------------------- | ---- | ------------------- | ---------- | ---------- |
-| FLOW-TRACKER | 70000 | 300000 | - | 1 | Ethernet53/1<br>Ethernet54/1 | - |
+| FLOW-TRACKER | 70000 | 300000 | - | 1 | Ethernet53/1<br>Ethernet54/1<br>Ethernet50 | - |
 
 ##### Exporters Summary
 
@@ -550,6 +550,7 @@ interface defaults
 
 | Interface | Description | Mode | VLANs | Native VLAN | Trunk Group | Channel-Group |
 | --------- | ----------- | ---- | ----- | ----------- | ----------- | ------------- |
+| Ethernet50 | SERVER_site2-server1_Ethernet3 | access | 235 | - | - | - |
 
 *Inherited from Port-Channel Interface
 
@@ -570,6 +571,16 @@ interface defaults
 #### Ethernet Interfaces Device Configuration
 
 ```eos
+!
+interface Ethernet50
+   description SERVER_site2-server1_Ethernet3
+   no shutdown
+   switchport access vlan 235
+   switchport mode access
+   switchport
+   flow tracker sampled FLOW-TRACKER
+   spanning-tree portfast
+   spanning-tree bpduguard enable
 !
 interface Ethernet53/1
    description P2P_SW201-SITE2-B_Ethernet56/1

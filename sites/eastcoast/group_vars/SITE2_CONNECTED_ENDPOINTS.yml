@@ -1,6 +1,23 @@
 ---
 
 # Definition of connected endpoints in the fabric.
+servers:
+  - name: site2-server1
+    adapters:
+      - endpoint_ports: [ Ethernet1]
+        switch_ports: [ Ethernet50]
+        switches: [ SW201-SITE2-B ]
+        profile: VideoTrafficBlue_site2
+
+      - endpoint_ports: [ Ethernet2 ]
+        switch_ports: [ Ethernet50 ]
+        switches: [ SW202-SITE2-R ]
+        profile: VideoTrafficRed_site2
+
+      - endpoint_ports: [ Ethernet3 ]
+        switch_ports: [ Ethernet50 ]
+        switches: [ SW203-SITE2-P ]
+        profile: SRTTrafficBlue_site2
 
 generic_devices:
 
