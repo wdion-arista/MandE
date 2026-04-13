@@ -177,7 +177,7 @@ all:
         SITE1_SERVERS:
           hosts:
             site1-server1:
-              ansible_host: 10.18.136.194
+              ansible_host: 172.20.20.2
               interfaces:
               - name: et1
                 ip: 10.1.30.10/24
@@ -189,7 +189,7 @@ all:
         SITE2_SERVERS:
           hosts:
             site2-server1:
-              ansible_host: 10.18.136.193
+              ansible_host: 172.20.20.3
               interfaces:
               - name: et1
                 ip: 10.2.30.10/24
@@ -201,7 +201,7 @@ all:
         SITE3_SERVERS:
           hosts:
             site3-server1:
-              ansible_host: 10.18.140.171
+              ansible_host: 172.20.20.4
               interfaces:
               - name: et1
                 ip: 10.3.30.10/24
@@ -213,7 +213,7 @@ all:
         SITE5_SERVERS:
           hosts:
             site5-server1:
-              ansible_host: 10.18.140.168
+              ansible_host: 172.20.20.5
               interfaces:
               - name: et1
                 ip: 10.5.30.10/24
@@ -227,4 +227,4 @@ all:
         TOOLSSERVER:
           hosts:
             tools-server:
-              ansible_host: 10.18.190.8
+              ansible_host: 172.20.20.6

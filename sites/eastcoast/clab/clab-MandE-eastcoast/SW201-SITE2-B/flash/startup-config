@@ -1,4 +1,4 @@
-! Startup-config last modified at Fri Apr 10 12:59:55 2026 by root
+! Startup-config last modified at Mon Apr 13 10:11:18 2026 by root
 ! device: SW201-SITE2-B (cEOSLab, EOS-4.36.0F-47092531.4360F (engineering build))
 !
 no aaa root
@@ -111,6 +111,13 @@ interface Ethernet47
    isis metric 50
    isis network point-to-point
 !
+interface Ethernet50
+   description SERVER_site2-server1_Ethernet1
+   no shutdown
+   switchport access vlan 230
+   spanning-tree portfast edge
+   spanning-tree bpduguard enable
+!
 interface Ethernet56/1
    description P2P_SW203-SITE2-P_Ethernet53/1
    no shutdown
@@ -142,7 +149,7 @@ interface Loopback10
 interface Management0
    description OOB_MANAGEMENT
    ip address 172.20.20.21/24
-   ipv6 address 3fff:172:20:20::2/64
+   ipv6 address 3fff:172:20:20::b/64
 !
 interface Vlan212
    description NetworkMgmtSite2

@@ -95,6 +95,10 @@ nodes:
       ip_addr: 192.168.0.128
       node_type: generic
       ports: []
+  - site2-server1:
+      ip_addr: 192.168.0.129
+      node_type: generic
+      ports: []
   - cvp:
       auto_configuration: true
       instance_type: medium
@@ -143,8 +147,17 @@ links:
     - SW201-SITE2-B:Ethernet56/1
     - SW203-SITE2-P:Ethernet53/1
   - connection:
+    - site2-server1:Ethernet1
+    - SW201-SITE2-B:Ethernet50
+  - connection:
     - SW202-SITE2-R:Ethernet56/1
     - SW203-SITE2-P:Ethernet54/1
+  - connection:
+    - site2-server1:Ethernet2
+    - SW202-SITE2-R:Ethernet50
+  - connection:
+    - site2-server1:Ethernet3
+    - SW203-SITE2-P:Ethernet50
   - connection:
     - SW401-SITE4-B:Ethernet47
     - SW501-SITE5-B:Ethernet39

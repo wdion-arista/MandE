@@ -135,14 +135,29 @@ port_profiles:
   vlans: '130'
   spanning_tree_bpduguard: true
   spanning_tree_portfast: edge
+- profile: VideoTrafficBlue_site2
+  mode: access
+  vlans: '230'
+  spanning_tree_bpduguard: true
+  spanning_tree_portfast: edge
 - profile: VideoTrafficRed_site1
   mode: access
   vlans: '131'
   spanning_tree_bpduguard: true
   spanning_tree_portfast: edge
+- profile: VideoTrafficRed_site2
+  mode: access
+  vlans: '231'
+  spanning_tree_bpduguard: true
+  spanning_tree_portfast: edge
 - profile: SRTTrafficBlue_site1
   mode: access
   vlans: '135'
+  spanning_tree_bpduguard: true
+  spanning_tree_portfast: edge
+- profile: SRTTrafficBlue_site2
+  mode: access
+  vlans: '235'
   spanning_tree_bpduguard: true
   spanning_tree_portfast: edge
 - profile: SRTTrafficRed_site1
@@ -935,63 +950,6 @@ group_names:
 - TLS_CERTIFICATES
 ansible_facts:
   avd_switch_facts:
-    SW101-SITE1-B:
-      id: 1
-      type: spine
-      platform: 7280SR3
-      is_deployed: true
-      mgmt_interface: Management1
-      mgmt_ip: 172.20.20.11/24
-      mpls_lsr: false
-      loopback_ipv4_pool: 10.101.30.0/24
-      uplink_ipv4_pool: 10.101.50.0/24
-      bgp_as: '65100'
-      underlay_routing_protocol: isis
-      vtep_loopback_ipv4_pool: 10.101.40.0/24
-      inband_ztp: false
-      group: BLUE_SPINES
-      router_id: 10.101.30.1
-      pod: EASTCOAST_FABRIC
-      connected_endpoints_keys:
-      - key: servers
-        type: server
-        description: Server
-      port_profile_names:
-      - profile: SITE1_MX_TRUNK
-      - profile: SITE1_TRANSIT
-      - profile: SITE1_TRANSIT2
-      - profile: WAN_SITE5_ISP2
-      - profile: WAN_SITE5_ISP1
-      - profile: Wifi
-      - profile: NetworkMgmt_site1
-      - profile: NetworkMgmt_site2
-      - profile: NetworkMgmt_site3
-      - profile: NetworkMgmt_site5
-      - profile: VideoTrafficBlue_site1
-      - profile: VideoTrafficRed_site1
-      - profile: SRTTrafficBlue_site1
-      - profile: SRTTrafficRed_site1
-      mlag_underlay_multicast:
-        pim_sm: true
-        static: false
-      evpn_role: server
-      overlay:
-        peering_address: 10.101.30.1
-        evpn_mpls: false
-      vtep_ip: 10.101.40.1
-      max_parallel_uplinks: 1
-      max_uplink_switches: 0
-      vlans: 5,99,110,112-113,150
-      downlink_switches:
-      - SW103-SITE1-P
-      - SW301-SITE3-P
-      - SW201-SITE2-B
-      - SW401-SITE4-B
-      evpn_route_server_clients:
-      - SW103-SITE1-P
-      - SW301-SITE3-P
-      - SW201-SITE2-B
-      - SW401-SITE4-B
     SW102-SITE1-R:
       id: 1
       type: spine
@@ -1025,8 +983,11 @@ ansible_facts:
       - profile: NetworkMgmt_site3
       - profile: NetworkMgmt_site5
       - profile: VideoTrafficBlue_site1
+      - profile: VideoTrafficBlue_site2
       - profile: VideoTrafficRed_site1
+      - profile: VideoTrafficRed_site2
       - profile: SRTTrafficBlue_site1
+      - profile: SRTTrafficBlue_site2
       - profile: SRTTrafficRed_site1
       mlag_underlay_multicast:
         pim_sm: true
@@ -1049,6 +1010,209 @@ ansible_facts:
       - SW402-SITE4-R
       - SW103-SITE1-P
       - SW301-SITE3-P
+    SW201-SITE2-B:
+      id: 3
+      type: l3leaf
+      platform: 7280SR3
+      is_deployed: true
+      mgmt_interface: Management1
+      mgmt_ip: 172.20.20.21/24
+      mpls_lsr: false
+      loopback_ipv4_pool: 10.101.30.0/24
+      uplink_ipv4_pool: 10.101.50.0/24
+      bgp_as: '65201'
+      underlay_routing_protocol: isis
+      vtep_loopback_ipv4_pool: 10.101.40.0/24
+      inband_ztp: false
+      group: SITE2_BLUE_LEAFS
+      router_id: 10.101.30.3
+      pod: EASTCOAST_FABRIC
+      connected_endpoints_keys:
+      - key: servers
+        type: server
+        description: Server
+      port_profile_names:
+      - profile: SITE1_MX_TRUNK
+      - profile: SITE1_TRANSIT
+      - profile: SITE1_TRANSIT2
+      - profile: WAN_SITE5_ISP2
+      - profile: WAN_SITE5_ISP1
+      - profile: Wifi
+      - profile: NetworkMgmt_site1
+      - profile: NetworkMgmt_site2
+      - profile: NetworkMgmt_site3
+      - profile: NetworkMgmt_site5
+      - profile: VideoTrafficBlue_site1
+      - profile: VideoTrafficBlue_site2
+      - profile: VideoTrafficRed_site1
+      - profile: VideoTrafficRed_site2
+      - profile: SRTTrafficBlue_site1
+      - profile: SRTTrafficBlue_site2
+      - profile: SRTTrafficRed_site1
+      mlag_underlay_multicast:
+        pim_sm: true
+        static: false
+      evpn_role: client
+      evpn_route_servers:
+      - SW101-SITE1-B
+      overlay:
+        peering_address: 10.101.30.3
+        evpn_mpls: false
+      vtep_ip: 10.101.40.3
+      max_parallel_uplinks: 1
+      max_uplink_switches: 1
+      uplinks:
+      - interface: Ethernet47
+        peer: SW101-SITE1-B
+        peer_interface: Ethernet47
+        peer_type: spine
+        peer_is_deployed: true
+        peer_bgp_as: '65100'
+        type: underlay_p2p
+        underlay_multicast_pim_sm: true
+        prefix_length: 31
+        ip_address: 10.101.50.5
+        peer_ip_address: 10.101.50.4
+        structured_config: {}
+      uplink_peers:
+      - SW101-SITE1-B
+      vlans: 212-213
+      uplink_switch_interfaces:
+      - Ethernet47
+      downlink_switches:
+      - SW203-SITE2-P
+    SW401-SITE4-B:
+      id: 4
+      type: l3leaf
+      platform: 7280SR3
+      is_deployed: true
+      mgmt_interface: Management1
+      mgmt_ip: 172.20.20.41/24
+      mpls_lsr: false
+      loopback_ipv4_pool: 10.101.30.0/24
+      uplink_ipv4_pool: 10.101.50.0/24
+      bgp_as: '65401'
+      underlay_routing_protocol: isis
+      vtep_loopback_ipv4_pool: 10.101.40.0/24
+      inband_ztp: false
+      group: SITE4_BLUE_LEAFS
+      router_id: 10.101.30.4
+      pod: EASTCOAST_FABRIC
+      port_profile_names:
+      - profile: SITE1_MX_TRUNK
+      - profile: SITE1_TRANSIT
+      - profile: SITE1_TRANSIT2
+      - profile: WAN_SITE5_ISP2
+      - profile: WAN_SITE5_ISP1
+      - profile: Wifi
+      - profile: NetworkMgmt_site1
+      - profile: NetworkMgmt_site2
+      - profile: NetworkMgmt_site3
+      - profile: NetworkMgmt_site5
+      - profile: VideoTrafficBlue_site1
+      - profile: VideoTrafficBlue_site2
+      - profile: VideoTrafficRed_site1
+      - profile: VideoTrafficRed_site2
+      - profile: SRTTrafficBlue_site1
+      - profile: SRTTrafficBlue_site2
+      - profile: SRTTrafficRed_site1
+      mlag_underlay_multicast:
+        pim_sm: true
+        static: false
+      evpn_role: client
+      evpn_route_servers:
+      - SW101-SITE1-B
+      overlay:
+        peering_address: 10.101.30.4
+        evpn_mpls: false
+      vtep_ip: 10.101.40.4
+      max_parallel_uplinks: 1
+      max_uplink_switches: 1
+      uplinks:
+      - interface: Ethernet45
+        peer: SW101-SITE1-B
+        peer_interface: Ethernet43
+        peer_type: spine
+        peer_is_deployed: true
+        peer_bgp_as: '65100'
+        type: underlay_p2p
+        underlay_multicast_pim_sm: true
+        prefix_length: 31
+        ip_address: 10.101.50.7
+        peer_ip_address: 10.101.50.6
+        structured_config: {}
+      uplink_peers:
+      - SW101-SITE1-B
+      vlans: 5,413
+      uplink_switch_interfaces:
+      - Ethernet43
+      downlink_switches:
+      - SW501-SITE5-B
+    SW501-SITE5-B:
+      id: 5
+      type: l3leaf
+      platform: 7280SR3
+      is_deployed: true
+      mgmt_interface: Management1
+      mgmt_ip: 172.20.20.51/24
+      mpls_lsr: false
+      loopback_ipv4_pool: 10.101.30.0/24
+      uplink_ipv4_pool: 10.101.50.0/24
+      bgp_as: '65501'
+      underlay_routing_protocol: isis
+      vtep_loopback_ipv4_pool: 10.101.40.0/24
+      inband_ztp: false
+      group: SITE5_BLUE_LEAFS
+      router_id: 10.101.30.5
+      pod: EASTCOAST_FABRIC
+      port_profile_names:
+      - profile: SITE1_MX_TRUNK
+      - profile: SITE1_TRANSIT
+      - profile: SITE1_TRANSIT2
+      - profile: WAN_SITE5_ISP2
+      - profile: WAN_SITE5_ISP1
+      - profile: Wifi
+      - profile: NetworkMgmt_site1
+      - profile: NetworkMgmt_site2
+      - profile: NetworkMgmt_site3
+      - profile: NetworkMgmt_site5
+      - profile: VideoTrafficBlue_site1
+      - profile: VideoTrafficBlue_site2
+      - profile: VideoTrafficRed_site1
+      - profile: VideoTrafficRed_site2
+      - profile: SRTTrafficBlue_site1
+      - profile: SRTTrafficBlue_site2
+      - profile: SRTTrafficRed_site1
+      mlag_underlay_multicast:
+        pim_sm: true
+        static: false
+      evpn_role: client
+      evpn_route_servers:
+      - SW401-SITE4-B
+      overlay:
+        peering_address: 10.101.30.5
+        evpn_mpls: false
+      vtep_ip: 10.101.40.5
+      max_parallel_uplinks: 1
+      max_uplink_switches: 1
+      uplinks:
+      - interface: Ethernet39
+        peer: SW401-SITE4-B
+        peer_interface: Ethernet47
+        peer_type: l3leaf
+        peer_is_deployed: true
+        peer_bgp_as: '65401'
+        type: underlay_p2p
+        underlay_multicast_pim_sm: true
+        prefix_length: 31
+        ip_address: 10.101.50.9
+        peer_ip_address: 10.101.50.8
+        structured_config: {}
+      uplink_peers:
+      - SW401-SITE4-B
+      vlans: 5,110,512-513,520,535
+      uplink_switch_interfaces:
+      - Ethernet47
     SW202-SITE2-R:
       id: 3
       type: l3leaf
@@ -1066,6 +1230,10 @@ ansible_facts:
       group: RED_LEAFS
       router_id: 10.102.30.3
       pod: EASTCOAST_FABRIC
+      connected_endpoints_keys:
+      - key: servers
+        type: server
+        description: Server
       port_profile_names:
       - profile: SITE1_MX_TRUNK
       - profile: SITE1_TRANSIT
@@ -1078,8 +1246,11 @@ ansible_facts:
       - profile: NetworkMgmt_site3
       - profile: NetworkMgmt_site5
       - profile: VideoTrafficBlue_site1
+      - profile: VideoTrafficBlue_site2
       - profile: VideoTrafficRed_site1
+      - profile: VideoTrafficRed_site2
       - profile: SRTTrafficBlue_site1
+      - profile: SRTTrafficBlue_site2
       - profile: SRTTrafficRed_site1
       mlag_underlay_multicast:
         pim_sm: true
@@ -1142,8 +1313,11 @@ ansible_facts:
       - profile: NetworkMgmt_site3
       - profile: NetworkMgmt_site5
       - profile: VideoTrafficBlue_site1
+      - profile: VideoTrafficBlue_site2
       - profile: VideoTrafficRed_site1
+      - profile: VideoTrafficRed_site2
       - profile: SRTTrafficBlue_site1
+      - profile: SRTTrafficBlue_site2
       - profile: SRTTrafficRed_site1
       mlag_underlay_multicast:
         pim_sm: true
@@ -1206,8 +1380,11 @@ ansible_facts:
       - profile: NetworkMgmt_site3
       - profile: NetworkMgmt_site5
       - profile: VideoTrafficBlue_site1
+      - profile: VideoTrafficBlue_site2
       - profile: VideoTrafficRed_site1
+      - profile: VideoTrafficRed_site2
       - profile: SRTTrafficBlue_site1
+      - profile: SRTTrafficBlue_site2
       - profile: SRTTrafficRed_site1
       mlag_underlay_multicast:
         pim_sm: true
@@ -1239,6 +1416,66 @@ ansible_facts:
       vlans: 6,110,512-513,520,536
       uplink_switch_interfaces:
       - Ethernet47
+    SW101-SITE1-B:
+      id: 1
+      type: spine
+      platform: 7280SR3
+      is_deployed: true
+      mgmt_interface: Management1
+      mgmt_ip: 172.20.20.11/24
+      mpls_lsr: false
+      loopback_ipv4_pool: 10.101.30.0/24
+      uplink_ipv4_pool: 10.101.50.0/24
+      bgp_as: '65100'
+      underlay_routing_protocol: isis
+      vtep_loopback_ipv4_pool: 10.101.40.0/24
+      inband_ztp: false
+      group: BLUE_SPINES
+      router_id: 10.101.30.1
+      pod: EASTCOAST_FABRIC
+      connected_endpoints_keys:
+      - key: servers
+        type: server
+        description: Server
+      port_profile_names:
+      - profile: SITE1_MX_TRUNK
+      - profile: SITE1_TRANSIT
+      - profile: SITE1_TRANSIT2
+      - profile: WAN_SITE5_ISP2
+      - profile: WAN_SITE5_ISP1
+      - profile: Wifi
+      - profile: NetworkMgmt_site1
+      - profile: NetworkMgmt_site2
+      - profile: NetworkMgmt_site3
+      - profile: NetworkMgmt_site5
+      - profile: VideoTrafficBlue_site1
+      - profile: VideoTrafficBlue_site2
+      - profile: VideoTrafficRed_site1
+      - profile: VideoTrafficRed_site2
+      - profile: SRTTrafficBlue_site1
+      - profile: SRTTrafficBlue_site2
+      - profile: SRTTrafficRed_site1
+      mlag_underlay_multicast:
+        pim_sm: true
+        static: false
+      evpn_role: server
+      overlay:
+        peering_address: 10.101.30.1
+        evpn_mpls: false
+      vtep_ip: 10.101.40.1
+      max_parallel_uplinks: 1
+      max_uplink_switches: 0
+      vlans: 5,99,110,112-113,150
+      downlink_switches:
+      - SW201-SITE2-B
+      - SW401-SITE4-B
+      - SW103-SITE1-P
+      - SW301-SITE3-P
+      evpn_route_server_clients:
+      - SW201-SITE2-B
+      - SW401-SITE4-B
+      - SW103-SITE1-P
+      - SW301-SITE3-P
     SW103-SITE1-P:
       id: 3
       type: l3leaf
@@ -1272,8 +1509,11 @@ ansible_facts:
       - profile: NetworkMgmt_site3
       - profile: NetworkMgmt_site5
       - profile: VideoTrafficBlue_site1
+      - profile: VideoTrafficBlue_site2
       - profile: VideoTrafficRed_site1
+      - profile: VideoTrafficRed_site2
       - profile: SRTTrafficBlue_site1
+      - profile: SRTTrafficBlue_site2
       - profile: SRTTrafficRed_site1
       mlag_underlay_multicast:
         pim_sm: false
@@ -1335,6 +1575,10 @@ ansible_facts:
       group: SITE2_PURPLE_LEAFS
       router_id: 10.11.30.4
       pod: EASTCOAST_FABRIC
+      connected_endpoints_keys:
+      - key: servers
+        type: server
+        description: Server
       port_profile_names:
       - profile: SITE1_MX_TRUNK
       - profile: SITE1_TRANSIT
@@ -1347,8 +1591,11 @@ ansible_facts:
       - profile: NetworkMgmt_site3
       - profile: NetworkMgmt_site5
       - profile: VideoTrafficBlue_site1
+      - profile: VideoTrafficBlue_site2
       - profile: VideoTrafficRed_site1
+      - profile: VideoTrafficRed_site2
       - profile: SRTTrafficBlue_site1
+      - profile: SRTTrafficBlue_site2
       - profile: SRTTrafficRed_site1
       mlag_underlay_multicast:
         pim_sm: false
@@ -1422,8 +1669,11 @@ ansible_facts:
       - profile: NetworkMgmt_site3
       - profile: NetworkMgmt_site5
       - profile: VideoTrafficBlue_site1
+      - profile: VideoTrafficBlue_site2
       - profile: VideoTrafficRed_site1
+      - profile: VideoTrafficRed_site2
       - profile: SRTTrafficBlue_site1
+      - profile: SRTTrafficBlue_site2
       - profile: SRTTrafficRed_site1
       mlag_underlay_multicast:
         pim_sm: false
@@ -1468,254 +1718,7 @@ ansible_facts:
       uplink_switch_interfaces:
       - Ethernet45
       - Ethernet45
-    SW201-SITE2-B:
-      id: 3
-      type: l3leaf
-      platform: 7280SR3
-      is_deployed: true
-      mgmt_interface: Management1
-      mgmt_ip: 172.20.20.21/24
-      mpls_lsr: false
-      loopback_ipv4_pool: 10.101.30.0/24
-      uplink_ipv4_pool: 10.101.50.0/24
-      bgp_as: '65201'
-      underlay_routing_protocol: isis
-      vtep_loopback_ipv4_pool: 10.101.40.0/24
-      inband_ztp: false
-      group: SITE2_BLUE_LEAFS
-      router_id: 10.101.30.3
-      pod: EASTCOAST_FABRIC
-      port_profile_names:
-      - profile: SITE1_MX_TRUNK
-      - profile: SITE1_TRANSIT
-      - profile: SITE1_TRANSIT2
-      - profile: WAN_SITE5_ISP2
-      - profile: WAN_SITE5_ISP1
-      - profile: Wifi
-      - profile: NetworkMgmt_site1
-      - profile: NetworkMgmt_site2
-      - profile: NetworkMgmt_site3
-      - profile: NetworkMgmt_site5
-      - profile: VideoTrafficBlue_site1
-      - profile: VideoTrafficRed_site1
-      - profile: SRTTrafficBlue_site1
-      - profile: SRTTrafficRed_site1
-      mlag_underlay_multicast:
-        pim_sm: true
-        static: false
-      evpn_role: client
-      evpn_route_servers:
-      - SW101-SITE1-B
-      overlay:
-        peering_address: 10.101.30.3
-        evpn_mpls: false
-      vtep_ip: 10.101.40.3
-      max_parallel_uplinks: 1
-      max_uplink_switches: 1
-      uplinks:
-      - interface: Ethernet47
-        peer: SW101-SITE1-B
-        peer_interface: Ethernet47
-        peer_type: spine
-        peer_is_deployed: true
-        peer_bgp_as: '65100'
-        type: underlay_p2p
-        underlay_multicast_pim_sm: true
-        prefix_length: 31
-        ip_address: 10.101.50.5
-        peer_ip_address: 10.101.50.4
-        structured_config: {}
-      uplink_peers:
-      - SW101-SITE1-B
-      vlans: 212-213
-      uplink_switch_interfaces:
-      - Ethernet47
-      downlink_switches:
-      - SW203-SITE2-P
-    SW401-SITE4-B:
-      id: 4
-      type: l3leaf
-      platform: 7280SR3
-      is_deployed: true
-      mgmt_interface: Management1
-      mgmt_ip: 172.20.20.41/24
-      mpls_lsr: false
-      loopback_ipv4_pool: 10.101.30.0/24
-      uplink_ipv4_pool: 10.101.50.0/24
-      bgp_as: '65401'
-      underlay_routing_protocol: isis
-      vtep_loopback_ipv4_pool: 10.101.40.0/24
-      inband_ztp: false
-      group: SITE4_BLUE_LEAFS
-      router_id: 10.101.30.4
-      pod: EASTCOAST_FABRIC
-      port_profile_names:
-      - profile: SITE1_MX_TRUNK
-      - profile: SITE1_TRANSIT
-      - profile: SITE1_TRANSIT2
-      - profile: WAN_SITE5_ISP2
-      - profile: WAN_SITE5_ISP1
-      - profile: Wifi
-      - profile: NetworkMgmt_site1
-      - profile: NetworkMgmt_site2
-      - profile: NetworkMgmt_site3
-      - profile: NetworkMgmt_site5
-      - profile: VideoTrafficBlue_site1
-      - profile: VideoTrafficRed_site1
-      - profile: SRTTrafficBlue_site1
-      - profile: SRTTrafficRed_site1
-      mlag_underlay_multicast:
-        pim_sm: true
-        static: false
-      evpn_role: client
-      evpn_route_servers:
-      - SW101-SITE1-B
-      overlay:
-        peering_address: 10.101.30.4
-        evpn_mpls: false
-      vtep_ip: 10.101.40.4
-      max_parallel_uplinks: 1
-      max_uplink_switches: 1
-      uplinks:
-      - interface: Ethernet45
-        peer: SW101-SITE1-B
-        peer_interface: Ethernet43
-        peer_type: spine
-        peer_is_deployed: true
-        peer_bgp_as: '65100'
-        type: underlay_p2p
-        underlay_multicast_pim_sm: true
-        prefix_length: 31
-        ip_address: 10.101.50.7
-        peer_ip_address: 10.101.50.6
-        structured_config: {}
-      uplink_peers:
-      - SW101-SITE1-B
-      vlans: 5,413
-      uplink_switch_interfaces:
-      - Ethernet43
-      downlink_switches:
-      - SW501-SITE5-B
-    SW501-SITE5-B:
-      id: 5
-      type: l3leaf
-      platform: 7280SR3
-      is_deployed: true
-      mgmt_interface: Management1
-      mgmt_ip: 172.20.20.51/24
-      mpls_lsr: false
-      loopback_ipv4_pool: 10.101.30.0/24
-      uplink_ipv4_pool: 10.101.50.0/24
-      bgp_as: '65501'
-      underlay_routing_protocol: isis
-      vtep_loopback_ipv4_pool: 10.101.40.0/24
-      inband_ztp: false
-      group: SITE5_BLUE_LEAFS
-      router_id: 10.101.30.5
-      pod: EASTCOAST_FABRIC
-      port_profile_names:
-      - profile: SITE1_MX_TRUNK
-      - profile: SITE1_TRANSIT
-      - profile: SITE1_TRANSIT2
-      - profile: WAN_SITE5_ISP2
-      - profile: WAN_SITE5_ISP1
-      - profile: Wifi
-      - profile: NetworkMgmt_site1
-      - profile: NetworkMgmt_site2
-      - profile: NetworkMgmt_site3
-      - profile: NetworkMgmt_site5
-      - profile: VideoTrafficBlue_site1
-      - profile: VideoTrafficRed_site1
-      - profile: SRTTrafficBlue_site1
-      - profile: SRTTrafficRed_site1
-      mlag_underlay_multicast:
-        pim_sm: true
-        static: false
-      evpn_role: client
-      evpn_route_servers:
-      - SW401-SITE4-B
-      overlay:
-        peering_address: 10.101.30.5
-        evpn_mpls: false
-      vtep_ip: 10.101.40.5
-      max_parallel_uplinks: 1
-      max_uplink_switches: 1
-      uplinks:
-      - interface: Ethernet39
-        peer: SW401-SITE4-B
-        peer_interface: Ethernet47
-        peer_type: l3leaf
-        peer_is_deployed: true
-        peer_bgp_as: '65401'
-        type: underlay_p2p
-        underlay_multicast_pim_sm: true
-        prefix_length: 31
-        ip_address: 10.101.50.9
-        peer_ip_address: 10.101.50.8
-        structured_config: {}
-      uplink_peers:
-      - SW401-SITE4-B
-      vlans: 5,110,512-513,520,535
-      uplink_switch_interfaces:
-      - Ethernet47
 avd_switch_facts:
-  SW101-SITE1-B:
-    id: 1
-    type: spine
-    platform: 7280SR3
-    is_deployed: true
-    mgmt_interface: Management1
-    mgmt_ip: 172.20.20.11/24
-    mpls_lsr: false
-    loopback_ipv4_pool: 10.101.30.0/24
-    uplink_ipv4_pool: 10.101.50.0/24
-    bgp_as: '65100'
-    underlay_routing_protocol: isis
-    vtep_loopback_ipv4_pool: 10.101.40.0/24
-    inband_ztp: false
-    group: BLUE_SPINES
-    router_id: 10.101.30.1
-    pod: EASTCOAST_FABRIC
-    connected_endpoints_keys:
-    - key: servers
-      type: server
-      description: Server
-    port_profile_names:
-    - profile: SITE1_MX_TRUNK
-    - profile: SITE1_TRANSIT
-    - profile: SITE1_TRANSIT2
-    - profile: WAN_SITE5_ISP2
-    - profile: WAN_SITE5_ISP1
-    - profile: Wifi
-    - profile: NetworkMgmt_site1
-    - profile: NetworkMgmt_site2
-    - profile: NetworkMgmt_site3
-    - profile: NetworkMgmt_site5
-    - profile: VideoTrafficBlue_site1
-    - profile: VideoTrafficRed_site1
-    - profile: SRTTrafficBlue_site1
-    - profile: SRTTrafficRed_site1
-    mlag_underlay_multicast:
-      pim_sm: true
-      static: false
-    evpn_role: server
-    overlay:
-      peering_address: 10.101.30.1
-      evpn_mpls: false
-    vtep_ip: 10.101.40.1
-    max_parallel_uplinks: 1
-    max_uplink_switches: 0
-    vlans: 5,99,110,112-113,150
-    downlink_switches:
-    - SW103-SITE1-P
-    - SW301-SITE3-P
-    - SW201-SITE2-B
-    - SW401-SITE4-B
-    evpn_route_server_clients:
-    - SW103-SITE1-P
-    - SW301-SITE3-P
-    - SW201-SITE2-B
-    - SW401-SITE4-B
   SW102-SITE1-R:
     id: 1
     type: spine
@@ -1749,8 +1752,11 @@ avd_switch_facts:
     - profile: NetworkMgmt_site3
     - profile: NetworkMgmt_site5
     - profile: VideoTrafficBlue_site1
+    - profile: VideoTrafficBlue_site2
     - profile: VideoTrafficRed_site1
+    - profile: VideoTrafficRed_site2
     - profile: SRTTrafficBlue_site1
+    - profile: SRTTrafficBlue_site2
     - profile: SRTTrafficRed_site1
     mlag_underlay_multicast:
       pim_sm: true
@@ -1773,6 +1779,209 @@ avd_switch_facts:
     - SW402-SITE4-R
     - SW103-SITE1-P
     - SW301-SITE3-P
+  SW201-SITE2-B:
+    id: 3
+    type: l3leaf
+    platform: 7280SR3
+    is_deployed: true
+    mgmt_interface: Management1
+    mgmt_ip: 172.20.20.21/24
+    mpls_lsr: false
+    loopback_ipv4_pool: 10.101.30.0/24
+    uplink_ipv4_pool: 10.101.50.0/24
+    bgp_as: '65201'
+    underlay_routing_protocol: isis
+    vtep_loopback_ipv4_pool: 10.101.40.0/24
+    inband_ztp: false
+    group: SITE2_BLUE_LEAFS
+    router_id: 10.101.30.3
+    pod: EASTCOAST_FABRIC
+    connected_endpoints_keys:
+    - key: servers
+      type: server
+      description: Server
+    port_profile_names:
+    - profile: SITE1_MX_TRUNK
+    - profile: SITE1_TRANSIT
+    - profile: SITE1_TRANSIT2
+    - profile: WAN_SITE5_ISP2
+    - profile: WAN_SITE5_ISP1
+    - profile: Wifi
+    - profile: NetworkMgmt_site1
+    - profile: NetworkMgmt_site2
+    - profile: NetworkMgmt_site3
+    - profile: NetworkMgmt_site5
+    - profile: VideoTrafficBlue_site1
+    - profile: VideoTrafficBlue_site2
+    - profile: VideoTrafficRed_site1
+    - profile: VideoTrafficRed_site2
+    - profile: SRTTrafficBlue_site1
+    - profile: SRTTrafficBlue_site2
+    - profile: SRTTrafficRed_site1
+    mlag_underlay_multicast:
+      pim_sm: true
+      static: false
+    evpn_role: client
+    evpn_route_servers:
+    - SW101-SITE1-B
+    overlay:
+      peering_address: 10.101.30.3
+      evpn_mpls: false
+    vtep_ip: 10.101.40.3
+    max_parallel_uplinks: 1
+    max_uplink_switches: 1
+    uplinks:
+    - interface: Ethernet47
+      peer: SW101-SITE1-B
+      peer_interface: Ethernet47
+      peer_type: spine
+      peer_is_deployed: true
+      peer_bgp_as: '65100'
+      type: underlay_p2p
+      underlay_multicast_pim_sm: true
+      prefix_length: 31
+      ip_address: 10.101.50.5
+      peer_ip_address: 10.101.50.4
+      structured_config: {}
+    uplink_peers:
+    - SW101-SITE1-B
+    vlans: 212-213
+    uplink_switch_interfaces:
+    - Ethernet47
+    downlink_switches:
+    - SW203-SITE2-P
+  SW401-SITE4-B:
+    id: 4
+    type: l3leaf
+    platform: 7280SR3
+    is_deployed: true
+    mgmt_interface: Management1
+    mgmt_ip: 172.20.20.41/24
+    mpls_lsr: false
+    loopback_ipv4_pool: 10.101.30.0/24
+    uplink_ipv4_pool: 10.101.50.0/24
+    bgp_as: '65401'
+    underlay_routing_protocol: isis
+    vtep_loopback_ipv4_pool: 10.101.40.0/24
+    inband_ztp: false
+    group: SITE4_BLUE_LEAFS
+    router_id: 10.101.30.4
+    pod: EASTCOAST_FABRIC
+    port_profile_names:
+    - profile: SITE1_MX_TRUNK
+    - profile: SITE1_TRANSIT
+    - profile: SITE1_TRANSIT2
+    - profile: WAN_SITE5_ISP2
+    - profile: WAN_SITE5_ISP1
+    - profile: Wifi
+    - profile: NetworkMgmt_site1
+    - profile: NetworkMgmt_site2
+    - profile: NetworkMgmt_site3
+    - profile: NetworkMgmt_site5
+    - profile: VideoTrafficBlue_site1
+    - profile: VideoTrafficBlue_site2
+    - profile: VideoTrafficRed_site1
+    - profile: VideoTrafficRed_site2
+    - profile: SRTTrafficBlue_site1
+    - profile: SRTTrafficBlue_site2
+    - profile: SRTTrafficRed_site1
+    mlag_underlay_multicast:
+      pim_sm: true
+      static: false
+    evpn_role: client
+    evpn_route_servers:
+    - SW101-SITE1-B
+    overlay:
+      peering_address: 10.101.30.4
+      evpn_mpls: false
+    vtep_ip: 10.101.40.4
+    max_parallel_uplinks: 1
+    max_uplink_switches: 1
+    uplinks:
+    - interface: Ethernet45
+      peer: SW101-SITE1-B
+      peer_interface: Ethernet43
+      peer_type: spine
+      peer_is_deployed: true
+      peer_bgp_as: '65100'
+      type: underlay_p2p
+      underlay_multicast_pim_sm: true
+      prefix_length: 31
+      ip_address: 10.101.50.7
+      peer_ip_address: 10.101.50.6
+      structured_config: {}
+    uplink_peers:
+    - SW101-SITE1-B
+    vlans: 5,413
+    uplink_switch_interfaces:
+    - Ethernet43
+    downlink_switches:
+    - SW501-SITE5-B
+  SW501-SITE5-B:
+    id: 5
+    type: l3leaf
+    platform: 7280SR3
+    is_deployed: true
+    mgmt_interface: Management1
+    mgmt_ip: 172.20.20.51/24
+    mpls_lsr: false
+    loopback_ipv4_pool: 10.101.30.0/24
+    uplink_ipv4_pool: 10.101.50.0/24
+    bgp_as: '65501'
+    underlay_routing_protocol: isis
+    vtep_loopback_ipv4_pool: 10.101.40.0/24
+    inband_ztp: false
+    group: SITE5_BLUE_LEAFS
+    router_id: 10.101.30.5
+    pod: EASTCOAST_FABRIC
+    port_profile_names:
+    - profile: SITE1_MX_TRUNK
+    - profile: SITE1_TRANSIT
+    - profile: SITE1_TRANSIT2
+    - profile: WAN_SITE5_ISP2
+    - profile: WAN_SITE5_ISP1
+    - profile: Wifi
+    - profile: NetworkMgmt_site1
+    - profile: NetworkMgmt_site2
+    - profile: NetworkMgmt_site3
+    - profile: NetworkMgmt_site5
+    - profile: VideoTrafficBlue_site1
+    - profile: VideoTrafficBlue_site2
+    - profile: VideoTrafficRed_site1
+    - profile: VideoTrafficRed_site2
+    - profile: SRTTrafficBlue_site1
+    - profile: SRTTrafficBlue_site2
+    - profile: SRTTrafficRed_site1
+    mlag_underlay_multicast:
+      pim_sm: true
+      static: false
+    evpn_role: client
+    evpn_route_servers:
+    - SW401-SITE4-B
+    overlay:
+      peering_address: 10.101.30.5
+      evpn_mpls: false
+    vtep_ip: 10.101.40.5
+    max_parallel_uplinks: 1
+    max_uplink_switches: 1
+    uplinks:
+    - interface: Ethernet39
+      peer: SW401-SITE4-B
+      peer_interface: Ethernet47
+      peer_type: l3leaf
+      peer_is_deployed: true
+      peer_bgp_as: '65401'
+      type: underlay_p2p
+      underlay_multicast_pim_sm: true
+      prefix_length: 31
+      ip_address: 10.101.50.9
+      peer_ip_address: 10.101.50.8
+      structured_config: {}
+    uplink_peers:
+    - SW401-SITE4-B
+    vlans: 5,110,512-513,520,535
+    uplink_switch_interfaces:
+    - Ethernet47
   SW202-SITE2-R:
     id: 3
     type: l3leaf
@@ -1790,6 +1999,10 @@ avd_switch_facts:
     group: RED_LEAFS
     router_id: 10.102.30.3
     pod: EASTCOAST_FABRIC
+    connected_endpoints_keys:
+    - key: servers
+      type: server
+      description: Server
     port_profile_names:
     - profile: SITE1_MX_TRUNK
     - profile: SITE1_TRANSIT
@@ -1802,8 +2015,11 @@ avd_switch_facts:
     - profile: NetworkMgmt_site3
     - profile: NetworkMgmt_site5
     - profile: VideoTrafficBlue_site1
+    - profile: VideoTrafficBlue_site2
     - profile: VideoTrafficRed_site1
+    - profile: VideoTrafficRed_site2
     - profile: SRTTrafficBlue_site1
+    - profile: SRTTrafficBlue_site2
     - profile: SRTTrafficRed_site1
     mlag_underlay_multicast:
       pim_sm: true
@@ -1866,8 +2082,11 @@ avd_switch_facts:
     - profile: NetworkMgmt_site3
     - profile: NetworkMgmt_site5
     - profile: VideoTrafficBlue_site1
+    - profile: VideoTrafficBlue_site2
     - profile: VideoTrafficRed_site1
+    - profile: VideoTrafficRed_site2
     - profile: SRTTrafficBlue_site1
+    - profile: SRTTrafficBlue_site2
     - profile: SRTTrafficRed_site1
     mlag_underlay_multicast:
       pim_sm: true
@@ -1930,8 +2149,11 @@ avd_switch_facts:
     - profile: NetworkMgmt_site3
     - profile: NetworkMgmt_site5
     - profile: VideoTrafficBlue_site1
+    - profile: VideoTrafficBlue_site2
     - profile: VideoTrafficRed_site1
+    - profile: VideoTrafficRed_site2
     - profile: SRTTrafficBlue_site1
+    - profile: SRTTrafficBlue_site2
     - profile: SRTTrafficRed_site1
     mlag_underlay_multicast:
       pim_sm: true
@@ -1963,6 +2185,66 @@ avd_switch_facts:
     vlans: 6,110,512-513,520,536
     uplink_switch_interfaces:
     - Ethernet47
+  SW101-SITE1-B:
+    id: 1
+    type: spine
+    platform: 7280SR3
+    is_deployed: true
+    mgmt_interface: Management1
+    mgmt_ip: 172.20.20.11/24
+    mpls_lsr: false
+    loopback_ipv4_pool: 10.101.30.0/24
+    uplink_ipv4_pool: 10.101.50.0/24
+    bgp_as: '65100'
+    underlay_routing_protocol: isis
+    vtep_loopback_ipv4_pool: 10.101.40.0/24
+    inband_ztp: false
+    group: BLUE_SPINES
+    router_id: 10.101.30.1
+    pod: EASTCOAST_FABRIC
+    connected_endpoints_keys:
+    - key: servers
+      type: server
+      description: Server
+    port_profile_names:
+    - profile: SITE1_MX_TRUNK
+    - profile: SITE1_TRANSIT
+    - profile: SITE1_TRANSIT2
+    - profile: WAN_SITE5_ISP2
+    - profile: WAN_SITE5_ISP1
+    - profile: Wifi
+    - profile: NetworkMgmt_site1
+    - profile: NetworkMgmt_site2
+    - profile: NetworkMgmt_site3
+    - profile: NetworkMgmt_site5
+    - profile: VideoTrafficBlue_site1
+    - profile: VideoTrafficBlue_site2
+    - profile: VideoTrafficRed_site1
+    - profile: VideoTrafficRed_site2
+    - profile: SRTTrafficBlue_site1
+    - profile: SRTTrafficBlue_site2
+    - profile: SRTTrafficRed_site1
+    mlag_underlay_multicast:
+      pim_sm: true
+      static: false
+    evpn_role: server
+    overlay:
+      peering_address: 10.101.30.1
+      evpn_mpls: false
+    vtep_ip: 10.101.40.1
+    max_parallel_uplinks: 1
+    max_uplink_switches: 0
+    vlans: 5,99,110,112-113,150
+    downlink_switches:
+    - SW201-SITE2-B
+    - SW401-SITE4-B
+    - SW103-SITE1-P
+    - SW301-SITE3-P
+    evpn_route_server_clients:
+    - SW201-SITE2-B
+    - SW401-SITE4-B
+    - SW103-SITE1-P
+    - SW301-SITE3-P
   SW103-SITE1-P:
     id: 3
     type: l3leaf
@@ -1996,8 +2278,11 @@ avd_switch_facts:
     - profile: NetworkMgmt_site3
     - profile: NetworkMgmt_site5
     - profile: VideoTrafficBlue_site1
+    - profile: VideoTrafficBlue_site2
     - profile: VideoTrafficRed_site1
+    - profile: VideoTrafficRed_site2
     - profile: SRTTrafficBlue_site1
+    - profile: SRTTrafficBlue_site2
     - profile: SRTTrafficRed_site1
     mlag_underlay_multicast:
       pim_sm: false
@@ -2059,6 +2344,10 @@ avd_switch_facts:
     group: SITE2_PURPLE_LEAFS
     router_id: 10.11.30.4
     pod: EASTCOAST_FABRIC
+    connected_endpoints_keys:
+    - key: servers
+      type: server
+      description: Server
     port_profile_names:
     - profile: SITE1_MX_TRUNK
     - profile: SITE1_TRANSIT
@@ -2071,8 +2360,11 @@ avd_switch_facts:
     - profile: NetworkMgmt_site3
     - profile: NetworkMgmt_site5
     - profile: VideoTrafficBlue_site1
+    - profile: VideoTrafficBlue_site2
     - profile: VideoTrafficRed_site1
+    - profile: VideoTrafficRed_site2
     - profile: SRTTrafficBlue_site1
+    - profile: SRTTrafficBlue_site2
     - profile: SRTTrafficRed_site1
     mlag_underlay_multicast:
       pim_sm: false
@@ -2146,8 +2438,11 @@ avd_switch_facts:
     - profile: NetworkMgmt_site3
     - profile: NetworkMgmt_site5
     - profile: VideoTrafficBlue_site1
+    - profile: VideoTrafficBlue_site2
     - profile: VideoTrafficRed_site1
+    - profile: VideoTrafficRed_site2
     - profile: SRTTrafficBlue_site1
+    - profile: SRTTrafficBlue_site2
     - profile: SRTTrafficRed_site1
     mlag_underlay_multicast:
       pim_sm: false
@@ -2192,196 +2487,6 @@ avd_switch_facts:
     uplink_switch_interfaces:
     - Ethernet45
     - Ethernet45
-  SW201-SITE2-B:
-    id: 3
-    type: l3leaf
-    platform: 7280SR3
-    is_deployed: true
-    mgmt_interface: Management1
-    mgmt_ip: 172.20.20.21/24
-    mpls_lsr: false
-    loopback_ipv4_pool: 10.101.30.0/24
-    uplink_ipv4_pool: 10.101.50.0/24
-    bgp_as: '65201'
-    underlay_routing_protocol: isis
-    vtep_loopback_ipv4_pool: 10.101.40.0/24
-    inband_ztp: false
-    group: SITE2_BLUE_LEAFS
-    router_id: 10.101.30.3
-    pod: EASTCOAST_FABRIC
-    port_profile_names:
-    - profile: SITE1_MX_TRUNK
-    - profile: SITE1_TRANSIT
-    - profile: SITE1_TRANSIT2
-    - profile: WAN_SITE5_ISP2
-    - profile: WAN_SITE5_ISP1
-    - profile: Wifi
-    - profile: NetworkMgmt_site1
-    - profile: NetworkMgmt_site2
-    - profile: NetworkMgmt_site3
-    - profile: NetworkMgmt_site5
-    - profile: VideoTrafficBlue_site1
-    - profile: VideoTrafficRed_site1
-    - profile: SRTTrafficBlue_site1
-    - profile: SRTTrafficRed_site1
-    mlag_underlay_multicast:
-      pim_sm: true
-      static: false
-    evpn_role: client
-    evpn_route_servers:
-    - SW101-SITE1-B
-    overlay:
-      peering_address: 10.101.30.3
-      evpn_mpls: false
-    vtep_ip: 10.101.40.3
-    max_parallel_uplinks: 1
-    max_uplink_switches: 1
-    uplinks:
-    - interface: Ethernet47
-      peer: SW101-SITE1-B
-      peer_interface: Ethernet47
-      peer_type: spine
-      peer_is_deployed: true
-      peer_bgp_as: '65100'
-      type: underlay_p2p
-      underlay_multicast_pim_sm: true
-      prefix_length: 31
-      ip_address: 10.101.50.5
-      peer_ip_address: 10.101.50.4
-      structured_config: {}
-    uplink_peers:
-    - SW101-SITE1-B
-    vlans: 212-213
-    uplink_switch_interfaces:
-    - Ethernet47
-    downlink_switches:
-    - SW203-SITE2-P
-  SW401-SITE4-B:
-    id: 4
-    type: l3leaf
-    platform: 7280SR3
-    is_deployed: true
-    mgmt_interface: Management1
-    mgmt_ip: 172.20.20.41/24
-    mpls_lsr: false
-    loopback_ipv4_pool: 10.101.30.0/24
-    uplink_ipv4_pool: 10.101.50.0/24
-    bgp_as: '65401'
-    underlay_routing_protocol: isis
-    vtep_loopback_ipv4_pool: 10.101.40.0/24
-    inband_ztp: false
-    group: SITE4_BLUE_LEAFS
-    router_id: 10.101.30.4
-    pod: EASTCOAST_FABRIC
-    port_profile_names:
-    - profile: SITE1_MX_TRUNK
-    - profile: SITE1_TRANSIT
-    - profile: SITE1_TRANSIT2
-    - profile: WAN_SITE5_ISP2
-    - profile: WAN_SITE5_ISP1
-    - profile: Wifi
-    - profile: NetworkMgmt_site1
-    - profile: NetworkMgmt_site2
-    - profile: NetworkMgmt_site3
-    - profile: NetworkMgmt_site5
-    - profile: VideoTrafficBlue_site1
-    - profile: VideoTrafficRed_site1
-    - profile: SRTTrafficBlue_site1
-    - profile: SRTTrafficRed_site1
-    mlag_underlay_multicast:
-      pim_sm: true
-      static: false
-    evpn_role: client
-    evpn_route_servers:
-    - SW101-SITE1-B
-    overlay:
-      peering_address: 10.101.30.4
-      evpn_mpls: false
-    vtep_ip: 10.101.40.4
-    max_parallel_uplinks: 1
-    max_uplink_switches: 1
-    uplinks:
-    - interface: Ethernet45
-      peer: SW101-SITE1-B
-      peer_interface: Ethernet43
-      peer_type: spine
-      peer_is_deployed: true
-      peer_bgp_as: '65100'
-      type: underlay_p2p
-      underlay_multicast_pim_sm: true
-      prefix_length: 31
-      ip_address: 10.101.50.7
-      peer_ip_address: 10.101.50.6
-      structured_config: {}
-    uplink_peers:
-    - SW101-SITE1-B
-    vlans: 5,413
-    uplink_switch_interfaces:
-    - Ethernet43
-    downlink_switches:
-    - SW501-SITE5-B
-  SW501-SITE5-B:
-    id: 5
-    type: l3leaf
-    platform: 7280SR3
-    is_deployed: true
-    mgmt_interface: Management1
-    mgmt_ip: 172.20.20.51/24
-    mpls_lsr: false
-    loopback_ipv4_pool: 10.101.30.0/24
-    uplink_ipv4_pool: 10.101.50.0/24
-    bgp_as: '65501'
-    underlay_routing_protocol: isis
-    vtep_loopback_ipv4_pool: 10.101.40.0/24
-    inband_ztp: false
-    group: SITE5_BLUE_LEAFS
-    router_id: 10.101.30.5
-    pod: EASTCOAST_FABRIC
-    port_profile_names:
-    - profile: SITE1_MX_TRUNK
-    - profile: SITE1_TRANSIT
-    - profile: SITE1_TRANSIT2
-    - profile: WAN_SITE5_ISP2
-    - profile: WAN_SITE5_ISP1
-    - profile: Wifi
-    - profile: NetworkMgmt_site1
-    - profile: NetworkMgmt_site2
-    - profile: NetworkMgmt_site3
-    - profile: NetworkMgmt_site5
-    - profile: VideoTrafficBlue_site1
-    - profile: VideoTrafficRed_site1
-    - profile: SRTTrafficBlue_site1
-    - profile: SRTTrafficRed_site1
-    mlag_underlay_multicast:
-      pim_sm: true
-      static: false
-    evpn_role: client
-    evpn_route_servers:
-    - SW401-SITE4-B
-    overlay:
-      peering_address: 10.101.30.5
-      evpn_mpls: false
-    vtep_ip: 10.101.40.5
-    max_parallel_uplinks: 1
-    max_uplink_switches: 1
-    uplinks:
-    - interface: Ethernet39
-      peer: SW401-SITE4-B
-      peer_interface: Ethernet47
-      peer_type: l3leaf
-      peer_is_deployed: true
-      peer_bgp_as: '65401'
-      type: underlay_p2p
-      underlay_multicast_pim_sm: true
-      prefix_length: 31
-      ip_address: 10.101.50.9
-      peer_ip_address: 10.101.50.8
-      structured_config: {}
-    uplink_peers:
-    - SW401-SITE4-B
-    vlans: 5,110,512-513,520,535
-    uplink_switch_interfaces:
-    - Ethernet47
 avd_requirements:
   failed: false
   changed: false
@@ -2392,49 +2497,49 @@ ansible_config_file: /Users/westley.dion/Projects/Repos/github/wdion-arista/ceos
 groups:
   all:
   - cvp
-  - SW201-SITE2-B
-  - SW202-SITE2-R
-  - SW203-SITE2-P
-  - SW401-SITE4-B
-  - SW402-SITE4-R
-  - SW301-SITE3-P
+  - SW101-SITE1-B
+  - SW102-SITE1-R
   - SW501-SITE5-B
   - SW502-SITE5-R
+  - SW103-SITE1-P
   - site1-server1
   - site2-server1
   - site3-server1
   - site5-server1
   - tools-server
-  - SW101-SITE1-B
-  - SW102-SITE1-R
-  - SW103-SITE1-P
+  - SW201-SITE2-B
+  - SW202-SITE2-R
+  - SW203-SITE2-P
+  - SW301-SITE3-P
+  - SW401-SITE4-B
+  - SW402-SITE4-R
   ungrouped: []
   CLOUDVISION:
   - cvp
   PROD:
-  - SW101-SITE1-B
   - SW102-SITE1-R
-  - SW202-SITE2-R
-  - SW402-SITE4-R
-  - SW502-SITE5-R
-  - SW103-SITE1-P
-  - SW203-SITE2-P
-  - SW301-SITE3-P
   - SW201-SITE2-B
   - SW401-SITE4-B
   - SW501-SITE5-B
+  - SW202-SITE2-R
+  - SW402-SITE4-R
+  - SW502-SITE5-R
+  - SW101-SITE1-B
+  - SW103-SITE1-P
+  - SW203-SITE2-P
+  - SW301-SITE3-P
   EASTCOAST_FABRIC:
-  - SW101-SITE1-B
   - SW102-SITE1-R
-  - SW202-SITE2-R
-  - SW402-SITE4-R
-  - SW502-SITE5-R
-  - SW103-SITE1-P
-  - SW203-SITE2-P
-  - SW301-SITE3-P
   - SW201-SITE2-B
   - SW401-SITE4-B
   - SW501-SITE5-B
+  - SW202-SITE2-R
+  - SW402-SITE4-R
+  - SW502-SITE5-R
+  - SW101-SITE1-B
+  - SW103-SITE1-P
+  - SW203-SITE2-P
+  - SW301-SITE3-P
   BLUE_SPINES:
   - SW101-SITE1-B
   SITE1_BLUE_SPINES:
@@ -2487,17 +2592,17 @@ groups:
   - SW102-SITE1-R
   - SW103-SITE1-P
   TENANTS_NETWORKS:
-  - SW101-SITE1-B
   - SW102-SITE1-R
-  - SW202-SITE2-R
-  - SW402-SITE4-R
-  - SW502-SITE5-R
-  - SW103-SITE1-P
-  - SW203-SITE2-P
-  - SW301-SITE3-P
   - SW201-SITE2-B
   - SW401-SITE4-B
   - SW501-SITE5-B
+  - SW202-SITE2-R
+  - SW402-SITE4-R
+  - SW502-SITE5-R
+  - SW101-SITE1-B
+  - SW103-SITE1-P
+  - SW203-SITE2-P
+  - SW301-SITE3-P
   SITE1_CONNECTED_ENDPOINTS:
   - SW101-SITE1-B
   - SW102-SITE1-R
@@ -2515,33 +2620,33 @@ groups:
   - SW501-SITE5-B
   - SW502-SITE5-R
   PORT_PROFILES:
-  - SW101-SITE1-B
   - SW102-SITE1-R
-  - SW202-SITE2-R
-  - SW402-SITE4-R
-  - SW502-SITE5-R
-  - SW103-SITE1-P
-  - SW203-SITE2-P
-  - SW301-SITE3-P
   - SW201-SITE2-B
   - SW401-SITE4-B
   - SW501-SITE5-B
+  - SW202-SITE2-R
+  - SW402-SITE4-R
+  - SW502-SITE5-R
+  - SW101-SITE1-B
+  - SW103-SITE1-P
+  - SW203-SITE2-P
+  - SW301-SITE3-P
   MONITOR_720XP:
   - SW103-SITE1-P
   - SW203-SITE2-P
   - SW301-SITE3-P
   AGNI_CERTIFICATES:
+  - SW102-SITE1-R
+  - SW201-SITE2-B
+  - SW401-SITE4-B
+  - SW501-SITE5-B
   - SW202-SITE2-R
   - SW402-SITE4-R
   - SW502-SITE5-R
-  - SW102-SITE1-R
   - SW101-SITE1-B
   - SW103-SITE1-P
   - SW203-SITE2-P
   - SW301-SITE3-P
-  - SW201-SITE2-B
-  - SW401-SITE4-B
-  - SW501-SITE5-B
   TLS_CERTIFICATES:
   - SW103-SITE1-P
   - SW203-SITE2-P
@@ -2563,7 +2668,7 @@ groups:
   - tools-server
   TOOLSSERVER:
   - tools-server
-omit: __omit_place_holder__a8302cc7fe3c7443c78e0e73ccf6b122842cee96
+omit: __omit_place_holder__d1e7c5a6c396c4c0a9051d4cb66aac16732fcc8b
 ansible_version:
   string: 2.18.10
   full: 2.18.10

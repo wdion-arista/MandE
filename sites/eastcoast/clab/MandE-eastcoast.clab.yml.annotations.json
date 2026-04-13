@@ -280,9 +280,22 @@
     {
       "id": "site1-server1",
       "position": {
-        "x": 620,
-        "y": 40
-      }
+        "x": 680,
+        "y": 20
+      },
+      "icon": "server",
+      "iconColor": "#1fe91c",
+      "iconCornerRadius": 0
+    },
+    {
+      "id": "site2-server1",
+      "position": {
+        "x": 300,
+        "y": 480
+      },
+      "icon": "server",
+      "iconColor": "#1fe91c",
+      "iconCornerRadius": 0
     }
   ],
   "edgeAnnotations": [],

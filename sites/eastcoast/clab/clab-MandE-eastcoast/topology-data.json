@@ -6,7 +6,7 @@
       "prefix": "clab",
       "mgmt": {
         "network": "clab",
-        "bridge": "br-1146aec4f641",
+        "bridge": "br-333ba253644f",
         "ipv4-subnet": "172.20.20.0/24",
         "ipv4-gw": "172.20.20.1",
         "ipv6-subnet": "3fff:172:20:20::/64",
@@ -30,11 +30,11 @@
       "mgmt-intf": "Management0",
       "mgmt-ipv4-address": "172.20.20.11",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::9",
+      "mgmt-ipv6-address": "3fff:172:20:20::8",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:e1:ac:0f",
+      "mac-address": "00:1c:73:bc:5f:de",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW101-SITE1-B",
@@ -61,11 +61,11 @@
       "mgmt-intf": "Management0",
       "mgmt-ipv4-address": "172.20.20.12",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::6",
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:ea:47:86",
+      "mac-address": "00:1c:73:c4:55:e8",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW102-SITE1-R",
@@ -92,11 +92,11 @@
       "mgmt-intf": "Management0",
       "mgmt-ipv4-address": "172.20.20.13",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::a",
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:1b:6c:26",
+      "mac-address": "00:1c:73:4b:58:aa",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW103-SITE1-P",
@@ -123,11 +123,11 @@
       "mgmt-intf": "Management0",
       "mgmt-ipv4-address": "172.20.20.21",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-address": "3fff:172:20:20::b",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:17:b4:14",
+      "mac-address": "00:1c:73:41:94:86",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW201-SITE2-B",
@@ -154,11 +154,11 @@
       "mgmt-intf": "Management0",
       "mgmt-ipv4-address": "172.20.20.22",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-address": "3fff:172:20:20::c",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:5e:7d:2b",
+      "mac-address": "00:1c:73:1e:84:c1",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW202-SITE2-R",
@@ -185,11 +185,11 @@
       "mgmt-intf": "Management0",
       "mgmt-ipv4-address": "172.20.20.23",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::c",
+      "mgmt-ipv6-address": "3fff:172:20:20::a",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:79:00:92",
+      "mac-address": "00:1c:73:3b:4a:c9",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW203-SITE2-P",
@@ -216,11 +216,11 @@
       "mgmt-intf": "Management0",
       "mgmt-ipv4-address": "172.20.20.31",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::b",
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:0e:1e:a7",
+      "mac-address": "00:1c:73:c4:c1:34",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW301-SITE3-P",
@@ -247,11 +247,11 @@
       "mgmt-intf": "Management0",
       "mgmt-ipv4-address": "172.20.20.41",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::8",
+      "mgmt-ipv6-address": "3fff:172:20:20::9",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:82:44:19",
+      "mac-address": "00:1c:73:f8:a9:07",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW401-SITE4-B",
@@ -278,11 +278,11 @@
       "mgmt-intf": "Management0",
       "mgmt-ipv4-address": "172.20.20.42",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-address": "3fff:172:20:20::7",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:90:b0:8a",
+      "mac-address": "00:1c:73:47:5b:eb",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW402-SITE4-R",
@@ -309,11 +309,11 @@
       "mgmt-intf": "Management0",
       "mgmt-ipv4-address": "172.20.20.51",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::7",
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:b4:5c:55",
+      "mac-address": "00:1c:73:9e:f2:bd",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW501-SITE5-B",
@@ -340,11 +340,11 @@
       "mgmt-intf": "Management0",
       "mgmt-ipv4-address": "172.20.20.52",
       "mgmt-ipv4-prefix-length": 24,
-      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-address": "3fff:172:20:20::6",
       "mgmt-ipv6-prefix-length": 64,
-      "mac-address": "00:1c:73:fb:33:86",
+      "mac-address": "00:1c:73:3d:ae:a3",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "arista_ceos",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/SW502-SITE5-R",
@@ -375,12 +375,43 @@
       "mgmt-ipv6-prefix-length": 64,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-1146aec4f641",
+        "clab-mgmt-net-bridge": "br-333ba253644f",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/site1-server1",
         "clab-node-longname": "clab-MandE-eastcoast-site1-server1",
         "clab-node-name": "site1-server1",
+        "clab-node-type": "",
+        "clab-owner": "avd",
+        "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
+        "containerlab": "MandE-eastcoast"
+      },
+      "port-bindings": [
+      ]
+    },
+    "site2-server1": {
+      "index": "12",
+      "shortname": "site2-server1",
+      "longname": "clab-MandE-eastcoast-site2-server1",
+      "fqdn": "site2-server1.MandE-eastcoast.io",
+      "group": "",
+      "labdir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/site2-server1",
+      "kind": "linux",
+      "image": "ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::e",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-333ba253644f",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/clab-MandE-eastcoast/site2-server1",
+        "clab-node-longname": "clab-MandE-eastcoast-site2-server1",
+        "clab-node-name": "site2-server1",
         "clab-node-type": "",
         "clab-owner": "avd",
         "clab-topo-file": "/Users/westley.dion/Projects/Repos/github/wdion-arista/ceos-act-projects/labs/MandE/sites/eastcoast/clab/MandE-eastcoast.clab.yml",
@@ -396,13 +427,13 @@
         "a": {
           "node": "SW101-SITE1-B",
           "interface": "eth43",
-          "mac": "aa:c1:ab:5f:84:85",
+          "mac": "aa:c1:ab:71:61:22",
           "peer": "z"
         },
         "z": {
           "node": "SW401-SITE4-B",
           "interface": "eth45",
-          "mac": "aa:c1:ab:a1:40:65",
+          "mac": "aa:c1:ab:75:ca:cb",
           "peer": "a"
         }
       }
@@ -412,13 +443,13 @@
         "a": {
           "node": "SW101-SITE1-B",
           "interface": "eth45",
-          "mac": "aa:c1:ab:fa:6c:07",
+          "mac": "aa:c1:ab:d5:d3:9a",
           "peer": "z"
         },
         "z": {
           "node": "SW301-SITE3-P",
           "interface": "eth35",
-          "mac": "aa:c1:ab:ca:48:8c",
+          "mac": "aa:c1:ab:d7:7f:e9",
           "peer": "a"
         }
       }
@@ -428,13 +459,13 @@
         "a": {
           "node": "SW101-SITE1-B",
           "interface": "eth47",
-          "mac": "aa:c1:ab:36:25:c6",
+          "mac": "aa:c1:ab:72:ec:be",
           "peer": "z"
         },
         "z": {
           "node": "SW201-SITE2-B",
           "interface": "eth47",
-          "mac": "aa:c1:ab:50:05:e8",
+          "mac": "aa:c1:ab:43:23:86",
           "peer": "a"
         }
       }
@@ -444,13 +475,13 @@
         "a": {
           "node": "SW101-SITE1-B",
           "interface": "eth56_1",
-          "mac": "aa:c1:ab:91:68:89",
+          "mac": "aa:c1:ab:cf:20:18",
           "peer": "z"
         },
         "z": {
           "node": "SW103-SITE1-P",
           "interface": "eth53_1",
-          "mac": "aa:c1:ab:c7:d3:99",
+          "mac": "aa:c1:ab:2c:b0:fe",
           "peer": "a"
         }
       }
@@ -460,13 +491,13 @@
         "a": {
           "node": "site1-server1",
           "interface": "eth1",
-          "mac": "aa:c1:ab:9d:e5:2f",
+          "mac": "aa:c1:ab:02:00:64",
           "peer": "z"
         },
         "z": {
           "node": "SW101-SITE1-B",
           "interface": "eth50",
-          "mac": "aa:c1:ab:35:57:c6",
+          "mac": "aa:c1:ab:b0:66:ec",
           "peer": "a"
         }
       }
@@ -476,13 +507,13 @@
         "a": {
           "node": "SW102-SITE1-R",
           "interface": "eth43",
-          "mac": "aa:c1:ab:c3:dc:40",
+          "mac": "aa:c1:ab:5e:11:50",
           "peer": "z"
         },
         "z": {
           "node": "SW402-SITE4-R",
           "interface": "eth45",
-          "mac": "aa:c1:ab:62:c1:a5",
+          "mac": "aa:c1:ab:39:58:6d",
           "peer": "a"
         }
       }
@@ -492,13 +523,13 @@
         "a": {
           "node": "SW102-SITE1-R",
           "interface": "eth45",
-          "mac": "aa:c1:ab:00:93:c7",
+          "mac": "aa:c1:ab:e1:b6:9a",
           "peer": "z"
         },
         "z": {
           "node": "SW301-SITE3-P",
           "interface": "eth36",
-          "mac": "aa:c1:ab:6f:bb:55",
+          "mac": "aa:c1:ab:d2:2e:18",
           "peer": "a"
         }
       }
@@ -508,13 +539,13 @@
         "a": {
           "node": "SW102-SITE1-R",
           "interface": "eth47",
-          "mac": "aa:c1:ab:4f:23:03",
+          "mac": "aa:c1:ab:9a:18:ea",
           "peer": "z"
         },
         "z": {
           "node": "SW202-SITE2-R",
           "interface": "eth47",
-          "mac": "aa:c1:ab:de:ed:86",
+          "mac": "aa:c1:ab:8a:0b:20",
           "peer": "a"
         }
       }
@@ -524,13 +555,13 @@
         "a": {
           "node": "SW102-SITE1-R",
           "interface": "eth56_1",
-          "mac": "aa:c1:ab:9a:c7:36",
+          "mac": "aa:c1:ab:4a:96:22",
           "peer": "z"
         },
         "z": {
           "node": "SW103-SITE1-P",
           "interface": "eth54_1",
-          "mac": "aa:c1:ab:85:78:67",
+          "mac": "aa:c1:ab:c2:b1:00",
           "peer": "a"
         }
       }
@@ -540,13 +571,13 @@
         "a": {
           "node": "site1-server1",
           "interface": "eth2",
-          "mac": "aa:c1:ab:da:4b:9d",
+          "mac": "aa:c1:ab:ff:ae:73",
           "peer": "z"
         },
         "z": {
           "node": "SW102-SITE1-R",
           "interface": "eth50",
-          "mac": "aa:c1:ab:c2:7b:01",
+          "mac": "aa:c1:ab:55:01:e6",
           "peer": "a"
         }
       }
@@ -556,13 +587,13 @@
         "a": {
           "node": "site1-server1",
           "interface": "eth3",
-          "mac": "aa:c1:ab:6b:6d:f3",
+          "mac": "aa:c1:ab:54:a5:d5",
           "peer": "z"
         },
         "z": {
           "node": "SW103-SITE1-P",
           "interface": "eth50",
-          "mac": "aa:c1:ab:b6:89:44",
+          "mac": "aa:c1:ab:27:a8:7c",
           "peer": "a"
         }
       }
@@ -572,13 +603,29 @@
         "a": {
           "node": "SW201-SITE2-B",
           "interface": "eth56_1",
-          "mac": "aa:c1:ab:72:69:ec",
+          "mac": "aa:c1:ab:fd:9f:da",
           "peer": "z"
         },
         "z": {
           "node": "SW203-SITE2-P",
           "interface": "eth53_1",
-          "mac": "aa:c1:ab:4a:0d:f6",
+          "mac": "aa:c1:ab:4a:42:b9",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "site2-server1",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:f9:c1:50",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW201-SITE2-B",
+          "interface": "eth50",
+          "mac": "aa:c1:ab:ed:06:99",
           "peer": "a"
         }
       }
@@ -588,13 +635,45 @@
         "a": {
           "node": "SW202-SITE2-R",
           "interface": "eth56_1",
-          "mac": "aa:c1:ab:fd:09:53",
+          "mac": "aa:c1:ab:7e:48:97",
           "peer": "z"
         },
         "z": {
           "node": "SW203-SITE2-P",
           "interface": "eth54_1",
-          "mac": "aa:c1:ab:27:71:1f",
+          "mac": "aa:c1:ab:23:06:39",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "site2-server1",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:38:31:14",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW202-SITE2-R",
+          "interface": "eth50",
+          "mac": "aa:c1:ab:74:3a:bc",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "site2-server1",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:d3:36:1c",
+          "peer": "z"
+        },
+        "z": {
+          "node": "SW203-SITE2-P",
+          "interface": "eth50",
+          "mac": "aa:c1:ab:25:6c:f6",
           "peer": "a"
         }
       }
@@ -604,13 +683,13 @@
         "a": {
           "node": "SW401-SITE4-B",
           "interface": "eth47",
-          "mac": "aa:c1:ab:2e:bf:8b",
+          "mac": "aa:c1:ab:16:35:8a",
           "peer": "z"
         },
         "z": {
           "node": "SW501-SITE5-B",
           "interface": "eth39",
-          "mac": "aa:c1:ab:38:9b:67",
+          "mac": "aa:c1:ab:f2:ab:d8",
           "peer": "a"
         }
       }
@@ -620,13 +699,13 @@
         "a": {
           "node": "SW402-SITE4-R",
           "interface": "eth47",
-          "mac": "aa:c1:ab:4f:70:fa",
+          "mac": "aa:c1:ab:9b:fa:bf",
           "peer": "z"
         },
         "z": {
           "node": "SW502-SITE5-R",
           "interface": "eth39",
-          "mac": "aa:c1:ab:db:b6:93",
+          "mac": "aa:c1:ab:6b:fb:54",
           "peer": "a"
         }
       }
