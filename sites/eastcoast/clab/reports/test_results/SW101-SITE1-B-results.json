@@ -1,0 +1,697 @@
+[
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyBGPSpecificPeers",
+    "categories": [
+      "bgp"
+    ],
+    "description": "Verifies the health of specific BGP peer(s) for given address families.",
+    "result": "success",
+    "custom_field": "BGP EVPN Peer: 10.101.30.5"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyBGPSpecificPeers",
+    "categories": [
+      "bgp"
+    ],
+    "description": "Verifies the health of specific BGP peer(s) for given address families.",
+    "result": "success",
+    "custom_field": "BGP EVPN Peer: 10.11.30.4"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyBGPSpecificPeers",
+    "categories": [
+      "bgp"
+    ],
+    "description": "Verifies the health of specific BGP peer(s) for given address families.",
+    "result": "success",
+    "custom_field": "BGP EVPN Peer: SW103-SITE1-P (IP: 10.11.30.3)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyBGPSpecificPeers",
+    "categories": [
+      "bgp"
+    ],
+    "description": "Verifies the health of specific BGP peer(s) for given address families.",
+    "result": "success",
+    "custom_field": "BGP EVPN Peer: SW201-SITE2-B (IP: 10.101.30.3)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyBGPSpecificPeers",
+    "categories": [
+      "bgp"
+    ],
+    "description": "Verifies the health of specific BGP peer(s) for given address families.",
+    "result": "success",
+    "custom_field": "BGP EVPN Peer: SW301-SITE3-P (IP: 10.11.30.5)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyBGPSpecificPeers",
+    "categories": [
+      "bgp"
+    ],
+    "description": "Verifies the health of specific BGP peer(s) for given address families.",
+    "result": "success",
+    "custom_field": "BGP EVPN Peer: SW401-SITE4-B (IP: 10.101.30.4)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies the connection status of the specified LLDP (Link Layer Discovery Protocol) neighbors.",
+    "result": "success",
+    "custom_field": "Local: Ethernet43 - Remote: SW401-SITE4-B Ethernet45"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies the connection status of the specified LLDP (Link Layer Discovery Protocol) neighbors.",
+    "result": "success",
+    "custom_field": "Local: Ethernet45 - Remote: SW301-SITE3-P Ethernet35"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies the connection status of the specified LLDP (Link Layer Discovery Protocol) neighbors.",
+    "result": "success",
+    "custom_field": "Local: Ethernet47 - Remote: SW201-SITE2-B Ethernet47"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies the connection status of the specified LLDP (Link Layer Discovery Protocol) neighbors.",
+    "result": "failure",
+    "messages": [
+      "Port: Ethernet50 Neighbor: site1-server1 Neighbor Port: Ethernet1 - Wrong LLDP neighbors: site1-server1/aac1.ab02.0064"
+    ],
+    "custom_field": "Local: Ethernet50 - Remote: site1-server1 Ethernet1"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies the connection status of the specified LLDP (Link Layer Discovery Protocol) neighbors.",
+    "result": "success",
+    "custom_field": "Local: Ethernet56/1 - Remote: SW103-SITE1-P Ethernet53/1"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: Loopback0 (IP: 10.101.30.1) - Destination: SW101-SITE1-B Loopback0 (IP: 10.101.30.1)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: Loopback0 (IP: 10.101.30.1) - Destination: SW102-SITE1-R Loopback0 (IP: 10.102.30.1)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: Loopback0 (IP: 10.101.30.1) - Destination: SW103-SITE1-P Loopback0 (IP: 10.11.30.3)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: Loopback0 (IP: 10.101.30.1) - Destination: SW201-SITE2-B Loopback0 (IP: 10.101.30.3)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: Loopback0 (IP: 10.101.30.1) - Destination: SW202-SITE2-R Loopback0 (IP: 10.102.30.3)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: Loopback0 (IP: 10.101.30.1) - Destination: SW203-SITE2-P Loopback0 (IP: 10.11.30.4)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: Loopback0 (IP: 10.101.30.1) - Destination: SW301-SITE3-P Loopback0 (IP: 10.11.30.5)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: Loopback0 (IP: 10.101.30.1) - Destination: SW401-SITE4-B Loopback0 (IP: 10.101.30.4)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: Loopback0 (IP: 10.101.30.1) - Destination: SW402-SITE4-R Loopback0 (IP: 10.102.30.4)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: Loopback0 (IP: 10.101.30.1) - Destination: SW501-SITE5-B Loopback0 (IP: 10.101.30.5)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: Loopback0 (IP: 10.101.30.1) - Destination: SW502-SITE5-R Loopback0 (IP: 10.102.30.5)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: P2P Interface Ethernet43 (IP: 10.101.50.6) - Destination: SW401-SITE4-B Ethernet45 (IP: 10.101.50.7)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: P2P Interface Ethernet45 (IP: 10.11.50.16) - Destination: SW301-SITE3-P Ethernet35 (IP: 10.11.50.17)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: P2P Interface Ethernet47 (IP: 10.101.50.4) - Destination: SW201-SITE2-B Ethernet47 (IP: 10.101.50.5)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "Source: P2P Interface Ethernet56/1 (IP: 10.11.50.8) - Destination: SW103-SITE1-P Ethernet53/1 (IP: 10.11.50.9)"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyEnvironmentCooling",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies the status of power supply fans and all fan trays.",
+    "result": "skipped",
+    "messages": [
+      "VerifyEnvironmentCooling test is not supported on cEOSLab"
+    ],
+    "custom_field": "Accepted States: 'ok'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyEnvironmentPower",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies the power supplies status.",
+    "result": "skipped",
+    "messages": [
+      "VerifyEnvironmentPower test is not supported on cEOSLab"
+    ],
+    "custom_field": "Accepted States: 'ok'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyTemperature",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies if the device temperature is within acceptable limits.",
+    "result": "skipped",
+    "messages": [
+      "VerifyTemperature test is not supported on cEOSLab"
+    ]
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyTransceiversManufacturers",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies if all the transceivers come from approved manufacturers.",
+    "result": "skipped",
+    "messages": [
+      "VerifyTransceiversManufacturers test is not supported on cEOSLab"
+    ],
+    "custom_field": "Accepted Manufacturers: 'Arista Networks', 'Arastra, Inc.', 'Not Present'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Ethernet43 - P2P_SW401-SITE4-B_Ethernet45 = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Ethernet45 - P2P_SW301-SITE3-P_Ethernet35 = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Ethernet47 - P2P_SW201-SITE2-B_Ethernet47 = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Ethernet50 - SERVER_site1-server1_Ethernet1 = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Ethernet56/1 - P2P_SW103-SITE1-P_Ethernet53/1 = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Loopback0 - ROUTER_ID = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Loopback1 - VXLAN_TUNNEL_SOURCE = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Loopback10 - INBAND_MGMT = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Vlan112 - NetworkMgmtSite1 = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Vlan113 - EdgeDeviceControlSite1 = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Vlan130 - VideoTrafficBlue = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "failure",
+    "messages": [
+      "Vlan99 - Status mismatch - Expected: up/up, Actual: down/lowerLayerDown"
+    ],
+    "custom_field": "Interface Vlan99 - iTransit = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the operational states of specified interfaces to ensure they match expected configurations.",
+    "result": "success",
+    "custom_field": "Interface Vxlan1 = 'up'"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingProtocolModel",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies the configured routing protocol model.",
+    "result": "success",
+    "custom_field": "Routing protocol model: multi-agent"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.101.30.1 - Peer: SW101-SITE1-B"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.101.30.3 - Peer: SW201-SITE2-B"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.101.30.4 - Peer: SW401-SITE4-B"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.101.30.5 - Peer: SW501-SITE5-B"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.101.40.1 - Peer: SW101-SITE1-B"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.101.40.3 - Peer: SW201-SITE2-B"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.101.40.4 - Peer: SW401-SITE4-B"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.101.40.5 - Peer: SW501-SITE5-B"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.102.30.1 - Peer: SW102-SITE1-R"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.102.30.3 - Peer: SW202-SITE2-R"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.102.30.4 - Peer: SW402-SITE4-R"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.102.30.5 - Peer: SW502-SITE5-R"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.102.40.1 - Peer: SW102-SITE1-R"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.102.40.3 - Peer: SW202-SITE2-R"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.102.40.4 - Peer: SW402-SITE4-R"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.102.40.5 - Peer: SW502-SITE5-R"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.11.30.3 - Peer: SW103-SITE1-P"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.11.30.4 - Peer: SW203-SITE2-P"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.11.30.5 - Peer: SW301-SITE3-P"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.11.40.3 - Peer: SW103-SITE1-P"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.11.40.4 - Peer: SW203-SITE2-P"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyRoutingTableEntry",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies that the provided routes are present in the routing table of a specified VRF.",
+    "result": "success",
+    "custom_field": "Route: 10.11.40.5 - Peer: SW301-SITE3-P"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyNTP",
+    "categories": [
+      "system"
+    ],
+    "description": "Verifies if NTP is synchronised.",
+    "result": "success"
+  },
+  {
+    "name": "SW101-SITE1-B",
+    "test": "VerifyReloadCause",
+    "categories": [
+      "system"
+    ],
+    "description": "Verifies the last reload cause of the device.",
+    "result": "success"
+  }
+]
