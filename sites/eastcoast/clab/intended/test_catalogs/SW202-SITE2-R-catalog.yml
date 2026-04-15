@@ -1,0 +1,346 @@
+anta.tests.connectivity:
+- VerifyLLDPNeighbors:
+    neighbors:
+    - neighbor_device: SW102-SITE1-R.lab.example.com
+      neighbor_port: Ethernet47
+      port: Ethernet47
+    result_overwrite:
+      custom_field: 'Local: Ethernet47 - Remote: SW102-SITE1-R Ethernet47'
+- VerifyLLDPNeighbors:
+    neighbors:
+    - neighbor_device: SW203-SITE2-P.lab.example.com
+      neighbor_port: Ethernet54/1
+      port: Ethernet56/1
+    result_overwrite:
+      custom_field: 'Local: Ethernet56/1 - Remote: SW203-SITE2-P Ethernet54/1'
+- VerifyLLDPNeighbors:
+    neighbors:
+    - neighbor_device: site2-server1
+      neighbor_port: Ethernet2
+      port: Ethernet50
+    result_overwrite:
+      custom_field: 'Local: Ethernet50 - Remote: site2-server1 Ethernet2'
+- VerifyReachability:
+    hosts:
+    - destination: 10.102.50.4
+      repeat: 1
+      source: 10.102.50.5
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: P2P Interface Ethernet47 (IP: 10.102.50.5) - Destination:
+        SW102-SITE1-R Ethernet47 (IP: 10.102.50.4)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.11.50.15
+      repeat: 1
+      source: 10.11.50.14
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: P2P Interface Ethernet56/1 (IP: 10.11.50.14) - Destination:
+        SW203-SITE2-P Ethernet54/1 (IP: 10.11.50.15)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.101.30.1
+      repeat: 1
+      source: 10.102.30.3
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: Loopback0 (IP: 10.102.30.3) - Destination: SW101-SITE1-B
+        Loopback0 (IP: 10.101.30.1)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.102.30.1
+      repeat: 1
+      source: 10.102.30.3
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: Loopback0 (IP: 10.102.30.3) - Destination: SW102-SITE1-R
+        Loopback0 (IP: 10.102.30.1)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.101.30.3
+      repeat: 1
+      source: 10.102.30.3
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: Loopback0 (IP: 10.102.30.3) - Destination: SW201-SITE2-B
+        Loopback0 (IP: 10.101.30.3)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.101.30.4
+      repeat: 1
+      source: 10.102.30.3
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: Loopback0 (IP: 10.102.30.3) - Destination: SW401-SITE4-B
+        Loopback0 (IP: 10.101.30.4)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.101.30.5
+      repeat: 1
+      source: 10.102.30.3
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: Loopback0 (IP: 10.102.30.3) - Destination: SW501-SITE5-B
+        Loopback0 (IP: 10.101.30.5)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.102.30.3
+      repeat: 1
+      source: 10.102.30.3
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: Loopback0 (IP: 10.102.30.3) - Destination: SW202-SITE2-R
+        Loopback0 (IP: 10.102.30.3)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.102.30.4
+      repeat: 1
+      source: 10.102.30.3
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: Loopback0 (IP: 10.102.30.3) - Destination: SW402-SITE4-R
+        Loopback0 (IP: 10.102.30.4)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.102.30.5
+      repeat: 1
+      source: 10.102.30.3
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: Loopback0 (IP: 10.102.30.3) - Destination: SW502-SITE5-R
+        Loopback0 (IP: 10.102.30.5)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.11.30.3
+      repeat: 1
+      source: 10.102.30.3
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: Loopback0 (IP: 10.102.30.3) - Destination: SW103-SITE1-P
+        Loopback0 (IP: 10.11.30.3)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.11.30.4
+      repeat: 1
+      source: 10.102.30.3
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: Loopback0 (IP: 10.102.30.3) - Destination: SW203-SITE2-P
+        Loopback0 (IP: 10.11.30.4)'
+- VerifyReachability:
+    hosts:
+    - destination: 10.11.30.5
+      repeat: 1
+      source: 10.102.30.3
+      vrf: default
+    result_overwrite:
+      custom_field: 'Source: Loopback0 (IP: 10.102.30.3) - Destination: SW301-SITE3-P
+        Loopback0 (IP: 10.11.30.5)'
+anta.tests.hardware:
+- VerifyEnvironmentPower:
+    result_overwrite:
+      custom_field: 'Accepted States: ''ok'''
+    states:
+    - ok
+- VerifyEnvironmentCooling:
+    result_overwrite:
+      custom_field: 'Accepted States: ''ok'''
+    states:
+    - ok
+- VerifyTemperature: null
+- VerifyTransceiversManufacturers:
+    manufacturers:
+    - Arista Networks
+    - Arastra, Inc.
+    - Not Present
+    result_overwrite:
+      custom_field: 'Accepted Manufacturers: ''Arista Networks'', ''Arastra, Inc.'',
+        ''Not Present'''
+anta.tests.interfaces:
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Ethernet47
+      status: up
+    result_overwrite:
+      custom_field: Interface Ethernet47 - P2P_SW102-SITE1-R_Ethernet47 = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Ethernet56/1
+      status: up
+    result_overwrite:
+      custom_field: Interface Ethernet56/1 - P2P_SW203-SITE2-P_Ethernet54/1 = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Ethernet50
+      status: up
+    result_overwrite:
+      custom_field: Interface Ethernet50 - SERVER_site2-server1_Ethernet2 = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Vlan212
+      status: up
+    result_overwrite:
+      custom_field: Interface Vlan212 - NetworkMgmtSite2 = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Vlan213
+      status: up
+    result_overwrite:
+      custom_field: Interface Vlan213 - EdgeDeviceControlSite2 = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Vlan231
+      status: up
+    result_overwrite:
+      custom_field: Interface Vlan231 - VideoTrafficRed = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Loopback0
+      status: up
+    result_overwrite:
+      custom_field: Interface Loopback0 - ROUTER_ID = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Loopback1
+      status: up
+    result_overwrite:
+      custom_field: Interface Loopback1 - VXLAN_TUNNEL_SOURCE = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Loopback10
+      status: up
+    result_overwrite:
+      custom_field: Interface Loopback10 - INBAND_MGMT = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Vxlan1
+      status: up
+    result_overwrite:
+      custom_field: Interface Vxlan1 = 'up'
+anta.tests.routing.bgp:
+- VerifyBGPSpecificPeers:
+    address_families:
+    - afi: evpn
+      peers:
+      - 10.102.30.1
+    result_overwrite:
+      custom_field: 'BGP EVPN Peer: SW102-SITE1-R (IP: 10.102.30.1)'
+anta.tests.routing.generic:
+- VerifyRoutingProtocolModel:
+    model: multi-agent
+    result_overwrite:
+      custom_field: 'Routing protocol model: multi-agent'
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.101.30.1 - Peer: SW101-SITE1-B'
+    routes:
+    - 10.101.30.1
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.102.30.1 - Peer: SW102-SITE1-R'
+    routes:
+    - 10.102.30.1
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.101.30.3 - Peer: SW201-SITE2-B'
+    routes:
+    - 10.101.30.3
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.101.30.4 - Peer: SW401-SITE4-B'
+    routes:
+    - 10.101.30.4
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.101.30.5 - Peer: SW501-SITE5-B'
+    routes:
+    - 10.101.30.5
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.102.30.3 - Peer: SW202-SITE2-R'
+    routes:
+    - 10.102.30.3
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.102.30.4 - Peer: SW402-SITE4-R'
+    routes:
+    - 10.102.30.4
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.102.30.5 - Peer: SW502-SITE5-R'
+    routes:
+    - 10.102.30.5
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.11.30.3 - Peer: SW103-SITE1-P'
+    routes:
+    - 10.11.30.3
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.11.30.4 - Peer: SW203-SITE2-P'
+    routes:
+    - 10.11.30.4
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.11.30.5 - Peer: SW301-SITE3-P'
+    routes:
+    - 10.11.30.5
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.101.40.1 - Peer: SW101-SITE1-B'
+    routes:
+    - 10.101.40.1
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.102.40.1 - Peer: SW102-SITE1-R'
+    routes:
+    - 10.102.40.1
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.101.40.3 - Peer: SW201-SITE2-B'
+    routes:
+    - 10.101.40.3
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.101.40.4 - Peer: SW401-SITE4-B'
+    routes:
+    - 10.101.40.4
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.101.40.5 - Peer: SW501-SITE5-B'
+    routes:
+    - 10.101.40.5
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.102.40.3 - Peer: SW202-SITE2-R'
+    routes:
+    - 10.102.40.3
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.102.40.4 - Peer: SW402-SITE4-R'
+    routes:
+    - 10.102.40.4
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.102.40.5 - Peer: SW502-SITE5-R'
+    routes:
+    - 10.102.40.5
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.11.40.3 - Peer: SW103-SITE1-P'
+    routes:
+    - 10.11.40.3
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.11.40.4 - Peer: SW203-SITE2-P'
+    routes:
+    - 10.11.40.4
+- VerifyRoutingTableEntry:
+    result_overwrite:
+      custom_field: 'Route: 10.11.40.5 - Peer: SW301-SITE3-P'
+    routes:
+    - 10.11.40.5
+anta.tests.system:
+- VerifyNTP: null
+- VerifyReloadCause: null
