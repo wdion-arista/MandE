@@ -31,14 +31,7 @@ spine:
           id: 1
           campus_pod: SITE1
           campus_access_pod: Blue
-          # inband_mgmt_subnet: 10.12.12.0/24
-          # inband_mgmt_interface: Vlan112
-          ## inband_mgmt_vrf: Production
-          ## inband_mgmt_ip: 10.0.10.11/24
-          # inband_mgmt_vlan: 1112
-
           mgmt_ip: "{{ ansible_host }}/{{ mgmt_cidr | default('24') }}"
-          # mgmt_interface: Management0
           structured_config:
             loopback_interfaces:
               - name: "Loopback10"
@@ -98,7 +91,6 @@ spine:
                 routing: true
                 software_forwarding: kernel
             static_routes:
-              #   # VRF Name.
               - vrf: Production
                 # IPv4_network/Mask.
                 destination_address_prefix: 0.0.0.0/0

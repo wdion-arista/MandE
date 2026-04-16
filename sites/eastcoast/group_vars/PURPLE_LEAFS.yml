@@ -9,13 +9,9 @@ l3leaf:
     platform: "{{ platform_clab_type | default('7020TD') }}"
     spanning_tree_mode: mstp
     spanning_tree_priority: 32768
-    # inband_mgmt_subnet: 10.10.10.0/24
-    # inband_mgmt_vlan: 1011
     loopback_ipv4_pool: 10.11.30.0/24
     vtep_loopback_ipv4_pool: 10.11.40.0/24
     uplink_ipv4_pool: 10.11.50.0/24
-    # mlag_peer_ipv4_pool: 10.60.171.12/30
-    # mlag: true
     
 
   node_groups:
@@ -27,14 +23,6 @@ l3leaf:
         tags:
           - "l3leafs"
           - "purple"
-      # evpn_gateway:
-        # Specific BGP EVPN Gateway functionality for route types 2 (MAC-IP), 3 (IMET) and 5 (IP-PREFIX) can be enabled separately as needed.
-        # evpn_l2:
-        #   enabled: true
-        # evpn_l3:
-        #   enabled: true
-        #   inter_domain: true
-
       nodes:
         - name: SW103-SITE1-P
           id: 3
@@ -64,8 +52,6 @@ l3leaf:
               dns_servers_ipv4:
               - 4.2.2.1
               - 8.8.8.8
-              # tftp_server:
-              #   file_ipv4: https://www.arista.io/ztp/bootstrap
               ipv4_vendor_options:
               - vendor_id: NTP
                 sub_options:
@@ -125,13 +111,6 @@ l3leaf:
         tags:
           - "l3leafs"
           - "purple"
-      # evpn_gateway:
-      #   # Specific BGP EVPN Gateway functionality for route types 2 (MAC-IP), 3 (IMET) and 5 (IP-PREFIX) can be enabled separately as needed.
-      #   evpn_l2:
-      #     enabled: true
-      #   evpn_l3:
-      #     enabled: true
-      #     inter_domain: true
       nodes:
         - name: SW203-SITE2-P
           id: 4
@@ -166,7 +145,6 @@ l3leaf:
               peer_groups:
                 - name: EVPN-OVERLAY-PEERS
                   type: evpn
-                  # next_hop_unchanged: true
                   update_source: Loopback0
                   send_community: all
                   bfd: true
@@ -185,8 +163,6 @@ l3leaf:
               dns_servers_ipv4:
               - 4.2.2.1
               - 8.8.8.8
-              # tftp_server:
-              #   file_ipv4: https://www.arista.io/ztp/bootstrap
               ipv4_vendor_options:
               - vendor_id: NTP
                 sub_options:
@@ -247,13 +223,6 @@ l3leaf:
         tags:
           - "l3leafs"
           - "purple"      
-      # evpn_gateway:
-      #   # Specific BGP EVPN Gateway functionality for route types 2 (MAC-IP), 3 (IMET) and 5 (IP-PREFIX) can be enabled separately as needed.
-      #   evpn_l2:
-      #     enabled: true
-      #   evpn_l3:
-      #     enabled: true
-      #     inter_domain: true
       nodes:
         - name: SW301-SITE3-P
           id: 5
@@ -264,7 +233,6 @@ l3leaf:
               - "purple_site3"
           campus_pod: SITE3
           platform: "{{ platform_clab_type | default('7280SR3') }}"
-          #inband_mgmt_ip: 10.10.10.42/24
           uplink_interfaces: [Ethernet35,Ethernet36]
           uplink_switches: [SW101-SITE1-B,SW102-SITE1-R]
           uplink_switch_interfaces: [Ethernet45,Ethernet45]
@@ -281,8 +249,6 @@ l3leaf:
               dns_servers_ipv4:
               - 4.2.2.1
               - 8.8.8.8
-              # tftp_server:
-              #   file_ipv4: https://www.arista.io/ztp/bootstrap
               ipv4_vendor_options:
               - vendor_id: NTP
                 sub_options:
