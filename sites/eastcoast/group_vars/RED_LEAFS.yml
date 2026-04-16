@@ -7,16 +7,10 @@ l3leaf:
     campus_access_pod: Red
     spanning_tree_mode: mstp
     spanning_tree_priority: 32768
-    # inband_mgmt_subnet: 10.10.10.0/24
-    #inband_mgmt_vlan: 1011
-    # mlag_peer_l3_vlan: 4094
-    # mgmt_interface: vlan1011
     loopback_ipv4_pool: 10.102.30.0/24
     vtep_loopback_ipv4_pool: 10.102.40.0/24
     uplink_ipv4_pool: 10.102.50.0/24
-    # mlag_peer_ipv4_pool: 10.60.171.12/30
     virtual_router_mac_address: 00:1c:73:00:dc:22
-    # mlag: true
 
   node_groups:
     - group: RED_LEAFS
@@ -147,7 +141,6 @@ l3leaf:
               peer_groups:
                 - name: EVPN-OVERLAY-PEERS
                   type: evpn
-                  # next_hop_unchanged: true
                   update_source: Loopback0
                   send_community: all
                   bfd: true
