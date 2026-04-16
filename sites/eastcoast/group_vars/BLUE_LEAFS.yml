@@ -31,7 +31,6 @@ l3leaf:
               - "site2"
               - "blue_site2"
           platform: "{{ platform_clab_type | default('7280SR3') }}"
-          #inband_mgmt_ip: 10.10.10.40/24
           uplink_interfaces: [Ethernet47]
           uplink_switches: [SW101-SITE1-B]
           uplink_switch_interfaces: [Ethernet47]
@@ -81,13 +80,6 @@ l3leaf:
         tags:
           - "l3leafs"
           - "blue"          
-      # evpn_gateway:
-      #   # Specific BGP EVPN Gateway functionality for route types 2 (MAC-IP), 3 (IMET) and 5 (IP-PREFIX) can be enabled separately as needed.
-      #   evpn_l2:
-      #     enabled: true
-      #   evpn_l3:
-      #     enabled: true
-      #     inter_domain: true
       nodes:
         - name: SW401-SITE4-B
           id: 4
@@ -98,7 +90,6 @@ l3leaf:
               - "blue_site4"
           campus_pod: SITE4              
           platform: "{{ platform_clab_type | default('7280SR3') }}"
-          #inband_mgmt_ip: 10.10.10.41/24
           uplink_interfaces: [Ethernet45]
           uplink_switches: [SW101-SITE1-B]
           uplink_switch_interfaces: [Ethernet43]
@@ -154,7 +145,6 @@ l3leaf:
               - "blue_site5"
           campus_pod: SITE5
           platform: "{{ platform_clab_type | default('7280SR3') }}"
-          #inband_mgmt_ip: 10.10.10.41/24
           uplink_interfaces: [Ethernet39]
           uplink_switches: [SW401-SITE4-B]
           uplink_switch_interfaces: [Ethernet47]
@@ -178,7 +168,6 @@ l3leaf:
               peer_groups:
                 - name: EVPN-OVERLAY-PEERS
                   type: evpn
-                  # next_hop_unchanged: true
                   update_source: Loopback0
                   send_community: all
                   bfd: true
@@ -219,17 +208,11 @@ l3leaf:
               speed_groups:
                 - speed_group: 1
                   serdes: 10g
-            # ethernet_interfaces:
-              # - name: Ethernet19
-              #   shutdown: true
-# DCHP
             dhcp_servers:
             - vrf: Production
               dns_servers_ipv4:
               - 4.2.2.1
               - 8.8.8.8
-              # tftp_server:
-              #   file_ipv4: https://www.arista.io/ztp/bootstrap
               ipv4_vendor_options:
               - vendor_id: NTP
                 sub_options:
