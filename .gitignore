@@ -19,3 +19,6 @@ core
 *.pem
 agents/
 CLAUDE.md
+*.log.gz
+Fossil/
+*debug-vars.yml
