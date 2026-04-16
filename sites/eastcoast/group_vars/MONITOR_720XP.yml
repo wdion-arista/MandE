@@ -1,68 +1,4 @@
 
-
-# # Default enabling of sFlow for various interface types across the fabric.
-# # sFlow can also be enabled/disabled under each of the specific data models.
-# # For general sFlow settings see `sflow_settings`.
-# fabric_sflow:
-
-#   # Enable sFlow on all fabric uplinks.
-#   uplinks: true
-
-#   # Enable sFlow on all fabric downlinks.
-#   downlinks: true
-
-#   # Enable sFlow on all endpoints ports.
-#   endpoints: true
-
-#   # Enable sFlow on all p2p_links defined under l3_edge.
-#   # l3_edge: <bool>
-
-#   # Enable sFlow on all p2p_links defined under core_interfaces.
-#   # core_interfaces: <bool>
-
-#   # Enable sFlow on all MLAG peer interfaces.
-#   # mlag_interfaces: <bool>
-
-#   # Enable sFlow on all l3 interfaces.
-#   l3_interfaces: true
-
-# # sFlow settings.
-# # The sFlow process will only be configured if any interface is enabled for sFlow.
-# # For default enabling of sFlow for various interface types across the fabric see `fabric_sflow`.
-# sflow_settings:
-
-#   # Interval in seconds for sending counter data to the sFlow collector.
-#   polling_interval: 5
-#   sample:
-
-#     # Packet sampling rate that defines the average number of ingress packets that pass through an interface for every packet that is sampled.
-#     # A rate of 16384 corresponds to an average sample of one per 16384 packets.
-#     rate: 300
-#   destinations: # >=1 items; required
-
-#       # sFlow destination name or IP address.
-#     - destination: 127.0.0.1
-
-#       # UDP Port number. The default port number for sFlow is 6343.
-#       # port: <int; 1-65535>
-
-#       # If not set, the VRF is automatically picked up from the global setting `default_mgmt_method`.
-#       # The value of `vrf` will be interpreted according to these rules:
-#       # - `use_mgmt_interface_vrf` will configure the sFlow destination under the VRF set with `mgmt_interface_vrf` and set the `mgmt_interface` as sFlow source-interface.
-#       #   An error will be raised if `mgmt_ip` or `ipv6_mgmt_ip` are not configured for the device.
-#       # - `use_inband_mgmt_vrf` will configure the sFlow destination under the VRF set with `inband_mgmt_vrf` and set the `inband_mgmt_interface` as sFlow source-interface.
-#       #   An error will be raised if inband management is not configured for the device.
-#       # - Any other string will be used directly as the VRF name. Remember to set the `sflow_settings.vrfs[].source_interface` if needed.
-#       vrf: default
-#   vrfs:
-
-#   #     # VRF name.
-#     - name: default
-
-#       # Source interface to use for sFlow destinations in this VRF.
-#       # If set for the VRFs defined by `mgmt_interface_vrf` or `inband_mgmt_vrf`, this setting will take precedence.
-#       source_interface: Loopback0
-
 # Default enabling of flow-tracking(IPFIX) for various interface types across the fabric.
 # Flow Tracking can also be enabled/disabled under each of the specific data models.
 # For general flow-tracking settings see `flow_tracking_settings`.
@@ -147,16 +83,6 @@ flow_tracking_settings:
       ipv4_ipv6: true
       mpls: true
     sample: 10000 # <int; 1-4294967295; default=10000>
-    # hardware_offload:
-
-    #   # Configure hardware offload for IPv4 traffic.
-    #   ipv4: false
-
-    #   # Configure hardware offload for IPv6 traffic.
-    #   # ipv6: false
-
-    #   # Minimum number of samples.
-    #   threshold_minimum: 300
 
   # The options relevant only for flow tracker type hardware.
   hardware:

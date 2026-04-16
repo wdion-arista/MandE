@@ -12,7 +12,6 @@ Production:
           - id: 99
             tags:
               - "blue_site1"
-              # - "red_site1"
             name: iTransit
             enabled: true
             ip_address: 10.1.99.5/28
@@ -21,7 +20,6 @@ Production:
               - 10.1.99.4/28
           - id: 99
             tags:
-              # - "blue_site1"
               - "red_site1"
             name: iTransit
             enabled: true
@@ -199,7 +197,6 @@ Production:
           # SITE1
           - id: 135
             tags:
-              # - "blue_site1"
               - "purple_site1"
             name: SRTTrafficBlue
             enabled: true
@@ -236,7 +233,6 @@ Production:
           # SRTTrafficRed
           - id: 136
             tags:
-              # - "red_site1"
               - "purple_site1"
             name: SRTTrafficRed
             enabled: true
