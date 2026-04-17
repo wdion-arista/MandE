@@ -92,11 +92,19 @@ make act-build                # Build ACT configs
 ### ContainerLab (local cEOS)
 
 ```sh
-make containerlab-get-image                      # Download & import cEOSarm image
+make containerlab-get-image-arm                  # Download & import cEOS image (ARM64 — Apple Silicon)
+make containerlab-get-image-amd64               # Download & import cEOS image (AMD64 — Intel/AMD)
 make clab-containerlab-build-deploy-default      # Full workflow: build → deploy → default configs
 make clab-containerlab-build-deploy-avd          # Full workflow: build → deploy → AVD configs as startup
 make containerlab-destroy                        # Tear down the lab
 ```
+
+> **cEOS image not downloaded?** Make sure `ARISTA_TOKEN` is set in your `.env` and sourced, then run the target that matches your host architecture:
+>
+> | Host | Command |
+> | --- | --- |
+> | Apple Silicon (ARM64) | `make containerlab-get-image-arm` |
+> | Intel / AMD (x86-64) | `make containerlab-get-image-amd64` |
 
 ### ACT (Arista Cloud Test)
 
