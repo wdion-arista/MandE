@@ -53,18 +53,27 @@ Edit `.env` and fill in your tokens:
 
 | Variable | Description |
 | --- | --- |
-| `ARISTA_TOKEN` | arista.com profile API key (for cEOS image downloads) |
-| `CE_ACT_APKEY` | Arista CE ACT API key |
-| `CVAAS_TOKEN_LAB` | CVaaS token for lab tenant |
-| `CVAAS_TOKEN_PROD` | CVaaS token for prod tenant |
-| `CVP_TOKEN_LAB` | On-prem CVP token |
-| `CEOS_ARM_IMAGE` | cEOS image version (e.g. `4.36.0F`) |
+| `ARISTA_TOKEN` | (MANDATORY) arista.com profile API key (for cEOS image downloads) |
+| `CE_ACT_APKEY` | (OPTIONAL) Arista CE ACT API key |
+| `CVAAS_TOKEN_LAB` | (OPTIONAL) CVaaS token for lab tenant |
+| `CVAAS_TOKEN_PROD` | (OPTIONAL) CVaaS token for prod tenant |
+| `CVP_TOKEN_LAB` | (OPTIONAL) On-prem CVP token |
+| `CEOS_ARM_IMAGE` | (OPTIONAL) cEOS image version (e.g. `4.36.0F`) |
+| `LABPASSPHRASE` | (MANDATORY) Password for lab user |
 
 Source it before running any make targets:
 
 ```sh
 source .env
 ```
+
+Ensure an SSH key exists — `make prod-build` (and other playbooks) will fail without one:
+
+```sh
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+> If you already have a key at `~/.ssh/id_ed25519` (or `~/.ssh/id_rsa`), you can skip this step.
 
 ---
 
@@ -85,6 +94,7 @@ make act-build                # Build ACT configs
 ```sh
 make containerlab-get-image                      # Download & import cEOSarm image
 make clab-containerlab-build-deploy-default      # Full workflow: build → deploy → default configs
+make clab-containerlab-build-deploy-avd          # Full workflow: build → deploy → AVD configs as startup
 make containerlab-destroy                        # Tear down the lab
 ```
 
