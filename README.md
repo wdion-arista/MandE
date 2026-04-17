@@ -34,9 +34,9 @@ git clone https://github.com/wdion-arista/MandE.git labs/MandE
 In VSCode:
 
 1. Open the `ceos-act-projects` folder (via Remote SSH → `orb` if using OrbStack)
-2. **Reopen in Container** → select **CAP - MandE - AVD GH Containerlab-Docker-Outside-Docker (AI)**
+2. **Reopen in Container** → select **CAP - MandE - AVD GH Containerlab-Docker-Outside-Docker**
 
-This uses `.devcontainer/ceos-act-projects-base-ai-MandE/devcontainer.json` and mounts `labs/MandE` as the workspace.
+This uses `.devcontainer/ceos-act-projects-base-MandE/devcontainer.json` and mounts `labs/MandE` as the workspace.
 
 ---
 
