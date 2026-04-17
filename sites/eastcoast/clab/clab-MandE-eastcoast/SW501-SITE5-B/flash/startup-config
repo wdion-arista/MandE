@@ -1,4 +1,4 @@
-! Startup-config last modified at Mon Apr 13 10:10:54 2026 by root
+! Startup-config last modified at Fri Apr 17 11:57:12 2026 by root
 ! device: SW501-SITE5-B (cEOSLab, EOS-4.36.0F-47092531.4360F (engineering build))
 !
 no aaa root
@@ -161,7 +161,7 @@ interface Loopback10
 interface Management0
    description OOB_MANAGEMENT
    ip address 172.20.20.51/24
-   ipv6 address 3fff:172:20:20::2/64
+   ipv6 address 3fff:172:20:20::3/64
 !
 interface Vlan512
    description NetworkMgmtSite5
