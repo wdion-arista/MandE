@@ -29,6 +29,9 @@
 | EASTCOAST_FABRIC | l3leaf | SW402-SITE4-R | 172.20.20.42/24 | 7280SR3 | Provisioned | - |
 | EASTCOAST_FABRIC | l3leaf | SW501-SITE5-B | 172.20.20.51/24 | 7280SR3 | Provisioned | - |
 | EASTCOAST_FABRIC | l3leaf | SW502-SITE5-R | 172.20.20.52/24 | 7280SR3 | Provisioned | - |
+| EASTCOAST_FABRIC | l3leaf | SW601-SITE6-B | 172.20.20.61/24 | 7280SR3 | Provisioned | - |
+| EASTCOAST_FABRIC | l3leaf | SW602-SITE6-R | 172.20.20.62/24 | 7280SR3 | Provisioned | - |
+| EASTCOAST_FABRIC | l3leaf | SW603-SITE6-P | 172.20.20.63/24 | 7020TD | Provisioned | - |
 
 > Provision status is based on Ansible inventory declaration and do not represent real status from CloudVision.
 
@@ -41,10 +44,12 @@
 
 | Type | Node | Node Interface | Peer Type | Peer Node | Peer Interface |
 | ---- | ---- | -------------- | --------- | ----------| -------------- |
+| spine | SW101-SITE1-B | Ethernet41 | l3leaf | SW601-SITE6-B | Ethernet47 |
 | spine | SW101-SITE1-B | Ethernet43 | l3leaf | SW401-SITE4-B | Ethernet45 |
 | spine | SW101-SITE1-B | Ethernet45 | l3leaf | SW301-SITE3-P | Ethernet35 |
 | spine | SW101-SITE1-B | Ethernet47 | l3leaf | SW201-SITE2-B | Ethernet47 |
 | spine | SW101-SITE1-B | Ethernet56/1 | l3leaf | SW103-SITE1-P | Ethernet53/1 |
+| spine | SW102-SITE1-R | Ethernet41 | l3leaf | SW602-SITE6-R | Ethernet47 |
 | spine | SW102-SITE1-R | Ethernet43 | l3leaf | SW402-SITE4-R | Ethernet45 |
 | spine | SW102-SITE1-R | Ethernet45 | l3leaf | SW301-SITE3-P | Ethernet36 |
 | spine | SW102-SITE1-R | Ethernet47 | l3leaf | SW202-SITE2-R | Ethernet47 |
@@ -53,6 +58,8 @@
 | l3leaf | SW202-SITE2-R | Ethernet56/1 | l3leaf | SW203-SITE2-P | Ethernet54/1 |
 | l3leaf | SW401-SITE4-B | Ethernet47 | l3leaf | SW501-SITE5-B | Ethernet39 |
 | l3leaf | SW402-SITE4-R | Ethernet47 | l3leaf | SW502-SITE5-R | Ethernet39 |
+| l3leaf | SW601-SITE6-B | Ethernet56/1 | l3leaf | SW603-SITE6-P | Ethernet53/1 |
+| l3leaf | SW602-SITE6-R | Ethernet56/1 | l3leaf | SW603-SITE6-P | Ethernet54/1 |
 
 ## Fabric IP Allocation
 
@@ -60,18 +67,20 @@
 
 | Uplink IPv4 Pool | Available Addresses | Assigned addresses | Assigned Address % |
 | ---------------- | ------------------- | ------------------ | ------------------ |
-| 10.11.50.0/24 | 256 | 12 | 4.69 % |
-| 10.101.50.0/24 | 256 | 6 | 2.35 % |
-| 10.102.50.0/24 | 256 | 6 | 2.35 % |
+| 10.11.50.0/24 | 256 | 16 | 6.25 % |
+| 10.101.50.0/24 | 256 | 8 | 3.13 % |
+| 10.102.50.0/24 | 256 | 8 | 3.13 % |
 
 ### Point-To-Point Links Node Allocation
 
 | Node | Node Interface | Node IP Address | Peer Node | Peer Interface | Peer IP Address |
 | ---- | -------------- | --------------- | --------- | -------------- | --------------- |
+| SW101-SITE1-B | Ethernet41 | 10.101.50.10/31 | SW601-SITE6-B | Ethernet47 | 10.101.50.11/31 |
 | SW101-SITE1-B | Ethernet43 | 10.101.50.6/31 | SW401-SITE4-B | Ethernet45 | 10.101.50.7/31 |
 | SW101-SITE1-B | Ethernet45 | 10.11.50.16/31 | SW301-SITE3-P | Ethernet35 | 10.11.50.17/31 |
 | SW101-SITE1-B | Ethernet47 | 10.101.50.4/31 | SW201-SITE2-B | Ethernet47 | 10.101.50.5/31 |
 | SW101-SITE1-B | Ethernet56/1 | 10.11.50.8/31 | SW103-SITE1-P | Ethernet53/1 | 10.11.50.9/31 |
+| SW102-SITE1-R | Ethernet41 | 10.102.50.10/31 | SW602-SITE6-R | Ethernet47 | 10.102.50.11/31 |
 | SW102-SITE1-R | Ethernet43 | 10.102.50.6/31 | SW402-SITE4-R | Ethernet45 | 10.102.50.7/31 |
 | SW102-SITE1-R | Ethernet45 | 10.11.50.18/31 | SW301-SITE3-P | Ethernet36 | 10.11.50.19/31 |
 | SW102-SITE1-R | Ethernet47 | 10.102.50.4/31 | SW202-SITE2-R | Ethernet47 | 10.102.50.5/31 |
@@ -80,14 +89,16 @@
 | SW202-SITE2-R | Ethernet56/1 | 10.11.50.14/31 | SW203-SITE2-P | Ethernet54/1 | 10.11.50.15/31 |
 | SW401-SITE4-B | Ethernet47 | 10.101.50.8/31 | SW501-SITE5-B | Ethernet39 | 10.101.50.9/31 |
 | SW402-SITE4-R | Ethernet47 | 10.102.50.8/31 | SW502-SITE5-R | Ethernet39 | 10.102.50.9/31 |
+| SW601-SITE6-B | Ethernet56/1 | 10.11.50.20/31 | SW603-SITE6-P | Ethernet53/1 | 10.11.50.21/31 |
+| SW602-SITE6-R | Ethernet56/1 | 10.11.50.22/31 | SW603-SITE6-P | Ethernet54/1 | 10.11.50.23/31 |
 
 ### Loopback Interfaces (BGP EVPN Peering)
 
 | Loopback Pool | Available Addresses | Assigned addresses | Assigned Address % |
 | ------------- | ------------------- | ------------------ | ------------------ |
-| 10.11.30.0/24 | 256 | 3 | 1.18 % |
-| 10.101.30.0/24 | 256 | 4 | 1.57 % |
-| 10.102.30.0/24 | 256 | 4 | 1.57 % |
+| 10.11.30.0/24 | 256 | 4 | 1.57 % |
+| 10.101.30.0/24 | 256 | 5 | 1.96 % |
+| 10.102.30.0/24 | 256 | 5 | 1.96 % |
 
 ### Loopback0 Interfaces Node Allocation
 
@@ -104,6 +115,9 @@
 | EASTCOAST_FABRIC | SW402-SITE4-R | 10.102.30.4/32 |
 | EASTCOAST_FABRIC | SW501-SITE5-B | 10.101.30.5/32 |
 | EASTCOAST_FABRIC | SW502-SITE5-R | 10.102.30.5/32 |
+| EASTCOAST_FABRIC | SW601-SITE6-B | 10.101.30.6/32 |
+| EASTCOAST_FABRIC | SW602-SITE6-R | 10.102.30.6/32 |
+| EASTCOAST_FABRIC | SW603-SITE6-P | 10.11.30.6/32 |
 
 ### ISIS CLNS interfaces
 
@@ -120,14 +134,17 @@
 | EASTCOAST_FABRIC | SW402-SITE4-R | 49.0001.0101.0203.0004.00 |
 | EASTCOAST_FABRIC | SW501-SITE5-B | 49.0001.0101.0103.0005.00 |
 | EASTCOAST_FABRIC | SW502-SITE5-R | 49.0001.0101.0203.0005.00 |
+| EASTCOAST_FABRIC | SW601-SITE6-B | 49.0001.0101.0103.0006.00 |
+| EASTCOAST_FABRIC | SW602-SITE6-R | 49.0001.0101.0203.0006.00 |
+| EASTCOAST_FABRIC | SW603-SITE6-P | 49.0001.0100.1103.0006.00 |
 
 ### VTEP Loopback VXLAN Tunnel Source Interfaces (VTEPs Only)
 
 | VTEP Loopback Pool | Available Addresses | Assigned addresses | Assigned Address % |
 | ------------------ | ------------------- | ------------------ | ------------------ |
-| 10.11.40.0/24 | 256 | 3 | 1.18 % |
-| 10.101.40.0/24 | 256 | 4 | 1.57 % |
-| 10.102.40.0/24 | 256 | 4 | 1.57 % |
+| 10.11.40.0/24 | 256 | 4 | 1.57 % |
+| 10.101.40.0/24 | 256 | 5 | 1.96 % |
+| 10.102.40.0/24 | 256 | 5 | 1.96 % |
 
 ### VTEP Loopback Node allocation
 
@@ -144,3 +161,6 @@
 | EASTCOAST_FABRIC | SW402-SITE4-R | 10.102.40.4/32 |
 | EASTCOAST_FABRIC | SW501-SITE5-B | 10.101.40.5/32 |
 | EASTCOAST_FABRIC | SW502-SITE5-R | 10.102.40.5/32 |
+| EASTCOAST_FABRIC | SW601-SITE6-B | 10.101.40.6/32 |
+| EASTCOAST_FABRIC | SW602-SITE6-R | 10.102.40.6/32 |
+| EASTCOAST_FABRIC | SW603-SITE6-P | 10.11.40.6/32 |

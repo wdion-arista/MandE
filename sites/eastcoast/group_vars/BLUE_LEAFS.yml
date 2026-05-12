@@ -72,6 +72,65 @@ l3leaf:
               ipv4:
                 routing: true
                 software_forwarding: kernel                      
+    - group: SITE6_BLUE_LEAFS
+      bgp_as: 65601
+      uplink_interfaces: [Ethernet51/1]
+      mlag: false
+      filter:
+        tenants: [all]
+        tags:
+          - "l3leafs"
+          - "blue"
+      nodes:
+        - name: SW601-SITE6-B
+          id: 6
+          campus_pod: SITE6
+          filter:
+            tags:
+              - "site6"
+              - "blue_site6"
+          platform: "{{ platform_clab_type | default('7280SR3') }}"
+          uplink_interfaces: [Ethernet47]
+          uplink_switches: [SW101-SITE1-B]
+          uplink_switch_interfaces: [Ethernet41]
+          virtual_router_mac_address: 00:1c:73:00:dc:61
+          mgmt_ip: "{{ ansible_host }}/{{ mgmt_cidr | default('24') }}"
+          digital_twin:
+            mgmt_ip: 1.1.1.1/24
+
+          structured_config:
+            loopback_interfaces:
+              - name: "Loopback10"
+                ip_address: 10.0.10.61/32
+                description: INBAND_MGMT
+                vrf: Production
+            vlans:
+              - id: 630
+                name: VideoTrafficBlue
+            vlan_interfaces:
+              - name: Vlan630
+                description: VideoTrafficBlue
+                ip_address: 10.6.30.1/24
+                pim:
+                  ipv4:
+                    sparse_mode: true
+                isis_enable: EVPN_UNDERLAY
+            underlay_multicast: true
+            router_pim_sparse_mode:
+              ipv4:
+                rp_addresses:
+                  - address: 10.101.30.1
+                    groups:
+                      - 236.1.0.0/18
+            ip_igmp_snooping:
+              globally_enabled: true
+              vlans:
+                - id: 630
+                  enabled: true
+            router_multicast:
+              ipv4:
+                routing: true
+                software_forwarding: kernel
     - group: SITE4_BLUE_LEAFS
       bgp_as: 65401
       mlag: false

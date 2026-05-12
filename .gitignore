@@ -23,3 +23,5 @@ CLAUDE.md
 Fossil/
 *debug-vars.yml
 *.tar.xz*
+clab/
+act/

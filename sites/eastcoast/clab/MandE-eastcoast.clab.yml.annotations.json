@@ -170,7 +170,7 @@
     {
       "id": "SW101-SITE1-B",
       "position": {
-        "x": 740,
+        "x": 760,
         "y": 160
       },
       "icon": "spine",
@@ -296,6 +296,34 @@
       "icon": "server",
       "iconColor": "#1fe91c",
       "iconCornerRadius": 0
+    },
+    {
+      "id": "site6-server1",
+      "position": {
+        "x": 1340,
+        "y": 540
+      }
+    },
+    {
+      "id": "SW603-SITE6-P",
+      "position": {
+        "x": 1180,
+        "y": 500
+      }
+    },
+    {
+      "id": "SW602-SITE6-R",
+      "position": {
+        "x": 1160,
+        "y": 360
+      }
+    },
+    {
+      "id": "SW601-SITE6-B",
+      "position": {
+        "x": 1280,
+        "y": 360
+      }
     }
   ],
   "edgeAnnotations": [],

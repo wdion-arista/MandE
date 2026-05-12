@@ -1,0 +1,32 @@
+---
+
+# Definition of connected endpoints in the fabric.
+servers:
+  - name: site6-server1
+    adapters:
+      - endpoint_ports: [ Ethernet1]
+        switch_ports: [ Ethernet50]
+        switches: [ SW601-SITE6-B ]
+        profile: VideoTrafficBlue_site6
+
+      - endpoint_ports: [ Ethernet2 ]
+        switch_ports: [ Ethernet50 ]
+        switches: [ SW602-SITE6-R ]
+        profile: VideoTrafficRed_site6
+
+      - endpoint_ports: [ Ethernet3 ]
+        switch_ports: [ Ethernet50 ]
+        switches: [ SW603-SITE6-P ]
+        profile: SRTTrafficBlue_site6
+
+generic_devices:
+
+##############################################
+# Switchport config for SW601-SITE6-B
+
+##############################################
+# Switchport config for SW602-SITE6-R
+
+##############################################
+# Switchport config for SW603-SITE6-P
+

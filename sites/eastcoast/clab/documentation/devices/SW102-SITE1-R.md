@@ -480,6 +480,7 @@ interface defaults
 
 | Interface | Description | Channel Group | IP Address | VRF |  MTU | Shutdown | ACL In | ACL Out |
 | --------- | ----------- | ------------- | ---------- | ----| ---- | -------- | ------ | ------- |
+| Ethernet41 | P2P_SW602-SITE6-R_Ethernet47 | - | 10.102.50.10/31 | default | 1500 | False | - | - |
 | Ethernet43 | P2P_SW402-SITE4-R_Ethernet45 | - | 10.102.50.6/31 | default | 1500 | False | - | - |
 | Ethernet45 | P2P_SW301-SITE3-P_Ethernet36 | - | 10.11.50.18/31 | default | 1500 | False | - | - |
 | Ethernet47 | P2P_SW202-SITE2-R_Ethernet47 | - | 10.102.50.4/31 | default | 1500 | False | - | - |
@@ -489,6 +490,7 @@ interface defaults
 
 | Interface | Channel Group | ISIS Instance | ISIS BFD | ISIS Metric | Mode | ISIS Circuit Type | Hello Padding | ISIS Authentication Mode |
 | --------- | ------------- | ------------- | -------- | ----------- | ---- | ----------------- | ------------- | ------------------------ |
+| Ethernet41 | - | EVPN_UNDERLAY | - | 50 | point-to-point | level-2 | - | - |
 | Ethernet43 | - | EVPN_UNDERLAY | - | 50 | point-to-point | level-2 | - | - |
 | Ethernet45 | - | EVPN_UNDERLAY | - | 50 | point-to-point | level-2 | - | - |
 | Ethernet47 | - | EVPN_UNDERLAY | - | 50 | point-to-point | level-2 | - | - |
@@ -497,6 +499,18 @@ interface defaults
 #### Ethernet Interfaces Device Configuration
 
 ```eos
+!
+interface Ethernet41
+   description P2P_SW602-SITE6-R_Ethernet47
+   no shutdown
+   mtu 1500
+   no switchport
+   ip address 10.102.50.10/31
+   pim ipv4 sparse-mode
+   isis enable EVPN_UNDERLAY
+   isis circuit-type level-2
+   isis metric 50
+   isis network point-to-point
 !
 interface Ethernet43
    description P2P_SW402-SITE4-R_Ethernet45
@@ -790,6 +804,7 @@ ip route vrf Production 10.1.99.0/28 Vlan99 name VARP
 
 | Interface | ISIS Instance | ISIS Metric | Interface Mode |
 | --------- | ------------- | ----------- | -------------- |
+| Ethernet41 | EVPN_UNDERLAY | 50 | point-to-point |
 | Ethernet43 | EVPN_UNDERLAY | 50 | point-to-point |
 | Ethernet45 | EVPN_UNDERLAY | 50 | point-to-point |
 | Ethernet47 | EVPN_UNDERLAY | 50 | point-to-point |
@@ -862,6 +877,7 @@ ASN Notation: asplain
 | 10.102.30.3 | 65202 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - | - |
 | 10.102.30.4 | 65402 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - | - |
 | 10.102.30.5 | 65502 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - | - |
+| 10.102.30.6 | 65602 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - | - |
 
 #### Router BGP EVPN Address Family
 
@@ -923,6 +939,9 @@ router bgp 65200
    neighbor 10.102.30.5 peer group EVPN-OVERLAY-PEERS
    neighbor 10.102.30.5 remote-as 65502
    neighbor 10.102.30.5 description SW502-SITE5-R
+   neighbor 10.102.30.6 peer group EVPN-OVERLAY-PEERS
+   neighbor 10.102.30.6 remote-as 65602
+   neighbor 10.102.30.6 description SW602-SITE6-R_Loopback0
    !
    vlan 6
       rd 10.102.30.1:10006
@@ -1082,6 +1101,7 @@ router pim sparse-mode
 
 | Interface Name | VRF Name | IP Version | Border Router | DR Priority | Local Interface | Neighbor Filter |
 | -------------- | -------- | ---------- | ------------- | ----------- | --------------- | --------------- |
+| Ethernet41 | - | IPv4 | - | - | - | - |
 | Ethernet43 | - | IPv4 | - | - | - | - |
 | Ethernet47 | - | IPv4 | - | - | - | - |
 | Vlan131 | - | IPv4 | - | - | - | - |

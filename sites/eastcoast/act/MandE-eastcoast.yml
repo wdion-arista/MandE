@@ -91,12 +91,34 @@ nodes:
       ip_addr: 192.168.1.52
       node_type: veos
       ports: []
+  - SW601-SITE6-B:
+      device_model: 7280SR3
+      instance_type: medium
+      ip_addr: 192.168.1.61
+      node_type: veos
+      ports: []
+  - SW602-SITE6-R:
+      device_model: 7280SR3
+      instance_type: medium
+      ip_addr: 192.168.1.62
+      node_type: veos
+      ports: []
+  - SW603-SITE6-P:
+      device_model: 7020TD
+      instance_type: medium
+      ip_addr: 192.168.1.63
+      node_type: veos
+      ports: []
   - site1-server1:
       ip_addr: 192.168.0.128
       node_type: generic
       ports: []
   - site2-server1:
       ip_addr: 192.168.0.129
+      node_type: generic
+      ports: []
+  - site6-server1:
+      ip_addr: 192.168.0.130
       node_type: generic
       ports: []
   - cvp:
@@ -110,6 +132,9 @@ nodes:
       node_type: tools-server
 
 links:
+  - connection:
+    - SW101-SITE1-B:Ethernet41
+    - SW601-SITE6-B:Ethernet47
   - connection:
     - SW101-SITE1-B:Ethernet43
     - SW401-SITE4-B:Ethernet45
@@ -125,6 +150,9 @@ links:
   - connection:
     - site1-server1:Ethernet1
     - SW101-SITE1-B:Ethernet50
+  - connection:
+    - SW102-SITE1-R:Ethernet41
+    - SW602-SITE6-R:Ethernet47
   - connection:
     - SW102-SITE1-R:Ethernet43
     - SW402-SITE4-R:Ethernet45
@@ -164,4 +192,19 @@ links:
   - connection:
     - SW402-SITE4-R:Ethernet47
     - SW502-SITE5-R:Ethernet39
+  - connection:
+    - SW601-SITE6-B:Ethernet56/1
+    - SW603-SITE6-P:Ethernet53/1
+  - connection:
+    - site6-server1:Ethernet1
+    - SW601-SITE6-B:Ethernet50
+  - connection:
+    - SW602-SITE6-R:Ethernet56/1
+    - SW603-SITE6-P:Ethernet54/1
+  - connection:
+    - site6-server1:Ethernet2
+    - SW602-SITE6-R:Ethernet50
+  - connection:
+    - site6-server1:Ethernet3
+    - SW603-SITE6-P:Ethernet50
 

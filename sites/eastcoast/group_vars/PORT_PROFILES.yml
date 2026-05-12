@@ -65,6 +65,11 @@ port_profiles:
     vlans: "230"
     spanning_tree_bpduguard: true
     spanning_tree_portfast: edge
+  - profile: VideoTrafficBlue_site6
+    mode: access
+    vlans: "630"
+    spanning_tree_bpduguard: true
+    spanning_tree_portfast: edge
 
   # JXSVideoTraffic Red
   - profile: VideoTrafficRed_site1
@@ -77,6 +82,11 @@ port_profiles:
     vlans: "231"
     spanning_tree_bpduguard: true
     spanning_tree_portfast: edge
+  - profile: VideoTrafficRed_site6
+    mode: access
+    vlans: "631"
+    spanning_tree_bpduguard: true
+    spanning_tree_portfast: edge
 
 # SRTTrafficBlue
   - profile: SRTTrafficBlue_site1
@@ -87,6 +97,11 @@ port_profiles:
   - profile: SRTTrafficBlue_site2
     mode: access
     vlans: "235"
+    spanning_tree_bpduguard: true
+    spanning_tree_portfast: edge
+  - profile: SRTTrafficBlue_site6
+    mode: access
+    vlans: "635"
     spanning_tree_bpduguard: true
     spanning_tree_portfast: edge
 

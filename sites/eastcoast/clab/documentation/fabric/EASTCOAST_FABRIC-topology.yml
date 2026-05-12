@@ -43,10 +43,25 @@ nodes:
     node_type: veos
     ip_addr: 172.20.20.52/24
     version: 4.33.1.1F
+- SW601-SITE6-B:
+    node_type: veos
+    ip_addr: 1.1.1.1/24
+    version: 4.33.1.1F
+- SW602-SITE6-R:
+    node_type: veos
+    ip_addr: 172.20.20.62/24
+    version: 4.33.1.1F
+- SW603-SITE6-P:
+    node_type: veos
+    ip_addr: 172.20.20.63/24
+    version: 4.33.1.1F
 veos:
   username: cvpadmin2
   password: blabla
 links:
+- connection:
+  - SW101-SITE1-B:Ethernet41
+  - SW601-SITE6-B:Ethernet47
 - connection:
   - SW101-SITE1-B:Ethernet43
   - SW401-SITE4-B:Ethernet45
@@ -59,6 +74,9 @@ links:
 - connection:
   - SW101-SITE1-B:Ethernet56/1
   - SW103-SITE1-P:Ethernet53/1
+- connection:
+  - SW102-SITE1-R:Ethernet41
+  - SW602-SITE6-R:Ethernet47
 - connection:
   - SW102-SITE1-R:Ethernet43
   - SW402-SITE4-R:Ethernet45
@@ -83,3 +101,9 @@ links:
 - connection:
   - SW402-SITE4-R:Ethernet47
   - SW502-SITE5-R:Ethernet39
+- connection:
+  - SW601-SITE6-B:Ethernet56/1
+  - SW603-SITE6-P:Ethernet53/1
+- connection:
+  - SW602-SITE6-R:Ethernet56/1
+  - SW603-SITE6-P:Ethernet54/1

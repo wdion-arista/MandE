@@ -42,6 +42,11 @@ all:
                     SW501-SITE5-B:
                       ansible_host: 172.20.20.51
                       inband_ip: 10.1.1.51
+                SITE6_BLUE_LEAFS:
+                  hosts:
+                    SW601-SITE6-B:
+                      ansible_host: 172.20.20.61
+                      inband_ip: 10.1.1.61
             RED_LEAFS:
               children:
                 SITE2_RED_LEAFS:
@@ -59,6 +64,11 @@ all:
                     SW502-SITE5-R:
                       ansible_host: 172.20.20.52
                       inband_ip: 10.1.1.52
+                SITE6_RED_LEAFS:
+                  hosts:
+                    SW602-SITE6-R:
+                      ansible_host: 172.20.20.62
+                      inband_ip: 10.1.1.62
             PURPLE_LEAFS:
               children:
                 SITE1_PURPLE_LEAFS:
@@ -76,6 +86,11 @@ all:
                     SW301-SITE3-P:
                       ansible_host: 172.20.20.31
                       inband_ip: 10.1.1.31
+                SITE6_PURPLE_LEAFS:
+                  hosts:
+                    SW603-SITE6-P:
+                      ansible_host: 172.20.20.63
+                      inband_ip: 10.1.1.63
     NETWORK_SERVICES:
       children:
         SITE1_BLUE_SPINES:
@@ -118,6 +133,11 @@ all:
       children:
         SITE5_BLUE_LEAFS:
         SITE5_RED_LEAFS:
+    SITE6_CONNECTED_ENDPOINTS:
+      children:
+        SITE6_BLUE_LEAFS:
+        SITE6_RED_LEAFS:
+        SITE6_PURPLE_LEAFS:
     PORT_PROFILES:
       children:
         BLUE_SPINES:
@@ -200,6 +220,18 @@ all:
               - name: et3
                 ip: 10.5.35.10/24
               gw: 10.5.35.1
+        SITE6_SERVERS:
+          hosts:
+            site6-server1:
+              ansible_host: 172.20.20.7
+              interfaces:
+              - name: et1
+                ip: 10.6.30.10/24
+              - name: et2
+                ip: 10.6.31.10/24
+              - name: et3
+                ip: 10.6.35.10/24
+              gw: 10.6.35.1
     TOOLS:
       children:
         TOOLSSERVER:
