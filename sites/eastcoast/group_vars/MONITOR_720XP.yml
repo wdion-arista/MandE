@@ -115,13 +115,13 @@ flow_tracking_settings:
 
           # Exporter Name
         - name: IPFIX_MandE
-          collector:
+          collectors:
 
-            # Collector IPv4 address or IPv6 address or fully qualified domain name
-            host: 127.0.0.1
+            - # Collector IPv4 address or IPv6 address or fully qualified domain name
+              host: 127.0.0.1
 
-            # Collector Port Number
-            # port: <int; 1-65535>
+              # Collector Port Number
+              # port: <int; 1-65535>
           # format:
           #   ipfix_version: <int>
 

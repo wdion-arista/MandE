@@ -40,7 +40,7 @@
 ## Fabric Topology
 
 | Type | Node | Node Interface | Peer Type | Peer Node | Peer Interface |
-| ---- | ---- | -------------- | --------- | ----------| -------------- |
+| ---- | ---- | -------------- | --------- | --------- | -------------- |
 | spine | SW101-SITE1-B | Ethernet43 | l3leaf | SW401-SITE4-B | Ethernet45 |
 | spine | SW101-SITE1-B | Ethernet45 | l3leaf | SW301-SITE3-P | Ethernet35 |
 | spine | SW101-SITE1-B | Ethernet47 | l3leaf | SW201-SITE2-B | Ethernet47 |

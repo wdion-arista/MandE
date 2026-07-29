@@ -22,3 +22,11 @@ CLAUDE.md
 *.log.gz
 Fossil/
 *debug-vars.yml
+inventory-act.yml
+inventory-containerlab.yml
+**/act/**
+**/clab/**
+**/intended/**
+!**/clab/MandE-*.clab.yml.annotations.json
+**/tmp_eos_designs/
+.claude/settings.local.json

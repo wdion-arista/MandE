@@ -167,16 +167,25 @@ l3leaf:
                 wait_install: true
               peer_groups:
                 - name: EVPN-OVERLAY-PEERS
-                  type: evpn
                   update_source: Loopback0
                   send_community: all
                   bfd: true
-                  next_hop_self: true                
+                  next_hop_self: true
+                  ebgp_multihop: 3
+                  maximum_routes: 0
               neighbors:
                   - ip_address: 10.101.30.1
                     peer_group: EVPN-OVERLAY-PEERS
                     remote_as: 65100
                     description: BLUE-SPINE
+              address_family_evpn:
+                peer_groups:
+                  - name: EVPN-OVERLAY-PEERS
+                    activate: true
+              address_family_ipv4:
+                peer_groups:
+                  - name: EVPN-OVERLAY-PEERS
+                    activate: false
             vlans:
               - id: 530
                 name: VideoTrafficBlue
@@ -222,7 +231,7 @@ l3leaf:
                   - 23.133.168.244
                   - 173.183.146.26
                   - 208.73.56.29
-              subnets:
+              ipv4_subnets:
               - subnet: 10.5.13.0/24
                 name: Operations
                 default_gateway: 10.5.13.1

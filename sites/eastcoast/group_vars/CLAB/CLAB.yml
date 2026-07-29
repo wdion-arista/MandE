@@ -4,10 +4,9 @@ mgmt_gateway: 172.20.20.1
 fabric_name: CLAB
 device_inventory_mode: loose
 
-aaa_root:
+custom_structured_configuration_aaa_root:
   disabled: true
 
-# digital_twin: true
 avd_digital_twin_mode: true
 
 # platform_clab_type: cEOSLab
@@ -33,7 +32,7 @@ platform_settings:
       private_vlan: false
     digital_twin:
       platform: cEOSLab
-      act_node_type: veos 
+      act_node_type: veos
 
   - platforms:
       - 7280R
@@ -49,7 +48,7 @@ platform_settings:
       private_vlan: false
     digital_twin:
       platform: cEOSLab
-      act_node_type: veos 
+      act_node_type: veos
 
   - platforms:
       - CEOS
@@ -62,7 +61,6 @@ platform_settings:
       interface_storm_control: false
       queue_monitor_length_notify: false
       evpn_gateway_all_active_multihoming: true
-    management_interface: Management0
     reload_delay:
       mlag: 300
       non_mlag: 330
@@ -80,7 +78,7 @@ platform_settings:
 ### VRF Specific
 
 # This is used to build the Terninattr daemon
-daemon_terminattr:
+custom_structured_configuration_daemon_terminattr:
   clusters:
     # - name: OnPrem
     #   cvaddrs:
@@ -126,21 +124,20 @@ daemon_terminattr:
   ingestexclude: "/Sysdb/cell/1/agent,/Sysdb/cell/2/agent"
 
 ### NTP Servers ###
-ntp:
+custom_structured_configuration_ntp:
+  vrf: default
   servers:
     - name: 216.232.132.95
-      vrf: default
     - name: 23.133.168.244
-      vrf: default
 
 # DNS Server
-ip_name_servers:
-  - ip_address: 8.8.8.8
-    vrf: default
-  - ip_address: 4.2.2.1
-    vrf: default
-
-  - ip_address: 8.8.8.8
-    vrf: Production
-  - ip_address: 4.2.2.1
-    vrf: Production      
+custom_structured_configuration_ip_name_server:
+  vrfs:
+    - name: default
+      servers:
+        - ip_address: 8.8.8.8
+        - ip_address: 4.2.2.1
+    - name: Production
+      servers:
+        - ip_address: 8.8.8.8
+        - ip_address: 4.2.2.1

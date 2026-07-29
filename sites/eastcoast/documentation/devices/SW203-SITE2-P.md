@@ -86,9 +86,9 @@ EOF
 
 ##### IPv6
 
-| Management Interface | Description | Type | VRF | IPv6 Address | IPv6 Gateway |
-| -------------------- | ----------- | ---- | --- | ------------ | ------------ |
-| Management1 | OOB_MANAGEMENT | oob | default | - | - |
+| Management Interface | Description | Type | VRF | IPv6 Address | IPv6 Gateway | ND RA RX Accept | ND RA Disabled | ND Managed Config Flag |
+| -------------------- | ----------- | ---- | --- | ------------ | ------------ | --------------- | -------------- | ---------------------- |
+| Management1 | OOB_MANAGEMENT | oob | default | - | - | - | - | - |
 
 #### Management Interfaces Device Configuration
 
@@ -165,9 +165,9 @@ management console
 
 #### Management API HTTP Summary
 
-| HTTP | HTTPS | UNIX-Socket | Default Services |
-| ---- | ----- | ----------- | ---------------- |
-| False | True | - | - |
+| HTTP | HTTPS | UNIX-Socket | Default Services | Session Timeout |
+| ---- | ----- | ----------- | ---------------- | --------------- |
+| False | True | - | - | 1440 minutes |
 
 #### Management API VRF Access
 
@@ -222,9 +222,9 @@ Enable password has been disabled
 
 #### RADIUS Server Hosts
 
-| VRF | RADIUS Servers | TLS | SSL Profile | Timeout | Retransmit |
-| --- | -------------- | --- | ----------- | ------- | ---------- |
-| default | radsec.beta.agni.arista.io | True | agni-server | - | - |
+| VRF | RADIUS Servers | TLS | TLS Port | SSL Profile | Timeout | Retransmit |
+| --- | -------------- | --- | ---- | ----------- | ------- | ---------- |
+| default | radsec.beta.agni.arista.io | True | - | agni-server | - | - |
 
 #### RADIUS Server Device Configuration
 
@@ -237,8 +237,8 @@ radius-server host radsec.beta.agni.arista.io tls ssl-profile agni-server
 
 #### AAA Server Groups Summary
 
-| Server Group Name | Type  | VRF | IP address |
-| ------------------| ----- | --- | ---------- |
+| Server Group Name | Type | VRF | IP address |
+| ----------------- | ---- | --- | ---------- |
 | agni-server-group | radius | default | radsec.beta.agni.arista.io tls |
 
 #### AAA Server Groups Device Configuration
@@ -286,7 +286,7 @@ aaa authorization exec default local
 
 | Type | Commands | Record type | Groups | Logging |
 | ---- | -------- | ----------- | ------ | ------- |
-| Dot1x - Default | - | start-stop | agni-server-group | - |
+| Dot1x - Default | - | start-stop | agni-server-group | False |
 
 #### AAA Accounting Device Configuration
 
@@ -305,7 +305,7 @@ alias snz show interface counter | nz
 alias sqnz show interface counter queue | nz
 alias srnz show interface counter rate | nz
 alias ps_show_bess bash ps -ef | grep -i Bess
-alias check_terminattr show agent TerminAttr log | tail 
+alias check_terminattr show agent TerminAttr log | tail
 
 !
 ```
@@ -314,28 +314,28 @@ alias check_terminattr show agent TerminAttr log | tail
 
 ### DHCP Servers Summary
 
-| DHCP Server Enabled | VRF | IPv4 DNS Domain | IPv4 DNS Servers | IPv4 Bootfile | IPv4 Lease Time | IPv6 DNS Domain | IPv6 DNS Servers | IPv6 Bootfile | IPv6 Lease Time |
-| ------------------- | --- | --------------- | ---------------- | ------------- | --------------- | --------------- | ---------------- | ------------- | --------------- |
-| True | Production | - | 4.2.2.1, 8.8.8.8 | - | - | - | - | - | - |
+| DHCP Server Enabled | VRF | IPv4 DNS Domain | IPv4 DNS Servers | TFTP Bootfile Name (Option 67) | TFTP Server Name (Option 66) | TFTP Server IPs (Option 150) | IPv4 Lease Time | IPv6 DNS Domain | IPv6 DNS Servers | IPv6 TFTP Bootfile URL (Option 59) | IPv6 Lease Time |
+| ------------------- | --- | --------------- | ---------------- | ------------------------------ | ---------------------------- | ---------------------------- | --------------- | --------------- | ---------------- | ---------------------------------- | --------------- |
+| True | Production | - | 4.2.2.1, 8.8.8.8 | - | - | - | - | - | - | - | - |
 
 #### VRF Production DHCP Server
 
-##### Subnets
+##### IPv4 Subnets
 
-| Subnet | Name | DNS Servers | Default Gateway | Lease Time | Ranges |
-| ------ | ---- | ----------- | --------------- | ---------- | ------ |
-| 10.2.12.0/24 | Network Management | - | 10.2.12.1 | - | 10.2.12.10-10.2.12.250 |
-| 10.2.13.0/24 | Operations | - | 10.2.13.1 | - | 10.2.13.10-10.2.13.250 |
-| 10.2.20.0/24 | Intercom | - | 10.2.20.1 | - | 10.2.20.10-10.2.20.250 |
-| 10.2.35.0/24 | SRT Blue | - | 10.2.35.1 | - | 10.2.35.10-10.2.35.250 |
-| 10.2.36.0/24 | SRT Red | - | 10.2.36.1 | - | 10.2.36.10-10.2.36.250 |
-| 10.2.40.0/24 | Data Transfer - EVS | - | 10.2.40.1 | - | 10.2.40.10-10.2.40.250 |
-| 10.2.84.0/24 | WAN_1G | - | 10.2.84.1 | - | 10.2.84.10-10.2.84.250 |
+| Subnet | Name | DNS Servers | Default Gateway | Lease Time | Ranges | TFTP Bootfile Name (Option 67) | TFTP Server Name (Option 66) | TFTP Server IPs (Option 150) |
+| ------ | ---- | ----------- | --------------- | ---------- | ------ | ------------------------------ | ---------------------------- | ---------------------------- |
+| 10.2.12.0/24 | Network Management | - | 10.2.12.1 | - | 10.2.12.10-10.2.12.250 | - | - | - |
+| 10.2.13.0/24 | Operations | - | 10.2.13.1 | - | 10.2.13.10-10.2.13.250 | - | - | - |
+| 10.2.20.0/24 | Intercom | - | 10.2.20.1 | - | 10.2.20.10-10.2.20.250 | - | - | - |
+| 10.2.35.0/24 | SRT Blue | - | 10.2.35.1 | - | 10.2.35.10-10.2.35.250 | - | - | - |
+| 10.2.36.0/24 | SRT Red | - | 10.2.36.1 | - | 10.2.36.10-10.2.36.250 | - | - | - |
+| 10.2.40.0/24 | Data Transfer - EVS | - | 10.2.40.1 | - | 10.2.40.10-10.2.40.250 | - | - | - |
+| 10.2.84.0/24 | WAN_1G | - | 10.2.84.1 | - | 10.2.84.10-10.2.84.250 | - | - | - |
 
 ##### IPv4 Vendor Options
 
 | Vendor ID | Sub-option Code | Sub-option Type | Sub-option Data |
-| --------- | ----------------| --------------- | --------------- |
+| --------- | --------------- | --------------- | --------------- |
 | NTP | 42 | array ipv4-address | 216.232.132.95 23.133.168.244 173.183.146.26 208.73.56.29 |
 
 ### DHCP Server Configuration
@@ -467,7 +467,7 @@ spanning-tree mst 0 priority 32768
 ### Internal VLAN Allocation Policy Summary
 
 | Policy Allocation | Range Beginning | Range Ending |
-| ------------------| --------------- | ------------ |
+| ----------------- | --------------- | ------------ |
 | ascending | 1006 | 1199 |
 
 ### Internal VLAN Allocation Policy Device Configuration
@@ -556,8 +556,8 @@ interface defaults
 
 ##### IPv4
 
-| Interface | Description | Channel Group | IP Address | VRF |  MTU | Shutdown | ACL In | ACL Out |
-| --------- | ----------- | ------------- | ---------- | ----| ---- | -------- | ------ | ------- |
+| Interface | Description | Channel Group | IP Address | VRF | MTU | Shutdown | ACL In | ACL Out |
+| --------- | ----------- | ------------- | ---------- | --- | --- | -------- | ------ | ------- |
 | Ethernet53/1 | P2P_SW201-SITE2-B_Ethernet56/1 | - | 10.11.50.13/31 | default | 1500 | False | - | - |
 | Ethernet54/1 | P2P_SW202-SITE2-R_Ethernet56/1 | - | 10.11.50.15/31 | default | 1500 | False | - | - |
 
@@ -621,8 +621,8 @@ interface Ethernet54/1
 
 ##### IPv6
 
-| Interface | Description | VRF | IPv6 Address |
-| --------- | ----------- | --- | ------------ |
+| Interface | Description | VRF | IPv6 Addresses |
+| --------- | ----------- | --- | -------------- |
 | Loopback0 | ROUTER_ID | default | - |
 | Loopback1 | VXLAN_TUNNEL_SOURCE | default | - |
 | Loopback10 | INBAND_MGMT | Production | - |
@@ -662,8 +662,8 @@ interface Loopback10
 
 #### VLAN Interfaces Summary
 
-| Interface | Description | VRF |  MTU | Shutdown |
-| --------- | ----------- | --- | ---- | -------- |
+| Interface | Description | VRF | MTU | Shutdown |
+| --------- | ----------- | --- | --- | -------- |
 | Vlan212 | NetworkMgmtSite2 | Production | - | False |
 | Vlan213 | EdgeDeviceControlSite2 | Production | - | False |
 | Vlan220 | IntercomSite2 | Production | - | False |
@@ -676,13 +676,13 @@ interface Loopback10
 
 | Interface | VRF | IP Address | IP Address Virtual | IP Router Virtual Address | ACL In | ACL Out |
 | --------- | --- | ---------- | ------------------ | ------------------------- | ------ | ------- |
-| Vlan212 |  Production  |  10.2.12.1/24  |  -  |  -  |  -  |  -  |
-| Vlan213 |  Production  |  10.2.13.1/24  |  -  |  -  |  -  |  -  |
-| Vlan220 |  Production  |  10.2.20.1/24  |  -  |  -  |  -  |  -  |
-| Vlan235 |  Production  |  10.2.35.1/24  |  -  |  -  |  -  |  -  |
-| Vlan236 |  Production  |  10.2.36.1/24  |  -  |  -  |  -  |  -  |
-| Vlan240 |  Production  |  10.2.40.1/24  |  -  |  -  |  -  |  -  |
-| Vlan284 |  Production  |  10.2.84.1/24  |  -  |  -  |  -  |  -  |
+| Vlan212 | Production | 10.2.12.1/24 | - | - | - | - |
+| Vlan213 | Production | 10.2.13.1/24 | - | - | - | - |
+| Vlan220 | Production | 10.2.20.1/24 | - | - | - | - |
+| Vlan235 | Production | 10.2.35.1/24 | - | - | - | - |
+| Vlan236 | Production | 10.2.36.1/24 | - | - | - | - |
+| Vlan240 | Production | 10.2.40.1/24 | - | - | - | - |
+| Vlan284 | Production | 10.2.84.1/24 | - | - | - | - |
 
 #### VLAN Interfaces Device Configuration
 
@@ -911,7 +911,7 @@ ASN Notation: asplain
 | update wait-install |
 | no bgp default ipv4-unicast |
 | distance bgp 20 200 200 |
-| maximum-paths 4 ecmp 4 |
+| maximum-paths 4 |
 
 #### Router BGP Peer Groups
 
@@ -919,7 +919,6 @@ ASN Notation: asplain
 
 | Settings | Value |
 | -------- | ----- |
-| Address Family | evpn |
 | Next-hop self | True |
 | Source | Loopback0 |
 | BFD | True |
@@ -971,7 +970,7 @@ router bgp 65203
    update wait-install
    no bgp default ipv4-unicast
    distance bgp 20 200 200
-   maximum-paths 4 ecmp 4
+   maximum-paths 4
    neighbor EVPN-OVERLAY-PEERS peer group
    neighbor EVPN-OVERLAY-PEERS next-hop-self
    neighbor EVPN-OVERLAY-PEERS update-source Loopback0
@@ -1102,7 +1101,7 @@ ip igmp snooping vlan 213 querier address 10.11.30.4
 #### 802.1X Global
 
 | System Auth Control | Protocol LLDP Bypass | Dynamic Authorization | Dropped Packets Statistics |
-| ------------------- | -------------------- | ----------------------| -------------------------- |
+| ------------------- | -------------------- | --------------------- | -------------------------- |
 | True | True | True | - |
 
 #### Dot1x Configuration
@@ -1144,16 +1143,13 @@ ip dhcp snooping
 
 ### Errdisable Summary
 
-Errdisable recovery timer interval: 30 seconds
-
-|  Cause | Detection Enabled | Recovery Enabled |
-| ------ | ----------------- | ---------------- |
-| bpduguard | - | True |
-| link-flap | - | True |
+| Cause | Detection Enabled | Recovery Enabled | Recovery Interval (seconds) |
+| ----- | ----------------- | ---------------- | --------------------------- |
+| bpduguard | - | True | 30 |
+| link-flap | - | True | 30 |
 
 ```eos
 !
-errdisable recovery cause bpduguard
-errdisable recovery cause link-flap
-errdisable recovery interval 30
+errdisable recovery cause bpduguard interval 30
+errdisable recovery cause link-flap interval 30
 ```

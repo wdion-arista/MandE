@@ -3,8 +3,13 @@ root_dir: '{{ inventory_dir }}/act'
 mgmt_gateway: 192.168.0.6
 fabric_name: ACT
 
+custom_structured_configuration_agents:
+  - name: KernelFib
+    environment_variables:
+      - name:  KERNELFIB_PROGRAM_ALL_ECMP
+        value: "'true'"
 
-aaa_root:
+custom_structured_configuration_aaa_root:
   disabled: true
 
 avd_digital_twin_mode: true
@@ -26,29 +31,26 @@ platform_settings:
     reload_delay:
       mlag: 900
       non_mlag: 1020
-    tcam_profile: vxlan-routing
     feature_support:
       evpn_gateway_all_active_multihoming: true
       private_vlan: false
     digital_twin:
       platform: 7280R3
-      act_node_type: veos 
+      act_node_type: veos
 
   - platforms:
       - 7280R
       - 7280R2
       - 7020R
       - 7020TD
-    lag_hardware_only: true
     reload_delay:
       mlag: 900
       non_mlag: 1020
-    tcam_profile: vxlan-routing
     feature_support:
       private_vlan: false
     digital_twin:
       platform: 7280R
-      act_node_type: veos 
+      act_node_type: veos
 
   - platforms:
       - CEOS
@@ -80,7 +82,7 @@ platform_settings:
 ### VRF Specific
 
 # This is used to build the Terninattr daemon
-daemon_terminattr:
+custom_structured_configuration_daemon_terminattr:
   clusters:
     # - name: OnPrem
     #   cvaddrs:
@@ -96,51 +98,30 @@ daemon_terminattr:
       cvauth:
         method: "token-secure"
         token_file: "/tmp/cv-onboarding-token"
-        #method: certs
-        #key_file: /persist/secure/ssl/terminattr/CVaaS/keys/client.key
-        #cert_file: /persist/secure/ssl/terminattr/CVaaS/certs/client.crt
-        # method: certs
-        # key_file: /persist/secure/ssl/terminattr/primary/keys/client.key
-        # cert_file: /persist/secure/ssl/terminattr/primary/certs/client.crt
-
-      cvvrf: MGMT
-      cvsourceintf: Management1
-    - name: CVaaS-wrdion
-      cvaddrs:
-        - apiserver.arista.io:443
-      cvauth:
-        method: "token-secure"
-        token_file: "/tmp/cv-onboarding-token-wrdion"
-        #method: certs
-        #key_file: /persist/secure/ssl/terminattr/CVaaS/keys/client.key
-        #cert_file: /persist/secure/ssl/terminattr/CVaaS/certs/client.crt
-        # method: certs
-        # key_file: /persist/secure/ssl/terminattr/primary/keys/client.key
-        # cert_file: /persist/secure/ssl/terminattr/primary/certs/client.crt
-
-      cvvrf: default
-      cvsourceintf: Vlan11      
+      # cvvrf: MGMT
+      # cvsourceintf: Management1
   disable_aaa: true
-  #smashexcludes: "ale,flexCounter,hardware,kni,pulse,strata"
-  smashexcludes: "ale,flexCounter,kni,pulse,strata"
+  smashexcludes: "ale,flexCounter,hardware,kni,pulse,strata"
   ingestexclude: "/Sysdb/cell/1/agent,/Sysdb/cell/2/agent"
 
 ### NTP Servers ###
-ntp:
+custom_structured_configuration_ntp:
+  vrf: default
   servers:
     - name: 216.232.132.95
-      vrf: MGMT
     - name: 23.133.168.244
-      vrf: MGMT
 
 # DNS Server
-ip_name_servers:
-  - ip_address: 8.8.8.8
-    vrf: MGMT
-  - ip_address: 4.2.2.1
-    vrf: MGMT
-
-  - ip_address: 8.8.8.8
-    vrf: Production
-  - ip_address: 4.2.2.1
-    vrf: Production      
+custom_structured_configuration_ip_name_server:
+  vrfs:
+    - name: default
+      servers:
+        - ip_address: 169.254.169.254
+    - name: MGMT
+      servers:
+        - ip_address: 8.8.8.8
+        - ip_address: 169.254.169.254
+    - name: Production
+      servers:
+        - ip_address: 8.8.8.8
+        - ip_address: 169.254.169.254

@@ -85,9 +85,9 @@ EOF
 
 ##### IPv6
 
-| Management Interface | Description | Type | VRF | IPv6 Address | IPv6 Gateway |
-| -------------------- | ----------- | ---- | --- | ------------ | ------------ |
-| Management1 | OOB_MANAGEMENT | oob | default | - | - |
+| Management Interface | Description | Type | VRF | IPv6 Address | IPv6 Gateway | ND RA RX Accept | ND RA Disabled | ND Managed Config Flag |
+| -------------------- | ----------- | ---- | --- | ------------ | ------------ | --------------- | -------------- | ---------------------- |
+| Management1 | OOB_MANAGEMENT | oob | default | - | - | - | - | - |
 
 #### Management Interfaces Device Configuration
 
@@ -164,9 +164,9 @@ management console
 
 #### Management API HTTP Summary
 
-| HTTP | HTTPS | UNIX-Socket | Default Services |
-| ---- | ----- | ----------- | ---------------- |
-| False | True | - | - |
+| HTTP | HTTPS | UNIX-Socket | Default Services | Session Timeout |
+| ---- | ----- | ----------- | ---------------- | --------------- |
+| False | True | - | - | 1440 minutes |
 
 #### Management API VRF Access
 
@@ -221,9 +221,9 @@ Enable password has been disabled
 
 #### RADIUS Server Hosts
 
-| VRF | RADIUS Servers | TLS | SSL Profile | Timeout | Retransmit |
-| --- | -------------- | --- | ----------- | ------- | ---------- |
-| default | radsec.beta.agni.arista.io | True | agni-server | - | - |
+| VRF | RADIUS Servers | TLS | TLS Port | SSL Profile | Timeout | Retransmit |
+| --- | -------------- | --- | ---- | ----------- | ------- | ---------- |
+| default | radsec.beta.agni.arista.io | True | - | agni-server | - | - |
 
 #### RADIUS Server Device Configuration
 
@@ -236,8 +236,8 @@ radius-server host radsec.beta.agni.arista.io tls ssl-profile agni-server
 
 #### AAA Server Groups Summary
 
-| Server Group Name | Type  | VRF | IP address |
-| ------------------| ----- | --- | ---------- |
+| Server Group Name | Type | VRF | IP address |
+| ----------------- | ---- | --- | ---------- |
 | agni-server-group | radius | default | radsec.beta.agni.arista.io tls |
 
 #### AAA Server Groups Device Configuration
@@ -285,7 +285,7 @@ aaa authorization exec default local
 
 | Type | Commands | Record type | Groups | Logging |
 | ---- | -------- | ----------- | ------ | ------- |
-| Dot1x - Default | - | start-stop | agni-server-group | - |
+| Dot1x - Default | - | start-stop | agni-server-group | False |
 
 #### AAA Accounting Device Configuration
 
@@ -304,7 +304,7 @@ alias snz show interface counter | nz
 alias sqnz show interface counter queue | nz
 alias srnz show interface counter rate | nz
 alias ps_show_bess bash ps -ef | grep -i Bess
-alias check_terminattr show agent TerminAttr log | tail 
+alias check_terminattr show agent TerminAttr log | tail
 
 !
 ```
@@ -334,7 +334,7 @@ spanning-tree mst 0 priority 32768
 ### Internal VLAN Allocation Policy Summary
 
 | Policy Allocation | Range Beginning | Range Ending |
-| ------------------| --------------- | ------------ |
+| ----------------- | --------------- | ------------ |
 | ascending | 1006 | 1199 |
 
 ### Internal VLAN Allocation Policy Device Configuration
@@ -414,8 +414,8 @@ interface defaults
 
 ##### IPv4
 
-| Interface | Description | Channel Group | IP Address | VRF |  MTU | Shutdown | ACL In | ACL Out |
-| --------- | ----------- | ------------- | ---------- | ----| ---- | -------- | ------ | ------- |
+| Interface | Description | Channel Group | IP Address | VRF | MTU | Shutdown | ACL In | ACL Out |
+| --------- | ----------- | ------------- | ---------- | --- | --- | -------- | ------ | ------- |
 | Ethernet39 | P2P_SW402-SITE4-R_Ethernet47 | - | 10.102.50.9/31 | default | 1500 | False | - | - |
 
 ##### ISIS
@@ -455,8 +455,8 @@ interface Ethernet39
 
 ##### IPv6
 
-| Interface | Description | VRF | IPv6 Address |
-| --------- | ----------- | --- | ------------ |
+| Interface | Description | VRF | IPv6 Addresses |
+| --------- | ----------- | --- | -------------- |
 | Loopback0 | ROUTER_ID | default | - |
 | Loopback1 | VXLAN_TUNNEL_SOURCE | default | - |
 | Loopback10 | INBAND_MGMT | Production | - |
@@ -496,8 +496,8 @@ interface Loopback10
 
 #### VLAN Interfaces Summary
 
-| Interface | Description | VRF |  MTU | Shutdown |
-| --------- | ----------- | --- | ---- | -------- |
+| Interface | Description | VRF | MTU | Shutdown |
+| --------- | ----------- | --- | --- | -------- |
 | Vlan512 | NetworkMgmtSite5 | Production | - | False |
 | Vlan513 | EdgeDeviceControlSite5 | Production | - | False |
 | Vlan520 | IntercomSite5 | Production | - | False |
@@ -508,11 +508,11 @@ interface Loopback10
 
 | Interface | VRF | IP Address | IP Address Virtual | IP Router Virtual Address | ACL In | ACL Out |
 | --------- | --- | ---------- | ------------------ | ------------------------- | ------ | ------- |
-| Vlan512 |  Production  |  10.5.12.1/24  |  -  |  -  |  -  |  -  |
-| Vlan513 |  Production  |  10.5.13.1/24  |  -  |  -  |  -  |  -  |
-| Vlan520 |  Production  |  10.5.20.1/24  |  -  |  -  |  -  |  -  |
-| Vlan531 |  default  |  10.5.31.1/24  |  -  |  -  |  -  |  -  |
-| Vlan536 |  Production  |  10.5.36.1/24  |  -  |  -  |  -  |  -  |
+| Vlan512 | Production | 10.5.12.1/24 | - | - | - | - |
+| Vlan513 | Production | 10.5.13.1/24 | - | - | - | - |
+| Vlan520 | Production | 10.5.20.1/24 | - | - | - | - |
+| Vlan531 | default | 10.5.31.1/24 | - | - | - | - |
+| Vlan536 | Production | 10.5.36.1/24 | - | - | - | - |
 
 ##### ISIS
 
@@ -725,7 +725,7 @@ ASN Notation: asplain
 | update wait-install |
 | no bgp default ipv4-unicast |
 | distance bgp 20 200 200 |
-| maximum-paths 4 ecmp 4 |
+| maximum-paths 4 |
 
 #### Router BGP Peer Groups
 
@@ -733,7 +733,6 @@ ASN Notation: asplain
 
 | Settings | Value |
 | -------- | ----- |
-| Address Family | evpn |
 | Next-hop self | True |
 | Source | Loopback0 |
 | BFD | True |
@@ -781,7 +780,7 @@ router bgp 65502
    update wait-install
    no bgp default ipv4-unicast
    distance bgp 20 200 200
-   maximum-paths 4 ecmp 4
+   maximum-paths 4
    neighbor EVPN-OVERLAY-PEERS peer group
    neighbor EVPN-OVERLAY-PEERS next-hop-self
    neighbor EVPN-OVERLAY-PEERS update-source Loopback0
@@ -918,8 +917,8 @@ ip igmp snooping vlan 536 querier address 10.102.30.5
 
 #### IP Router Multicast Summary
 
-- Routing for IPv4 multicast is enabled.
-- Software forwarding by the Linux kernel
+- IPv4 Multicast Routing is enabled.
+- IPv4 software forwarding is handled by the Linux kernel.
 
 #### Router Multicast Device Configuration
 
@@ -968,7 +967,7 @@ router pim sparse-mode
 #### 802.1X Global
 
 | System Auth Control | Protocol LLDP Bypass | Dynamic Authorization | Dropped Packets Statistics |
-| ------------------- | -------------------- | ----------------------| -------------------------- |
+| ------------------- | -------------------- | --------------------- | -------------------------- |
 | True | True | True | - |
 
 #### Dot1x Configuration
@@ -1010,16 +1009,13 @@ ip dhcp snooping
 
 ### Errdisable Summary
 
-Errdisable recovery timer interval: 30 seconds
-
-|  Cause | Detection Enabled | Recovery Enabled |
-| ------ | ----------------- | ---------------- |
-| bpduguard | - | True |
-| link-flap | - | True |
+| Cause | Detection Enabled | Recovery Enabled | Recovery Interval (seconds) |
+| ----- | ----------------- | ---------------- | --------------------------- |
+| bpduguard | - | True | 30 |
+| link-flap | - | True | 30 |
 
 ```eos
 !
-errdisable recovery cause bpduguard
-errdisable recovery cause link-flap
-errdisable recovery interval 30
+errdisable recovery cause bpduguard interval 30
+errdisable recovery cause link-flap interval 30
 ```

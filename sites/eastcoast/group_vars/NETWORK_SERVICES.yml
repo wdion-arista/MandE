@@ -1,2 +1,2 @@
-mpls:
+custom_structured_configuration_mpls:
   ip: true

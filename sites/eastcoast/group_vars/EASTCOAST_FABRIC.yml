@@ -1,19 +1,18 @@
 ---
 
 evpn_l3_multicast: true
-underlay_multicast: true
+underlay_multicast_pim_sm: true
 igmp_snooping_enabled : true
 default_igmp_snooping_enabled: true
-
-design:
-  type: l3ls-evpn
 
 underlay_routing_protocol: isis
 overlay_routing_protocol: ebgp
 
-digital_twin:
+# ACT Settings
+act_add_cvp: false
+act_veos_internet_access: true
 
-  # Targeted Digital Twin environment.
+digital_twin:
   environment: act
   fabric:
     act_username: cvpadmin2
@@ -41,127 +40,81 @@ eos_designs_documentation:
   topology_csv: true
   p2p_links_csv: true
 
+shutdown_interfaces_towards_undeployed_peers: false
+
 ### Management console ###
-management_console:
+custom_structured_configuration_management_console:
   idle_timeout: 300
 
-management_ssh:
+custom_structured_configuration_management_ssh:
   idle_timeout: 60
   connection:
     limit: 5
 
-
 ### DNS Domain ###
-dns_domain: lab.example.com
+custom_structured_configuration_dns_domain: lab.example.com
 
-# Common settings
-load_interval:
-  default: 30
-
-clock:
+custom_structured_configuration_clock:
   timezone: Canada/Eastern
 
-ipv6_unicast_routing: false
+custom_structured_configuration_ipv6_unicast_routing: false
 
-shutdown_interfaces_towards_undeployed_peers: false
-
-interface_defaults:
+custom_structured_configuration_interface_defaults:
   ethernet:
     shutdown: true
 
-errdisable:
+custom_structured_configuration_errdisable:
   recovery:
     causes:
-      - bpduguard
-      - link-flap
-    interval: 30
+      - name: bpduguard
+        interval: 30
+      - name: link-flap
+        interval: 30
 
-# P2P interfaces MTU, includes VLANs 4093 and 4094 that are over peer-link
-# If you're running vEOS-lab or cEOS, you should use MTU of 1500 instead as shown in the following line
-p2p_uplinks_mtu: 1500
-
-aaa_authorization:
-  serial_console: true
-  config_commands: true
-  exec:
-    default: local
-  commands:
-    all_default: local
-    privilege:
-      - level: 15
-
-radius_server:
-  hosts:
+custom_structured_configuration_radius_server:
+  servers:
     - host: radsec.beta.agni.arista.io
       tls:
         enabled: true
         ssl_profile: agni-server
 
-aaa_server_groups:
+custom_structured_configuration_aaa_server_groups:
   - name: agni-server-group
     type: radius
     servers:
       - server: radsec.beta.agni.arista.io tls
 
-aaa_accounting:
+custom_structured_configuration_aaa_accounting:
   dot1x:
     default:
       type: "start-stop"
-      group: agni-server-group
+      methods:
+        - method: group
+          group: agni-server-group
 
-aaa_authentication:
+custom_structured_configuration_aaa_authentication:
   dot1x:
     default: group agni-server-group
 
-dot1x:
+custom_structured_configuration_dot1x:
   dynamic_authorization: true
   system_auth_control: true
   protocol_lldp_bypass: true
 
-# DHCP
-ip_dhcp_snooping:
+custom_structured_configuration_static_routes:
+  - vrf: Production
+    prefix: 0.0.0.0/0
+    next_hop: 10.1.99.1
+    name: "Default_prod_iTransit_MX"
+
+custom_structured_configuration_ip_dhcp_snooping:
   enabled: true
   information_option:
     enabled: false
 
-# banners
-banners:
-  login: |
-    ***********************************************
-    Go away!
-    EOF
-
-#alias
-aliases: |
-  alias cc clear counters
-  alias cp clear platform trident counters
-  alias senz show interface counter error | nz
-  alias shmc show int | awk '/^[A-Z]/ { intf = ck216 } /, address is/ { print intf, }'
-  alias snz show interface counter | nz
-  alias sqnz show interface counter queue | nz
-  alias srnz show interface counter rate | nz
-  alias ps_show_bess bash ps -ef | grep -i Bess
-
-
-vrfs:
-  - name: MGMT
-    description: Management
-    ip_routing: true
-
-management_api_http:
-  enable_http: false
-  enable_https: true
-  enable_vrfs:
-    - name: MGMT
-
+# P2P interfaces MTU, includes VLANs 4093 and 4094 that are over peer-link
+# If you're running vEOS-lab or cEOS, you should use MTU of 1500 instead as shown in the following line
+p2p_uplinks_mtu: 1500
 
 # MGMT Interface
 mgmt_interface_vrf: MGMT
-
-static_routes:
-
-  - vrf: Production
-    # IPv4_network/Mask.
-    destination_address_prefix: 0.0.0.0/0
-    gateway: 10.1.99.1
-    name: "Default_prod_iTransit_MX"
