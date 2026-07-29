@@ -93,6 +93,6 @@ spine:
             static_routes:
               - vrf: Production
                 # IPv4_network/Mask.
-                destination_address_prefix: 0.0.0.0/0
-                gateway: 10.1.99.1
+                prefix: 0.0.0.0/0
+                next_hop: 10.1.99.1
                 name: "Default_prod_iTransit_MX"

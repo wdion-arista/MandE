@@ -18,7 +18,7 @@ all:
                     SW101-SITE1-B:
                       ansible_host: 172.20.20.11
                       clab_mgmt_ip: 172.20.20.11
-                      act_mgmt_ip: 192.168.1.11
+                      act_mgmt_ip: 192.168.0.11
                       inband_ip: 10.1.1.11
             RED_SPINES:
               children:
@@ -27,7 +27,7 @@ all:
                     SW102-SITE1-R:
                       ansible_host: 172.20.20.12
                       clab_mgmt_ip: 172.20.20.12
-                      act_mgmt_ip: 192.168.1.12
+                      act_mgmt_ip: 192.168.0.12
                       inband_ip: 10.1.1.12
             BLUE_LEAFS:
               children:
@@ -36,21 +36,21 @@ all:
                     SW201-SITE2-B:
                       ansible_host: 172.20.20.21
                       clab_mgmt_ip: 172.20.20.21
-                      act_mgmt_ip: 192.168.1.21
+                      act_mgmt_ip: 192.168.0.21
                       inband_ip: 10.1.1.21
                 SITE4_BLUE_LEAFS:
                   hosts:
                     SW401-SITE4-B:
                       ansible_host: 172.20.20.41
                       clab_mgmt_ip: 172.20.20.41
-                      act_mgmt_ip: 192.168.1.41
+                      act_mgmt_ip: 192.168.0.41
                       inband_ip: 10.1.1.41
                 SITE5_BLUE_LEAFS:
                   hosts:
                     SW501-SITE5-B:
                       ansible_host: 172.20.20.51
                       clab_mgmt_ip: 172.20.20.51
-                      act_mgmt_ip: 192.168.1.51
+                      act_mgmt_ip: 192.168.0.51
                       inband_ip: 10.1.1.51
             RED_LEAFS:
               children:
@@ -59,21 +59,21 @@ all:
                     SW202-SITE2-R:
                       ansible_host: 172.20.20.22
                       clab_mgmt_ip: 172.20.20.22
-                      act_mgmt_ip: 192.168.1.22
+                      act_mgmt_ip: 192.168.0.22
                       inband_ip: 10.1.1.22
                 SITE4_RED_LEAFS:
                   hosts:
                     SW402-SITE4-R:
                       ansible_host: 172.20.20.42
                       clab_mgmt_ip: 172.20.20.42
-                      act_mgmt_ip: 192.168.1.42
+                      act_mgmt_ip: 192.168.0.42
                       inband_ip: 10.1.1.42
                 SITE5_RED_LEAFS:
                   hosts:
                     SW502-SITE5-R:
                       ansible_host: 172.20.20.52
                       clab_mgmt_ip: 172.20.20.52
-                      act_mgmt_ip: 192.168.1.52
+                      act_mgmt_ip: 192.168.0.52
                       inband_ip: 10.1.1.52
             PURPLE_LEAFS:
               children:
@@ -82,21 +82,21 @@ all:
                     SW103-SITE1-P:
                       ansible_host: 172.20.20.13
                       clab_mgmt_ip: 172.20.20.13
-                      act_mgmt_ip: 192.168.1.13
+                      act_mgmt_ip: 192.168.0.13
                       inband_ip: 10.1.1.13
                 SITE2_PURPLE_LEAFS:
                   hosts:
                     SW203-SITE2-P:
                       ansible_host: 172.20.20.23
                       clab_mgmt_ip: 172.20.20.23
-                      act_mgmt_ip: 192.168.1.23
+                      act_mgmt_ip: 192.168.0.23
                       inband_ip: 10.1.1.23
                 SITE3_PURPLE_LEAFS:
                   hosts:
                     SW301-SITE3-P:
                       ansible_host: 172.20.20.31
                       clab_mgmt_ip: 172.20.20.31
-                      act_mgmt_ip: 192.168.1.31
+                      act_mgmt_ip: 192.168.0.31
                       inband_ip: 10.1.1.31
     NETWORK_SERVICES:
       children:
