@@ -20,3 +20,10 @@ Create a feature branch from the current changes, commit them, push, and open a 
 8. Push the branch: `git push -u origin <branch-name>`
 9. Create a PR with `gh pr create` using a short title and a body with a Summary section and Test Plan section.
 10. Return the PR URL to the user.
+11. After the PR is created, start a `/loop` that polls every 2 minutes (`gh pr view <PR-NUMBER> --json state,mergedAt`) to check whether the PR has been merged.
+12. When the PR is merged:
+    - Stash any uncommitted changes: `git stash -u`
+    - Switch to main: `git checkout main`
+    - Pull latest: `git pull`
+    - Pop the stash: `git stash pop`
+    - Ask the user if they want to delete the local and remote feature branch. If yes, run `git branch -d <branch-name>` and `git push origin --delete <branch-name>`.
