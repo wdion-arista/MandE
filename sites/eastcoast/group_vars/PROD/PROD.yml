@@ -1,6 +1,7 @@
 mgmt_cidr: 24
 fabric_name: PROD
 clab_eos_version: "arista/ceos:4.36.0F"
+act_eos_version: "4.34.3M"
 clab_static_mgmt_ip: true
 act_add_connected_nodes: true
 

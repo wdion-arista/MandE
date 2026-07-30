@@ -21,19 +21,19 @@ aaa_settings:
     - name: "{{ ansible_user }}"
       privilege: 15
       role: network-admin
-      sha512_password: "{{ ansible_password | password_hash('sha512', salt=lookup('env', 'AVD_PASSWORD_SALT') | default('arista', true), rounds=100000) }}"
+      sha512_password: "{{ ansible_password | password_hash('sha512', salt=lookup('env', 'AVD_PASSWORD_SALT') | default('arista', true), rounds=5000) }}"
       ssh_key: "{{ ' '.join(lookup('ansible.builtin.file', lookup('ansible.builtin.first_found', dict(files=['id_ed25519.pub', 'id_ecdsa.pub', 'id_rsa.pub'], paths=[lookup('env', 'HOME') + '/.ssh/']))).split()[:2]) }}"
     - name: "admin"
       privilege: 15
       role: network-admin
-      sha512_password: "{{ ansible_password | password_hash('sha512', salt=lookup('env', 'AVD_PASSWORD_SALT') | default('arista', true), rounds=100000) }}"
+      sha512_password: "{{ ansible_password | password_hash('sha512', salt=lookup('env', 'AVD_PASSWORD_SALT') | default('arista', true), rounds=5000) }}"
       ssh_key: "{{ ' '.join(lookup('ansible.builtin.file', lookup('ansible.builtin.first_found', dict(files=['id_ed25519.pub', 'id_ecdsa.pub', 'id_rsa.pub'], paths=[lookup('env', 'HOME') + '/.ssh/']))).split()[:2]) }}"
     - name: service
-      sha512_password: "{{ ansible_password | password_hash('sha512', salt=lookup('env', 'AVD_PASSWORD_SALT') | default('arista', true), rounds=100000) }}"
+      sha512_password: "{{ ansible_password | password_hash('sha512', salt=lookup('env', 'AVD_PASSWORD_SALT') | default('arista', true), rounds=5000) }}"
       shell: /bin/bash
     - name: pcapper
       shell: /bin/bash
-      sha512_password: "{{ ansible_password | password_hash('sha512', salt=lookup('env', 'AVD_PASSWORD_SALT') | default('arista', true), rounds=100000) }}"
+      sha512_password: "{{ ansible_password | password_hash('sha512', salt=lookup('env', 'AVD_PASSWORD_SALT') | default('arista', true), rounds=5000) }}"
       ssh_key: "{{ ' '.join(lookup('ansible.builtin.file', lookup('ansible.builtin.first_found', dict(files=['id_ed25519.pub', 'id_ecdsa.pub', 'id_rsa.pub'], paths=[lookup('env', 'HOME') + '/.ssh/']))).split()[:2]) }}"
 
 # # OOB Management network default gateway.
