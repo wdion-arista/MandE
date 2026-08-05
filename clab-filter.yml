@@ -1,0 +1,32 @@
+# Devices to deploy with 'make containerlab-deploy-filter'
+# List only the containerlab node names you want to start.
+# Comment/uncomment lines to adjust.
+nodes:
+  # SITE1 - Blue Spine
+  - SW101-SITE1-B
+  # SITE1 - Red Spine
+  - SW102-SITE1-R
+  # SITE1 - Purple Leaf
+  - SW103-SITE1-P
+  # SITE2 - Blue Leaf
+  - SW201-SITE2-B
+  # SITE2 - Red Leaf
+  - SW202-SITE2-R
+  # SITE2 - Purple Leaf
+  - SW203-SITE2-P
+  # SITE3 - Purple Leaf
+  - SW301-SITE3-P
+  # SITE4 - Blue Leaf
+  # - SW401-SITE4-B
+  # SITE4 - Red Leaf
+  # - SW402-SITE4-R
+  # SITE5 - Blue Leaf
+  # - SW501-SITE5-B
+  # SITE5 - Red Leaf
+  # - SW502-SITE5-R
+  # Servers
+  - site1-server1
+  - site2-server1
+  - site3-server1
+  # - site5-server1
+  # - tools-server
